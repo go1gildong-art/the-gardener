@@ -16,7 +16,7 @@
 
   <Target Name="CopyToModsFolder" AfterTargets="Build">
     <PropertyGroup>
-      <ModsFolder>C:\Program Files (x86)\Steam\steamapps\common\Slay the Spire 2\mods\{모드 폴더 이름}</ModsFolder>
+      <ModsFolder>C:\Program Files (x86)\Steam\steamapps\common\Slay the Spire 2\mods\TheGardener</ModsFolder>
       <SourceDll>$(OutputPath)thegardener.dll</SourceDll>
     </PropertyGroup>
     <Message Text="Copying DLL to STS2 mods folder..." Importance="high" />
