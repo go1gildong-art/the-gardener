@@ -1,3 +1,31 @@
-{
-  
+{   
+    "THE_ARCHITECT.talk.THE_GARDENER-THE_GARDENER.0-0r.char": "I am angry at the architect",
+    "THE_ARCHITECT.talk.THE_GARDENER-THE_GARDENER.0-0r.next": "Continue",
+    "THE_ARCHITECT.talk.THE_GARDENER-THE_GARDENER.0-1r.ancient": "You die",
+    "THE_ARCHITECT.talk.THE_GARDENER-THE_GARDENER.0-attack": "Both"
 }
+
+    C:\Users\nines\Documents\sts2_moddev\the-gardener\the-gardenerCode\Character\the-gardener.cs(12,14): error STS001: 
+    Localization 
+    THE_GARDENER-THE_GARDENER.title, 
+    THE_GARDENER-THE_GARDENER.titleObject, 
+    THE_GARDENER-THE_GARDENER.description, 
+    THE_GARDENER-THE_GARDENER.pronounObject, 
+    THE_GARDENER-THE_GARDENER.possessiveAdjective, 
+    THE_GARDENER-THE_GARDENER.pronounPossessive, 
+    THE_GARDENER-THE_GARDENER.pronounSubject, 
+    THE_GARDENER-THE_GARDENER.goldMonologue, 
+    THE_GARDENER-THE_GARDENER.eventDeathPrevention, 
+    THE_GARDENER-THE_GARDENER.aromaPrinciple, 
+    THE_GARDENER-THE_GARDENER.cardsModifierTitle, 
+    THE_GARDENER-THE_GARDENER.cardsModifierDescription, 
+    THE_GARDENER-THE_GARDENER.banter.alive.endTurnPing, 
+    THE_GARDENER-THE_GARDENER.banter.dead.endTurnPing 
+    not found for symbol 'the_gardener.the_gardenerCode.Character.the_gardener'
+
+     C:\Users\nines\Documents\sts2_moddev\the-gardener\the-gardenerCode\Character\the-gardener.cs(12,14): error STS001: 
+     Localization 
+     THE_ARCHITECT.talk.THE_GARDENER-THE_GARDENER.0-0r.char, 
+     THE_ARCHITECT.talk.THE_GARDENER-THE_GARDENER.0-0r.next, 
+     THE_ARCHITECT.talk.THE_GARDENER-THE_GARDENER.0-1r.ancient, 
+     THE_ARCHITECT.talk.THE_GARDENER-THE_GARDENER.0-attack not found for symbol 'the_gardener.the_gardenerCode.Character.the_gardener'
