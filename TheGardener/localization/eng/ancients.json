@@ -1,3 +1,16 @@
 {
-  
+    "THEGARDENER-THE_GARDENER.aromaPrinciple": "Lore",
+  "THEGARDENER-THE_GARDENER.banter.alive.endTurnPing": "Co-op hurry up end turn ping message",
+  "THEGARDENER-THE_GARDENER.banter.dead.endTurnPing": "...",
+  "THEGARDENER-THE_GARDENER.cardsModifierDescription": "__ cards will now appear in rewards and shops.",
+  "THEGARDENER-THE_GARDENER.cardsModifierTitle": "__ Cards",
+  "THEGARDENER-THE_GARDENER.description": "Character Selection\nScreen Description",
+  "THEGARDENER-THE_GARDENER.eventDeathPrevention": "Co-op survival line",
+  "THEGARDENER-THE_GARDENER.goldMonologue": "Line spoken when obtaining a large amount of gold",
+  "THEGARDENER-THE_GARDENER.possessiveAdjective": "his/her/its",
+  "THEGARDENER-THE_GARDENER.pronounObject": "him/her/it",
+  "THEGARDENER-THE_GARDENER.pronounPossessive": "his/hers/its",
+  "THEGARDENER-THE_GARDENER.pronounSubject": "he/she/it",
+  "THEGARDENER-THE_GARDENER.title": "The CharModTest",
+  "THEGARDENER-THE_GARDENER.titleObject": "The CharModTest"
 }

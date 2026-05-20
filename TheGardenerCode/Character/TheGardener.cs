@@ -12,7 +12,6 @@ namespace TheGardener.TheGardenerCode.Character;
 public class TheGardener : PlaceholderCharacterModel
 {
     public const string CharacterId = "TheGardener";
-    
     public static readonly Color Color = new("ffffff");
 
     public override Color NameColor => Color;

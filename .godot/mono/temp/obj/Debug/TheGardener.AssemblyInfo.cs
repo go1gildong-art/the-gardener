@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TheGardener")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4dadfb8a0f8938faf1664bed2adf02827cd94b9a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c622511ab7de5efa1665d3ddbd85fb1a7a3bb01d")]
 [assembly: System.Reflection.AssemblyProductAttribute("TheGardener")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TheGardener")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
