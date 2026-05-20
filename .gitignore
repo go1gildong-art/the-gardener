@@ -1,3 +1,12 @@
-# Godot 4+ specific ignores
 .godot/
+bin/
 /android/
+.git/
+.idea/
+.vs/
+publish/
+Properties/
+packages/
+.editorconfig
+*.user
+Directory.Build.props
