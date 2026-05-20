@@ -1,6 +1,0 @@
-C:\Users\nines\Documents\sts2_moddev\the-gardener\.godot\mono\temp\obj\Release\TheGardener.csproj.AssemblyReference.cache
-C:\Users\nines\Documents\sts2_moddev\the-gardener\.godot\mono\temp\obj\Release\TheGardener.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\nines\Documents\sts2_moddev\the-gardener\.godot\mono\temp\obj\Release\TheGardener.AssemblyInfoInputs.cache
-C:\Users\nines\Documents\sts2_moddev\the-gardener\.godot\mono\temp\obj\Release\TheGardener.AssemblyInfo.cs
-C:\Users\nines\Documents\sts2_moddev\the-gardener\.godot\mono\temp\obj\Release\TheGardener.csproj.CoreCompileInputs.cache
-C:\Users\nines\Documents\sts2_moddev\the-gardener\.godot\mono\temp\obj\Release\TheGardener.sourcelink.json
