@@ -9,6 +9,7 @@ using MegaCrit.Sts2.Core.Models.Relics;
 
 namespace Gardener.GardenerCode.Character;
 
+  
 public class Gardener : PlaceholderCharacterModel
 {
     public const string CharacterId = "Gardener";
