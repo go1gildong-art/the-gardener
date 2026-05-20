@@ -13,23 +13,17 @@ public class TheGardener : PlaceholderCharacterModel
 {
     public const string CharacterId = "TheGardener";
     
-    public static readonly Color Color = new("ffffff");
+    public static readonly Color Color = new("9dff00");
 
     public override Color NameColor => Color;
     public override CharacterGender Gender => CharacterGender.Neutral;
     public override int StartingHp => 70;
     
     public override IEnumerable<CardModel> StartingDeck => [
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<DefendIronclad>(),
-        ModelDb.Card<DefendIronclad>(),
-        ModelDb.Card<DefendIronclad>(),
-        ModelDb.Card<DefendIronclad>(),
-        ModelDb.Card<DefendIronclad>()
+        ModelDb.Card<Hellraiser>(),
+        ModelDb.Card<PommelStrike>(),
+        ModelDb.Card<PommelStrike>(),
+        ModelDb.Card<Production>()
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics =>
