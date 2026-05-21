@@ -1,4 +1,7 @@
 {
   "GARDENER-VINE_STRIKE.description": "Deal {Damage:diff()} damage.",
-  "GARDENER-VINE_STRIKE.title": "Vine Strike"
+  "GARDENER-VINE_STRIKE.title": "Vine Strike",
+
+  "GARDENER-PHOTOSYNTHESIS.description": "Heal 3 hp and gain 1 {Energy:energyIcons()} energy per turn.",
+  "GARDENER-PHOTOSYNTHESIS.title": "Photosynthesis"
 }
