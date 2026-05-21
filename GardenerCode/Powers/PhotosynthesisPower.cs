@@ -13,10 +13,10 @@ using MegaCrit.Sts2.Core.Combat;
 using Gardener.GardenerCode.Extensions;
 
 namespace Gardener.GardenerCode.Powers;
-  
 
-  
-  
+
+
+
 public class PhotosynthesisPower : CustomPowerModel
 {
     public override PowerType Type => PowerType.Buff;
@@ -39,27 +39,20 @@ public class PhotosynthesisPower : CustomPowerModel
             return ResourceLoader.Exists(path) ? path : "photosynthesispower.png".BigPowerImagePath();
         }
     }
-
-    public override async Task AfterApplied(Creature? applier, CardModel? cardSource)
-    {
-        if (Owner != null && Owner.IsPlayer)
-        {
-            await CreatureCmd.Heal(base.Owner, 3);
-        }
-    }
-
-    public override decimal ModifyEnergyGain(Player player, decimal amount)
+    public override decimal ModifyMaxEnergy(Player player, decimal amount)
     {
         if (player != base.Owner.Player)
-		{
-			return amount;
-		}
-		return amount + (decimal)base.Amount;
+        {
+            return amount;
+        }
+        return amount + (decimal)base.Amount;
     }
 
-    public override async Task BeforeHandDraw(Player player, PlayerChoiceContext choiceContext, ICombatState combatState)
+    public override async Task AfterSideTurnStart(CombatSide side, ICombatState combatState)
     {
-        await CreatureCmd.Heal(base.Owner, (decimal)base.Amount * 3);
-        await base.BeforeHandDraw(player, choiceContext, combatState);
+        if (side == base.Owner.Side)
+        {
+            await CreatureCmd.Heal(base.Owner, (decimal)base.Amount * 3);
+        }
     }
 }
