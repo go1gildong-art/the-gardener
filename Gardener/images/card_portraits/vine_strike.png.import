@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxdmfkxg4alo5"
-path="res://.godot/imported/vinestrike.png-6e0cbfb6a1acaf489983cdec186b0034.ctex"
+uid="uid://d1l3jvvcky0v8"
+path="res://.godot/imported/vine_strike.png-c1c5f4c39678df9344a360fcfe16f554.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Gardener/images/card_portraits/vinestrike.png"
-dest_files=["res://.godot/imported/vinestrike.png-6e0cbfb6a1acaf489983cdec186b0034.ctex"]
+source_file="res://Gardener/images/card_portraits/vine_strike.png"
+dest_files=["res://.godot/imported/vine_strike.png-c1c5f4c39678df9344a360fcfe16f554.ctex"]
 
 [params]
 
