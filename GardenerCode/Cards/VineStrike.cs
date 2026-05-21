@@ -9,7 +9,9 @@ namespace Gardener;
 
 using BaseLib.Utils;
 using Gardener.GardenerCode.Character;
+using Godot;
 using MegaCrit.Sts2.Core.Models.CardPools;
+
 
 [Pool(typeof(GardenerCardPool))]
 public class VineStrike() : GardenerCode.Cards.GardenerCard(
@@ -27,6 +29,8 @@ public class VineStrike() : GardenerCode.Cards.GardenerCard(
       await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
       .WithHitFx("vfx/vfx_attack_slash")
       .Execute(choiceContext);
+
+      GD.Print("[DEBOOG]" + this.CustomPortraitPath);
     }
 
     protected override void OnUpgrade()

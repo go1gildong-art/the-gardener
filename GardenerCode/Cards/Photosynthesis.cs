@@ -12,7 +12,6 @@ using Gardener.GardenerCode.Character;
 using Gardener.GardenerCode.Powers;
 using MegaCrit.Sts2.Core.Models.CardPools;
 
-
 [Pool(typeof(GardenerCardPool))]
 public class Photosynthesis() : GardenerCode.Cards.GardenerCard(
   2,
