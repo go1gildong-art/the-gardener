@@ -10,6 +10,7 @@ namespace Gardener;
 using BaseLib.Utils;
 using Gardener.GardenerCode.Character;
 using MegaCrit.Sts2.Core.Models.CardPools;
+
 [Pool(typeof(GardenerCardPool))]
 public class VineStrike() : GardenerCode.Cards.GardenerCard(
   1,
