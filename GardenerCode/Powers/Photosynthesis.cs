@@ -10,6 +10,8 @@ using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Combat;
 
+using Gardener.GardenerCode.Extensions;
+
 namespace Gardener.GardenerCode.Powers;
   
 
@@ -24,7 +26,7 @@ public class Photosynthesis : CustomPowerModel
         get
         {
             var path = $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".PowerImagePath();
-            return ResourceLoader.Exists(path) ? path : "goldeqpower.png".PowerImagePath();
+            return ResourceLoader.Exists(path) ? path : "photosynthesispower.png".PowerImagePath();
         }
     }
 
@@ -33,7 +35,7 @@ public class Photosynthesis : CustomPowerModel
         get
         {
             var path = $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".BigPowerImagePath();
-            return ResourceLoader.Exists(path) ? path : "goldeqpower.png".BigPowerImagePath();
+            return ResourceLoader.Exists(path) ? path : "photosynthesispower.png".BigPowerImagePath();
         }
     }
 
