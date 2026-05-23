@@ -6,5 +6,8 @@
   "GARDENER-PHOTOSYNTHESIS.title": "Photosynthesis",
 
   "GARDENER-LEAF_SHIELD.description": "Gain 3 block. Returns to your hand at the start of your turn.",
-  "GARDENER-LEAF_SHIELD.title": "Leaf Shield"
+  "GARDENER-LEAF_SHIELD.title": "Leaf Shield",
+
+  "GARDENER-SHARP_ROOTS.description": "Deal {Damage:diff()} damage. Gain 3 {Power:thorn",
+  "GARDENER-SHARP_ROOTS.title": "Sharp Roots"
 }
