@@ -48,7 +48,7 @@ public class PhotosynthesisPower : CustomPowerModel
         return amount + (decimal)base.Amount;
     }
 
-    public override async Task AfterSideTurnStart(CombatSide side, ICombatState combatState)
+    public override async Task AfterSideTurnStart(CombatSide side, IReadOnlyList<Creature> participants, ICombatState combatState)
     {
         if (side == base.Owner.Side)
         {
