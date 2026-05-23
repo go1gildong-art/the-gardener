@@ -24,16 +24,13 @@ public class Gardener : PlaceholderCharacterModel
         ModelDb.Card<StrikeIronclad>(),
         ModelDb.Card<StrikeIronclad>(),
         ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<DefendIronclad>(),
-        ModelDb.Card<DefendIronclad>(),
         ModelDb.Card<DefendIronclad>(),
         ModelDb.Card<DefendIronclad>(),
         ModelDb.Card<DefendIronclad>(),
         ModelDb.Card<VineStrike>(),
         ModelDb.Card<Photosynthesis>(),
-        ModelDb.Card<LeafShield>()
+        ModelDb.Card<LeafShield>(),
+        ModelDb.Card<SharpRoots>()
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics =>
