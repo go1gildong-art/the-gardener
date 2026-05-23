@@ -32,7 +32,8 @@ public class Gardener : PlaceholderCharacterModel
         ModelDb.Card<DefendIronclad>(),
         ModelDb.Card<DefendIronclad>(),
         ModelDb.Card<VineStrike>(),
-        ModelDb.Card<Photosynthesis>()
+        ModelDb.Card<Photosynthesis>(),
+        ModelDb.Card<LeafShield>()
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics =>
