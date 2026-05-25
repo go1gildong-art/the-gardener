@@ -9,5 +9,8 @@
   "GARDENER-LEAF_SHIELD.title": "Leaf Shield",
 
   "GARDENER-SHARP_ROOTS.description": "Deal {Damage:diff()} damage. Gain 3 {Power:thorn",
-  "GARDENER-SHARP_ROOTS.title": "Sharp Roots"
+  "GARDENER-SHARP_ROOTS.title": "Sharp Roots",
+
+  "GARDENER-VITALITY.description": "Gain {Energy:diff()} {Energy:energyIcons()}.",
+  "GARDENER-VITALITY.title": "Vitality"
 }
