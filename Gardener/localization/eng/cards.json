@@ -1,0 +1,13 @@
+{
+  "GARDENER-VINE_STRIKE.description": "Deal {Damage:diff()} damage.",
+  "GARDENER-VINE_STRIKE.title": "Vine Strike",
+
+  "GARDENER-PHOTOSYNTHESIS.description": "Heal 3 hp and gain 1 {Energy:energyIcons()} per turn.",
+  "GARDENER-PHOTOSYNTHESIS.title": "Photosynthesis",
+
+  "GARDENER-LEAF_SHIELD.description": "Gain 3 block. Returns to your hand at the start of your turn.",
+  "GARDENER-LEAF_SHIELD.title": "Leaf Shield",
+
+  "GARDENER-SHARP_ROOTS.description": "Deal {Damage:diff()} damage. Gain 3 {Power:thorn",
+  "GARDENER-SHARP_ROOTS.title": "Sharp Roots"
+}

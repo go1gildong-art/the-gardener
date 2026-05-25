@@ -1,0 +1,13 @@
+{
+  "GARDENER-PHOTOSYNTHESIS_POWER.description": "",
+  "GARDENER-PHOTOSYNTHESIS_POWER.smartDescription": "",
+  "GARDENER-PHOTOSYNTHESIS_POWER.title": "Photosynthesis",
+
+  "GARDENER-TEMPORARY_THORNS_POWER.description": "You gain Thorns until the start of your next turn.",
+  "GARDENER-TEMPORARY_THORNS_POWER.smartDescription": "You gain Thorns until the start of your next turn.",
+  "GARDENER-TEMPORARY_THORNS_POWER.title": "Temporary Thorns",
+
+  "GARDENER-SHARP_ROOTS_POWER.description": "You gain Thorns until the start of your next turn.",
+  "GARDENER-SHARP_ROOTS_POWER.smartDescription": "You gain Thorns until the start of your next turn.",
+  "GARDENER-SHARP_ROOTS_POWER.title": "Sharp Roots"
+}
