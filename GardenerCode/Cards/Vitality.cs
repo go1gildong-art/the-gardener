@@ -23,7 +23,7 @@ public class Vitality() : GardenerCode.Cards.GardenerCard(
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
 {
     new EnergyVar(2),
-  new NutrientVar(10),
+  new NutrientVar(3),
 };
 
 protected override IEnumerable<IHoverTip> ExtraHoverTips => new IHoverTip[]

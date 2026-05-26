@@ -25,20 +25,26 @@ public static class GardenerCmd
             GD.Print($"[DEBOOG] Card {card.Id} has no nutrient to consume.");
             return;
         }
+        CardModel? deckCard = card.DeckVersion;
 
         GD.Print($"[DEBOOG] Card {card.Id} nutrient is consumed from {card.DynamicVars["NutrientVar"].BaseValue} by {amount} to {card.DynamicVars["NutrientVar"].BaseValue - amount}.");
         card.DynamicVars["NutrientVar"].UpgradeValueBy(-amount);
-        
-        if (card.DynamicVars["NutrientVar"].BaseValue <= 0)
+        deckCard?.DynamicVars["NutrientVar"].UpgradeValueBy(-amount);
+
+        if (deckCard != null && deckCard.DynamicVars["NutrientVar"].BaseValue <= 0)
         {
             await Deplete(card);
         }
     }
 
-    public static async Task Deplete(CardModel card)
+    public static async Task Deplete(
+        CardModel card
+        )
     {
         GD.Print($"[DEBOOG] Card {card.Id} is depleted. Removing from combat and deck.");
         await CardPileCmd.RemoveFromCombat(card);
-        await CardPileCmd.RemoveFromDeck(card);
+
+        CardModel? deckCard = card.DeckVersion;
+        if (deckCard != null) await CardPileCmd.RemoveFromDeck(deckCard);
     }
 }
