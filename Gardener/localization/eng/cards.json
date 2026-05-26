@@ -11,6 +11,6 @@
   "GARDENER-SHARP_ROOTS.description": "Deal {Damage:diff()} damage.\nGain {SharpRootsPower:diff()} Thorns this turn.",
   "GARDENER-SHARP_ROOTS.title": "Sharp Roots",
 
-  "GARDENER-VITALITY.description": "Nutrient !Nutrient!. \nGain {Energy:energyIcons()}.",
+  "GARDENER-VITALITY.description": "Nutrient {Nutrient:diff()}. \nGain {Energy:energyIcons()}.",
   "GARDENER-VITALITY.title": "Vitality"
 }

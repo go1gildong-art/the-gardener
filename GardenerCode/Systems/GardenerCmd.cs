@@ -20,18 +20,18 @@ public static class GardenerCmd
         CardModel card,
         int amount = 1)
     {
-        if (card.DynamicVars["NutrientVar"] == null)
+        if (card.DynamicVars["Nutrient"] == null)
         {
             GD.Print($"[DEBOOG] Card {card.Id} has no nutrient to consume.");
             return;
         }
         CardModel? deckCard = card.DeckVersion;
 
-        GD.Print($"[DEBOOG] Card {card.Id} nutrient is consumed from {card.DynamicVars["NutrientVar"].BaseValue} by {amount} to {card.DynamicVars["NutrientVar"].BaseValue - amount}.");
-        card.DynamicVars["NutrientVar"].UpgradeValueBy(-amount);
-        deckCard?.DynamicVars["NutrientVar"].UpgradeValueBy(-amount);
+        GD.Print($"[DEBOOG] Card {card.Id} nutrient is consumed from {card.DynamicVars["Nutrient"].BaseValue} by {amount} to {card.DynamicVars["Nutrient"].BaseValue - amount}.");
+        card.DynamicVars["Nutrient"].UpgradeValueBy(-amount);
+        deckCard?.DynamicVars["Nutrient"].UpgradeValueBy(-amount);
 
-        if (deckCard != null && deckCard.DynamicVars["NutrientVar"].BaseValue <= 0)
+        if (deckCard != null && deckCard.DynamicVars["Nutrient"].IntValue <= 0)
         {
             await Deplete(card);
         }

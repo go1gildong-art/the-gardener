@@ -40,15 +40,15 @@ public class ConsumeNutrientAction : GameAction
 
     protected override async Task ExecuteAction()
     {
-        if (_card.DynamicVars["NutrientVar"] == null)
+        if (_card.DynamicVars["Nutrient"] == null)
         {
             GD.Print($"[DEBOOG] Card {_card.Id} has no nutrient to consume.");
             return;
         }
 
-        _card.DynamicVars["NutrientVar"].UpgradeValueBy(-_amount);
+        _card.DynamicVars["Nutrient"].UpgradeValueBy(-_amount);
 
-        if (_card.DynamicVars["NutrientVar"].BaseValue <= 0)
+        if (_card.DynamicVars["Nutrient"].BaseValue <= 0)
         {
             await new NutrientDepletedAction(_player, _card, _choiceContext).Execute();
         }

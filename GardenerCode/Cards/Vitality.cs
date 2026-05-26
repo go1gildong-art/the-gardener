@@ -23,13 +23,13 @@ public class Vitality() : GardenerCode.Cards.GardenerCard(
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
 {
     new EnergyVar(2),
-  new NutrientVar(3),
+  new IntVar("Nutrient", 3),
 };
 
-protected override IEnumerable<IHoverTip> ExtraHoverTips => new IHoverTip[]
-	{
-		base.EnergyHoverTip
-	};
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new IHoverTip[]
+        {
+        base.EnergyHoverTip
+        };
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
@@ -40,6 +40,6 @@ protected override IEnumerable<IHoverTip> ExtraHoverTips => new IHoverTip[]
     protected override void OnUpgrade()
     {
         DynamicVars.Energy.UpgradeValueBy(1);
-        DynamicVars["NutrientVar"].UpgradeValueBy(2);
+        DynamicVars["Nutrient"].UpgradeValueBy(2);
     }
 }
