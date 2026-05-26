@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
+using Godot;
 
 namespace Gardener;
 
@@ -30,6 +31,8 @@ public class Photosynthesis() : GardenerCode.Cards.GardenerCard(
             base.Owner.Creature,
             base.DynamicVars["PhotosynthesisPower"].BaseValue,
             base.Owner.Creature, this);
+
+            GD.Print($"[DEBOOG] photosynthesis id: {this.Id} entry sorting id: {this.EntrySortingId}");
     }
 
     protected override void OnUpgrade()

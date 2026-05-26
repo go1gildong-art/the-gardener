@@ -29,8 +29,6 @@ public class VineStrike() : GardenerCode.Cards.GardenerCard(
       await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
       .WithHitFx("vfx/vfx_attack_slash")
       .Execute(choiceContext);
-
-      GD.Print("[DEBOOG]" + this.CustomPortraitPath);
     }
 
     protected override void OnUpgrade()

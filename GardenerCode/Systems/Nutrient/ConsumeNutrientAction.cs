@@ -19,7 +19,7 @@ public class ConsumeNutrientAction : GameAction
     private readonly Player _player;
 
     private readonly int _turnNumber;
-    private readonly PlayerChoiceContext ChoiceContext;
+    private readonly PlayerChoiceContext _choiceContext;
 
     private readonly CardModel _card;
 
@@ -33,7 +33,7 @@ public class ConsumeNutrientAction : GameAction
         CardPileCmd.RemoveFromDeck(card);
         _player = player;
         _card = card;
-        ChoiceContext = choiceContext;
+        _choiceContext = choiceContext;
     }
 
     protected override async Task ExecuteAction()
@@ -42,14 +42,12 @@ public class ConsumeNutrientAction : GameAction
         {
             return;
         }
-        gardenerCard.Id
 
         gardenerCard.Nutrient.Decrease();
 
         if (gardenerCard.Nutrient.Current <= 0)
         {
-            // THIS is where depletion gets triggered
-            await new NutrientDepletedAction(_player, _card).Execute();
+            await new NutrientDepletedAction(_player, _card, _choiceContext).Execute();
         }
 
         return;
@@ -57,15 +55,16 @@ public class ConsumeNutrientAction : GameAction
 
     public override INetAction ToNetAction()
     {
-        return new NetNutrientDepletedAction
+        return new NetConsumeNutrientAction
         {
-            deplectedCard = _deplectedCard,
-            turnNumber = _turnNumber
+            turnNumber = _turnNumber,
+            card = _card,
+            choiceContext = _choiceContext
         };
     }
 
     public override string ToString()
     {
-        return $"{"NutrientDepletedAction"} for player {_player.NetId} turn {_turnNumber} card {_deplectedCard.Id}";
+        return $"{"ConsumeNutrientAction"} for player {_player.NetId} turn {_turnNumber} card {_card.Id}";
     }
 }
