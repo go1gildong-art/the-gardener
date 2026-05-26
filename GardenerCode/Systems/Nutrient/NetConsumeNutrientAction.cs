@@ -13,6 +13,7 @@ public struct NetConsumeNutrientAction : INetAction, IPacketSerializable
     public int turnNumber;
     public CardModel card;
     public PlayerChoiceContext choiceContext;
+    public int amount;
     public GameAction ToGameAction(Player player)
     {
         return new NutrientDepletedAction(player, card, choiceContext);

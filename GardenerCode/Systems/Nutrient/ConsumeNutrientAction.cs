@@ -22,18 +22,20 @@ public class ConsumeNutrientAction : GameAction
     private readonly PlayerChoiceContext _choiceContext;
 
     private readonly CardModel _card;
+    private readonly int _amount;
 
     public override ulong OwnerId => _player.NetId;
 
     public override GameActionType ActionType => GameActionType.CombatPlayPhaseOnly;
 
-    public ConsumeNutrientAction(Player player, CardModel card, PlayerChoiceContext choiceContext)
+    public ConsumeNutrientAction(Player player, CardModel card, PlayerChoiceContext choiceContext, int amount = 1)
     {
         CardPileCmd.RemoveFromCombat(card);
         CardPileCmd.RemoveFromDeck(card);
         _player = player;
         _card = card;
         _choiceContext = choiceContext;
+        _amount = amount;
     }
 
     protected override async Task ExecuteAction()
@@ -43,7 +45,7 @@ public class ConsumeNutrientAction : GameAction
             return;
         }
 
-        gardenerCard.Nutrient.Decrease();
+        gardenerCard.Nutrient.Decrease(_amount);
 
         if (gardenerCard.Nutrient.Current <= 0)
         {
@@ -59,7 +61,8 @@ public class ConsumeNutrientAction : GameAction
         {
             turnNumber = _turnNumber,
             card = _card,
-            choiceContext = _choiceContext
+            choiceContext = _choiceContext,
+            amount = _amount
         };
     }
 

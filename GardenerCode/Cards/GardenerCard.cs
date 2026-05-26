@@ -9,7 +9,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 namespace Gardener.GardenerCode.Cards;
 
 [Pool(typeof(GardenerCardPool))]
-public abstract class GardenerCard(int cost, CardType type, CardRarity rarity, TargetType target, int? nutrientValue = null) :
+public abstract class GardenerCard(int cost, CardType type, CardRarity rarity, TargetType target) :
     CustomCardModel(cost, type, rarity, target)
 {
     //Image size:
@@ -25,19 +25,5 @@ public abstract class GardenerCard(int cost, CardType type, CardRarity rarity, T
     public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
     public override string BetaPortraitPath => $"beta/{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
 
-
-    // Nutrient helpers
-    private NutrientData? nutrient;
-
-    public NutrientData? Nutrient
-    {
-        get
-        {
-            if (nutrient == null && nutrientValue.HasValue)
-                nutrient = new NutrientData(nutrientValue.Value);
-
-            return nutrient;
-        }
-    }
 
 }
