@@ -10,6 +10,7 @@ namespace Gardener;
 using BaseLib.Utils;
 using Gardener.GardenerCode.Character;
 using MegaCrit.Sts2.Core.Models.CardPools;
+using Gardener.GardenerCode.Systems.Nutrient;
 
 [Pool(typeof(GardenerCardPool))]
 public class Vitality() : GardenerCode.Cards.GardenerCard(
@@ -17,15 +18,15 @@ public class Vitality() : GardenerCode.Cards.GardenerCard(
   CardType.Skill,
   CardRarity.Basic,
   TargetType.Self,
-  5)
+  10)
 {
-    public NutrientData? Nutrient => InitNutrient(5);
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
 { new EnergyVar(2) };
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await PlayerCmd.GainEnergy(base.DynamicVars.Energy.BaseValue, base.Owner);
+        await new ConsumeNutrientAction(base.Owner, this, choiceContext).Execute();
     }
 
     protected override void OnUpgrade()
