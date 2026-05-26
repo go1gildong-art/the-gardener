@@ -28,24 +28,18 @@ public class NutrientDepletedAction : GameAction
 
 	public NutrientDepletedAction(Player player, CardModel deplectedCard, PlayerChoiceContext choiceContext)
 	{
-        CardPileCmd.RemoveFromCombat(deplectedCard);
-        CardPileCmd.RemoveFromDeck(deplectedCard);
 		_player = player;
 		_deplectedCard = deplectedCard;
 		_choiceContext = choiceContext;
+		_turnNumber = player.PlayerCombatState?.TurnNumber ?? 0;
 	}
 
 	protected override async Task ExecuteAction()
 	{
 		GD.Print($"Executing NutrientDepletedAction for player {_player.NetId} turn {_turnNumber} card {_deplectedCard.Id}");
-
-		if (_deplectedCard is not GardenerCard gardenerCard)
-		{
-			GD.Print($"NutrientDepletedAction: Card {_deplectedCard.Id} is not a GardenerCard. Cannot apply depletion effects.");
-			return;
-		}
-
-			await CardCmd.Exhaust(_choiceContext, gardenerCard);
+		
+        await CardPileCmd.RemoveFromCombat(_deplectedCard);
+        await CardPileCmd.RemoveFromDeck(_deplectedCard);
 	}
 
 	public override INetAction ToNetAction()

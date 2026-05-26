@@ -10,6 +10,7 @@ using MegaCrit.Sts2.Core.Entities.Multiplayer;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Runs;
+using Godot;
 
 namespace Gardener.GardenerCode.Systems.Nutrient;
 
@@ -18,7 +19,7 @@ public class ConsumeNutrientAction : GameAction
 {
     private readonly Player _player;
 
-    private readonly int _turnNumber;
+    private int _turnNumber;
     private readonly PlayerChoiceContext _choiceContext;
 
     private readonly CardModel _card;
@@ -30,24 +31,24 @@ public class ConsumeNutrientAction : GameAction
 
     public ConsumeNutrientAction(Player player, CardModel card, PlayerChoiceContext choiceContext, int amount = 1)
     {
-        CardPileCmd.RemoveFromCombat(card);
-        CardPileCmd.RemoveFromDeck(card);
         _player = player;
         _card = card;
         _choiceContext = choiceContext;
+        _turnNumber = player.PlayerCombatState?.TurnNumber ?? 0;
         _amount = amount;
     }
 
     protected override async Task ExecuteAction()
     {
-        if (_card is not GardenerCard gardenerCard || gardenerCard.Nutrient == null)
+        if (_card.DynamicVars["NutrientVar"] == null)
         {
+            GD.Print($"[DEBOOG] Card {_card.Id} has no nutrient to consume.");
             return;
         }
 
-        gardenerCard.Nutrient.Decrease(_amount);
+        _card.DynamicVars["NutrientVar"].UpgradeValueBy(-_amount);
 
-        if (gardenerCard.Nutrient.Current <= 0)
+        if (_card.DynamicVars["NutrientVar"].BaseValue <= 0)
         {
             await new NutrientDepletedAction(_player, _card, _choiceContext).Execute();
         }

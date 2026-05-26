@@ -21,7 +21,7 @@ public class Photosynthesis() : GardenerCode.Cards.GardenerCard(
   TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[] 
-{ new PowerVar<PhotosynthesisPower>(1m) };
+{ new PowerVar<PhotosynthesisPower>(1m)};
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

@@ -51,6 +51,6 @@ public class LeafShield() : GardenerCode.Cards.GardenerCard(
 
     protected override void OnUpgrade()
     {
-        base.EnergyCost.UpgradeBy(-1);
+        base.DynamicVars.Block.UpgradeValueBy(1m);
     }
 }

@@ -16,7 +16,7 @@ public struct NetConsumeNutrientAction : INetAction, IPacketSerializable
     public int amount;
     public GameAction ToGameAction(Player player)
     {
-        return new NutrientDepletedAction(player, card, choiceContext);
+        return new ConsumeNutrientAction(player, card, choiceContext, amount);
     }
 
     public void Serialize(PacketWriter writer)
