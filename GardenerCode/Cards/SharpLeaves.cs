@@ -12,24 +12,19 @@ using Gardener.GardenerCode.Character;
 using MegaCrit.Sts2.Core.Models.CardPools;
 
 [Pool(typeof(GardenerCardPool))]
-public class LeafShield() : GardenerCode.Cards.GardenerCard(
-  0,
-  CardType.Skill,
-  CardRarity.Common,
+public class SharpLeaves() : GardenerCode.Cards.GardenerCard(
+  1,
+  CardType.Power,
+  CardRarity.Special,
   TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
-        new BlockVar(8m, BlockProps.card),
-        new IntVar("Nutrient", 20),
     };
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
-        await CreatureCmd.GainBlock(base.Owner.Creature, base.DynamicVars.Block, cardPlay);
-        await GardenerCmd.ConsumeNutrient(this);
-        await GardenerCmd.ConsumeNutrient(this);
     }
 
     protected override void OnUpgrade()

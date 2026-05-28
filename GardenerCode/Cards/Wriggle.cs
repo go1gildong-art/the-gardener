@@ -9,36 +9,31 @@ namespace Gardener;
 
 using BaseLib.Utils;
 using Gardener.GardenerCode.Character;
+using Gardener.GardenerCode.Powers;
 using MegaCrit.Sts2.Core.Models.CardPools;
 
 [Pool(typeof(GardenerCardPool))]
-public class VineStrike() : GardenerCode.Cards.GardenerCard(
+public class Wriggle() : GardenerCode.Cards.GardenerCard(
   1,
-  CardType.Attack,
+  CardType.Skill,
   CardRarity.Common,
-  TargetType.AllEnemies)
+  TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
-        new DamageVar(6m, DamageProps.card),
-        new IntVar("Nutrient", 4),
+        new IntVar("Nutrient", 10),
+        new IntVar("Draw", 2),
     };
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllEnemies()
-            .WithHitFx("vfx/vfx_attack_slash")
-            .Execute(choiceContext);
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllEnemies()
-            .WithHitFx("vfx/vfx_attack_slash")
-            .Execute(choiceContext);
+        await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
         await GardenerCmd.ConsumeNutrient(this);
+        await PlayerCmd.DrawCards(base.Owner, (int)DynamicVars["Draw"].BaseValue);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(2m);
-        DynamicVars["Nutrient"].UpgradeValueBy(7);
+        DynamicVars["Nutrient"].UpgradeValueBy(4);
     }
 }
-
