@@ -1,0 +1,170 @@
+Vine Sweep
+1 Energy Common Attack
+Nutrient 4.
+Deal 6 damage to ALL enemies 2 times.
+Upgraded: Nutrient +7
+
+Pruning
+1 Energy Common Attack
+Deal 8 damage. Choose 1 card in hand, Nutrient +1.
+Upgraded: +3 damage
+
+Sharp Roots
+1 Energy Common Attack
+Deal 4 damage. Gain 3 Thorns this turn.
+Upgraded: +3 Thorns
+
+Fertilizer Dump
+2 Energy Common Attack
+Nutrient 6. Deal damage equal to total Nutrient in hand.
+Upgraded: +3 damage
+
+Cell Wall
+1 Energy Common Skill
+Gain 8 Block. Gain 2 Thorns this turn.
+Upgraded: +2 Block, +1 Thorns
+
+Sturdy Stem
+2 Energy Common Skill
+Gain 10 Block. Retain Block until next turn.
+Upgraded: +3 Block
+
+Wriggle
+1 Energy Common Skill
+Nutrient 10. Draw 2 cards.
+If Nutrient is 6 or less, gain 4 Thorns this turn.
+Upgraded: Nutrient +4
+
+Fertilizer
+1 Energy Common Skill
+Nutrient 5. Gain 1 Energy next turn.
+Choose 1 card in hand, Nutrient +2.
+Upgraded: “1 card in hand” → entire hand
+
+Leaf Shield
+0 Energy Common Skill
+Nutrient 20. Gain 8 Block. Nutrient decreases twice.
+Upgraded: costs 1 → 0 Energy
+
+Surprise Mutation
+0 Energy Common Skill
+Gain 1 Strength, 1 Dexterity, 2 Thorns this turn. Exhaust.
+Upgraded: Exhaust removed
+
+
+
+Thorn Barrage
+1 Energy Special Attack
+Deal 3 damage 2 times. Gains bonus attack based on current Thorns.
+Upgraded: 3 → 4 damage
+
+Bomb Blossom
+0 Energy Special Attack
+Nutrient 1. Deal 10 damage to ALL enemies.
+Upgraded: Nutrient +2
+
+Symbiotic Plant
+1 Energy Special Attack
+Nutrient 4. Deal 7 damage.
+The next 2 cards played do not consume Nutrient.
+Upgraded: Nutrient +3
+
+Pollen storm
+X Energy Special Attack
+Nutrient 15. Deal 11 damage X times.
+Each hit consumes 1 additional Nutrient.
+Upgraded: +3 damage per hit
+
+Thorn Clumping
+1 Energy Special Skill
+Gain Block equal to your Thorns, twice.
+Upgraded: +2 Block per instance
+
+Water and Food
+1 Energy Special Skill
+Choose 1 card in hand.
+It is Retained, costs 1 less Energy, and gains +2 Nutrient.
+Upgraded: Retain
+
+Last Drop
+2 Energy Special Skill
+Nutrient 8. Choose 1 card in hand with Nutrient.
+That card can be played 3 times, then its Nutrient is fully consumed.
+Upgraded: -1 Energy cost
+
+Pointy
+1 Energy Special Skill
+Gain 8 Temporary Thorns.
+Upgraded: +3 Thorns
+
+Vitality
+Special Skill
+Nutrient 8. Gain 2 Energy.
+Upgraded: Nutrient +3, Energy +1
+
+Bough Shield
+0 Energy Special Skill
+Nutrient 2. Gain Block equal to its Nutrient value, twice.
+Upgraded: Retain
+
+Rapid Growth
+2 Energy Special Skill
+Nutrient 5. Draw 4 cards. Exhaust.
+If Nutrient is 4 or less, cost is reduced by 1.
+Upgraded: Nutrient +4
+
+Excess Food
+2 Energy Special Power
+The first X-cost card played each turn grants +1 Energy.
+Upgraded: -1 Energy cost
+
+Sharp Leaves
+1 Energy Special Power
+Gain 3 Thorns.
+Upgraded: +2 Thorns
+
+Efficient Digestion
+1 Energy Special Power
+Whenever Nutrient decreases, gain 2 Block.
+Upgraded: +1 Block
+
+
+
+Compost Bombardment
+0 Energy Rare Attack
+Can only be used if at least 6 Nutrient has been reduced this combat.
+Deal 20 damage to ALL enemies.
+Upgraded: +4 damage
+
+Burning Flower
+X Energy Rare Attack
+Nutrient 12. Ethereal. Deal 8 damage X times to ALL enemies.
+When exhausted, lose 2 Nutrient.
+Upgraded: +2 damage per hit
+
+Life Cocoon
+1 Energy Rare Skill
+Nutrient 6. Exhaust.
+If Nutrient reaches 0, gain 2 random Relics at the end of combat.
+Upgraded: +1 additional Relic
+
+Premium Serum
+0 Energy Rare Skill
+Nutrient 8. Gain 2 Energy. Draw 3 cards.
+Upgraded: Draw +2
+
+Mutation Form
+3 Energy Rare Power
+At the start of each turn, add 2 random cards into your draw pile.
+The added cards cost 0 on their first use.
+Upgraded: Retain
+
+Pulsating Roots
+1 Energy Rare Power
+Draw 1 card each turn.
+Upgraded: Innate
+
+Rot Into Food
+1 Energy Rare Power
+Whenever Nutrient decreases, gain 1 Temporary Strength.
+Upgraded: Also gain 1 Temporary Thorns

@@ -4,7 +4,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
-
+using MegaCrit.Sts2.Core.Rooms;
 namespace Gardener;
 
 using BaseLib.Extensions;
@@ -45,6 +45,14 @@ new PowerVar<SharpRootsPower>(4m) };
             base.Owner.Creature,
             base.DynamicVars["SharpRootsPower"].BaseValue,
             base.Owner.Creature, this);
+
+            AbstractRoom currentRoom = base.CombatState.
+            if (currentRoom is CombatRoom combatRoom)
+        {
+            combatRoom.
+        }
+
+        base.CombatState.NutrientData = 10;
     }
 
     protected override void OnUpgrade()
