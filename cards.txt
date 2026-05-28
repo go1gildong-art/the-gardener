@@ -1,4 +1,4 @@
-Vine Sweep
+Vine Strike
 1 Energy Common Attack
 Nutrient 4.
 Deal 6 damage to ALL enemies 2 times.
@@ -14,10 +14,10 @@ Sharp Roots
 Deal 4 damage. Gain 3 Thorns this turn.
 Upgraded: +3 Thorns
 
-Fertilizer Dump
+Nutrient Dump
 2 Energy Common Attack
 Nutrient 6. Deal damage equal to total Nutrient in hand.
-Upgraded: +3 damage
+Upgraded: +4 damage
 
 Cell Wall
 1 Energy Common Skill
@@ -61,7 +61,7 @@ Upgraded: 3 → 4 damage
 Bomb Blossom
 0 Energy Special Attack
 Nutrient 1. Deal 10 damage to ALL enemies.
-Upgraded: Nutrient +2
+Upgraded: Nutrient +4
 
 Symbiotic Plant
 1 Energy Special Attack
@@ -104,7 +104,7 @@ Upgraded: Nutrient +3, Energy +1
 
 Bough Shield
 0 Energy Special Skill
-Nutrient 2. Gain Block equal to its Nutrient value, twice.
+Nutrient 4. Gain 4 Blocks times this card's Nutrient.
 Upgraded: Retain
 
 Rapid Growth
@@ -150,8 +150,8 @@ Upgraded: +1 additional Relic
 
 Premium Serum
 0 Energy Rare Skill
-Nutrient 8. Gain 2 Energy. Draw 3 cards.
-Upgraded: Draw +2
+Nutrient 8. Gain 1 Energy. Draw 2 cards.
+Upgraded: Energy +1, Draw +1, Nutrient +3 
 
 Mutation Form
 3 Energy Rare Power
