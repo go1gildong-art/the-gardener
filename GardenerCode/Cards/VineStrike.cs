@@ -17,7 +17,7 @@ using MegaCrit.Sts2.Core.Models.CardPools;
 public class VineStrike() : GardenerCode.Cards.GardenerCard(
   1,
   CardType.Attack,
-  CardRarity.Basic,
+  CardRarity.Common,
   TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[] 
@@ -29,8 +29,6 @@ public class VineStrike() : GardenerCode.Cards.GardenerCard(
       await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
       .WithHitFx("vfx/vfx_attack_slash")
       .Execute(choiceContext);
-
-      GD.Print("[DEBOOG]" + this.CustomPortraitPath);
     }
 
     protected override void OnUpgrade()
