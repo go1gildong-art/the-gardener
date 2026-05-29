@@ -15,7 +15,7 @@ using MegaCrit.Sts2.Core.Models.CardPools;
 public class SharpLeaves() : GardenerCode.Cards.GardenerCard(
   1,
   CardType.Power,
-  CardRarity.Special,
+  CardRarity.Uncommon,
   TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]

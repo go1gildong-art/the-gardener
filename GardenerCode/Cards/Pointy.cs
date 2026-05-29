@@ -16,26 +16,26 @@ using MegaCrit.Sts2.Core.Models.CardPools;
 public class Pointy() : GardenerCode.Cards.GardenerCard(
   1,
   CardType.Skill,
-  CardRarity.Special,
+  CardRarity.Uncommon,
   TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
-        new PowerVar<ThornsPower>(8m),
+        new PowerVar<TemporaryThornsPower>(8m),
     };
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
-        await PowerCmd.Apply<ThornsPower>(
+        await PowerCmd.Apply<TemporaryThornsPower>(
             choiceContext,
             base.Owner.Creature,
-            base.DynamicVars["ThornsPower"].BaseValue,
+            base.DynamicVars["TemporaryThornsPower"].BaseValue,
             base.Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Power<ThornsPower>().UpgradeValueBy(3m);
+        DynamicVars.Power<TemporaryThornsPower>().UpgradeValueBy(3m);
     }
 }

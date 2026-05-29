@@ -9,6 +9,7 @@ namespace Gardener;
 
 using BaseLib.Utils;
 using Gardener.GardenerCode.Character;
+using Gardener.GardenerCode.Systems;
 using MegaCrit.Sts2.Core.Models.CardPools;
 
 [Pool(typeof(GardenerCardPool))]
@@ -24,16 +25,20 @@ public class BurningFlower() : GardenerCode.Cards.GardenerCard(
         new IntVar("Nutrient", 12),
     };
 
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new CardKeyword[]
+    {
+        CardKeyword.Ethereal
+    };
+
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        int cost = base.EnergyCost;
+        int cost = base.EnergyCost.GetAmountToSpend();
         for (int i = 0; i < cost; i++)
         {
-            await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllEnemies()
+            await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(base.CombatState)
                 .WithHitFx("vfx/vfx_attack_slash")
                 .Execute(choiceContext);
         }
-        base.Exhaust();
         await GardenerCmd.ConsumeNutrient(this);
     }
 

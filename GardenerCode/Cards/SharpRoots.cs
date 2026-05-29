@@ -22,7 +22,7 @@ public class SharpRoots() : GardenerCode.Cards.GardenerCard(
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
         new DamageVar(4m, DamageProps.card),
-        new PowerVar<ThornsPower>(3m),
+        new PowerVar<TemporaryThornsPower>(3m),
     };
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -32,17 +32,17 @@ public class SharpRoots() : GardenerCode.Cards.GardenerCard(
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
 
-        await PowerCmd.Apply<ThornsPower>(
+        await PowerCmd.Apply<TemporaryThornsPower>(
             choiceContext,
             base.Owner.Creature,
-            base.DynamicVars["ThornsPower"].BaseValue,
+            base.DynamicVars["TemporaryThornsPower"].BaseValue,
             base.Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(1m);
-        DynamicVars.Power<ThornsPower>().UpgradeValueBy(3m);
+        DynamicVars.Power<TemporaryThornsPower>().UpgradeValueBy(3m);
     }
 }
 

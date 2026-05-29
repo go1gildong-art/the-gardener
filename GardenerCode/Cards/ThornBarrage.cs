@@ -16,7 +16,7 @@ using MegaCrit.Sts2.Core.Models.CardPools;
 public class ThornBarrage() : GardenerCode.Cards.GardenerCard(
   1,
   CardType.Attack,
-  CardRarity.Special,
+  CardRarity.Uncommon,
   TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]

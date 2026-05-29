@@ -9,13 +9,14 @@ namespace Gardener;
 
 using BaseLib.Utils;
 using Gardener.GardenerCode.Character;
+using Gardener.GardenerCode.Systems;
 using MegaCrit.Sts2.Core.Models.CardPools;
 
 [Pool(typeof(GardenerCardPool))]
 public class BoughShield() : GardenerCode.Cards.GardenerCard(
   0,
   CardType.Skill,
-  CardRarity.Special,
+  CardRarity.Uncommon,
   TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
@@ -28,7 +29,12 @@ public class BoughShield() : GardenerCode.Cards.GardenerCard(
     {
         await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
         decimal nutrient = DynamicVars["Nutrient"].BaseValue;
-        await CreatureCmd.GainBlock(base.Owner.Creature, DynamicVars.Block.BaseValue * nutrient, cardPlay);
+
+        for (int i = 0; i < nutrient; i++)
+        {
+            await CreatureCmd.GainBlock(base.Owner.Creature, DynamicVars.Block, cardPlay);
+        }
+
         await GardenerCmd.ConsumeNutrient(this);
     }
 

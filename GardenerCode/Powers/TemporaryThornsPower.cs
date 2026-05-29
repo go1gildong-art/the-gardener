@@ -27,7 +27,7 @@ public class TemporaryThornsPower : CustomPowerModel
         {
             Flash();
 			await PowerCmd.Remove(this);
-			await PowerCmd.Apply<ThornsPower>(null, base.Owner, base.Amount * -1, base.Owner, null);
+			await PowerCmd.Apply<TemporaryThornsPower>(null, base.Owner, base.Amount * -1, base.Owner, null);
         }
     }
 }

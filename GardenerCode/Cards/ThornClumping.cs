@@ -16,7 +16,7 @@ using MegaCrit.Sts2.Core.Models.CardPools;
 public class ThornClumping() : GardenerCode.Cards.GardenerCard(
   1,
   CardType.Skill,
-  CardRarity.Special,
+  CardRarity.Uncommon,
   TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]

@@ -23,7 +23,12 @@ public class SurpriseMutation() : GardenerCode.Cards.GardenerCard(
     {
         new PowerVar<StrengthPower>(1m),
         new PowerVar<DexterityPower>(1m),
-        new PowerVar<ThornsPower>(2m),
+        new PowerVar<TemporaryThornsPower>(2m),
+    };
+
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new CardKeyword[]
+    {
+        CardKeyword.Exhaust
     };
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -31,8 +36,7 @@ public class SurpriseMutation() : GardenerCode.Cards.GardenerCard(
         await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
         await PowerCmd.Apply<StrengthPower>(choiceContext, base.Owner.Creature, 1m, base.Owner.Creature, this);
         await PowerCmd.Apply<DexterityPower>(choiceContext, base.Owner.Creature, 1m, base.Owner.Creature, this);
-        await PowerCmd.Apply<ThornsPower>(choiceContext, base.Owner.Creature, 2m, base.Owner.Creature, this);
-        base.Exhaust();
+        await PowerCmd.Apply<TemporaryThornsPower>(choiceContext, base.Owner.Creature, 2m, base.Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

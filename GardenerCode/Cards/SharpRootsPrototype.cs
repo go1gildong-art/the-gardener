@@ -40,7 +40,7 @@ new PowerVar<SharpRootsPower>(4m) };
             base.DynamicVars["SharpRootsPower"].BaseValue,
             base.Owner.Creature, this);
 
-        await PowerCmd.Apply<ThornsPower>(
+        await PowerCmd.Apply<TemporaryThornsPower>(
             choiceContext,
             base.Owner.Creature,
             base.DynamicVars["SharpRootsPower"].BaseValue,

@@ -15,7 +15,7 @@ using MegaCrit.Sts2.Core.Models.CardPools;
 public class PollenStorm() : GardenerCode.Cards.GardenerCard(
   0,
   CardType.Attack,
-  CardRarity.Special,
+  CardRarity.Uncommon,
   TargetType.AllEnemies)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]

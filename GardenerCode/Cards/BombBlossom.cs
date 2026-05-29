@@ -9,13 +9,14 @@ namespace Gardener;
 
 using BaseLib.Utils;
 using Gardener.GardenerCode.Character;
+using Gardener.GardenerCode.Systems;
 using MegaCrit.Sts2.Core.Models.CardPools;
 
 [Pool(typeof(GardenerCardPool))]
 public class BombBlossom() : GardenerCode.Cards.GardenerCard(
   0,
   CardType.Attack,
-  CardRarity.Special,
+  CardRarity.Uncommon,
   TargetType.AllEnemies)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
@@ -26,9 +27,13 @@ public class BombBlossom() : GardenerCode.Cards.GardenerCard(
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllEnemies()
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
+            .FromCard(this)
+            .TargetingAllOpponents(base.CombatState)
+            .WithAttackerAnim("Cast", 0.5f)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
+            
         await GardenerCmd.ConsumeNutrient(this);
     }
 

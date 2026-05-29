@@ -9,13 +9,14 @@ namespace Gardener;
 
 using BaseLib.Utils;
 using Gardener.GardenerCode.Character;
+using Gardener.GardenerCode.Systems;
 using MegaCrit.Sts2.Core.Models.CardPools;
 
 [Pool(typeof(GardenerCardPool))]
 public class RapidGrowth() : GardenerCode.Cards.GardenerCard(
   2,
   CardType.Skill,
-  CardRarity.Special,
+  CardRarity.Uncommon,
   TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
@@ -24,12 +25,16 @@ public class RapidGrowth() : GardenerCode.Cards.GardenerCard(
         new IntVar("Draw", 4),
     };
 
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new CardKeyword[]
+    {
+        CardKeyword.Exhaust
+    };
+
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
         await PlayerCmd.DrawCards(base.Owner, (int)DynamicVars["Draw"].BaseValue);
         await GardenerCmd.ConsumeNutrient(this);
-        base.Exhaust();
     }
 
     protected override void OnUpgrade()
