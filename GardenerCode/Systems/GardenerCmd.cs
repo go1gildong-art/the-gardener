@@ -12,6 +12,8 @@ using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Runs;
 using Godot;
 
+using System.Reflection;
+
 namespace Gardener.GardenerCode.Systems;
 
 public static class GardenerCmd
@@ -59,6 +61,13 @@ public static class GardenerCmd
     {
         GD.Print($"[DEBOOG] Card {card.Id} is depleted. Removing from combat and deck.");
         await CardPileCmd.RemoveFromCombat(card);
+
+        var method = card.GetType().GetMethod("OnDepletion");
+        if (method != null)
+        {
+            var task = (Task) method.Invoke(card, null);
+            if (task != null) await task;
+        }
 
         CardModel? deckCard = card.DeckVersion;
         if (deckCard != null) await CardPileCmd.RemoveFromDeck(deckCard);
