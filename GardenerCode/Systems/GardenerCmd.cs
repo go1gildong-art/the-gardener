@@ -37,6 +37,22 @@ public static class GardenerCmd
         }
     }
 
+    public static async Task FeedNutrient(
+        CardModel card,
+        int amount = 1)
+    {
+        if (card.DynamicVars["Nutrient"] == null)
+        {
+            GD.Print($"[DEBOOG] Card {card.Id} has no nutrient to feed");
+            return;
+        }
+        CardModel? deckCard = card.DeckVersion;
+
+        GD.Print($"[DEBOOG] Card {card.Id} nutrient is fed from {card.DynamicVars["Nutrient"].BaseValue} by {amount} to {card.DynamicVars["Nutrient"].BaseValue - amount}.");
+        card.DynamicVars["Nutrient"].UpgradeValueBy(amount);
+        deckCard?.DynamicVars["Nutrient"].UpgradeValueBy(amount);
+    }
+
     public static async Task Deplete(
         CardModel card
         )
