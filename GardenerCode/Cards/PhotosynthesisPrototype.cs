@@ -14,25 +14,23 @@ using Gardener.GardenerCode.Powers;
 using MegaCrit.Sts2.Core.Models.CardPools;
 
 [Pool(typeof(GardenerCardPool))]
-public class Photosynthesis() : GardenerCode.Cards.GardenerCard(
+public class PhotosynthesisPrototype() : GardenerCode.Cards.GardenerCard(
   2,
   CardType.Power,
   CardRarity.Rare,
   TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[] 
-{ new PowerVar<PhotosynthesisPower>(1m)};
+{ new PowerVar<PhotosynthesisPrototypePower>(1m)};
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
-        await PowerCmd.Apply<PhotosynthesisPower>(
+        await PowerCmd.Apply<PhotosynthesisPrototypePower>(
             choiceContext,
             base.Owner.Creature,
-            base.DynamicVars["PhotosynthesisPower"].BaseValue,
+            base.DynamicVars["PhotosynthesisPrototypePower"].BaseValue,
             base.Owner.Creature, this);
-
-            GD.Print($"[DEBOOG] photosynthesis id: {this.Id} entry sorting id: {this.EntrySortingId}");
     }
 
     protected override void OnUpgrade()

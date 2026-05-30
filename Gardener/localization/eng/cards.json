@@ -2,8 +2,8 @@
   "GARDENER-VINE_STRIKE.description": "Deal {Damage:diff()} damage.",
   "GARDENER-VINE_STRIKE.title": "Vine Strike",
 
-  "GARDENER-PHOTOSYNTHESIS.description": "Heal {PhotosynthesisPower:diff() * 3 + 2} hp and gain {PhotosynthesisPower:diff()} per turn.",
-  "GARDENER-PHOTOSYNTHESIS.title": "Photosynthesis",
+  "GARDENER-PHOTOSYNTHESIS_PROTOTYPE.description": "Heal {PhotosynthesisPower:diff() * 3 + 2} hp and gain {PhotosynthesisPower:diff()} per turn.",
+  "GARDENER-PHOTOSYNTHESIS_PROTOTYPE.title": "Photosynthesis",
 
   "GARDENER-LEAF_SHIELD.description": "Gain {Block:diff()} block. \nReturns to your hand at the start of your turn.",
   "GARDENER-LEAF_SHIELD.title": "Leaf Shield",

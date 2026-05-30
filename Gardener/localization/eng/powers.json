@@ -1,7 +1,7 @@
 {
-  "GARDENER-PHOTOSYNTHESIS_POWER.description": "Heal 3 hp and gain 1 {Amount:energyIcons()} per turn.",
-  "GARDENER-PHOTOSYNTHESIS_POWER.smartDescription": "Heal 3 hp and gain 1 {Amount:energyIcons()} per turn.",
-  "GARDENER-PHOTOSYNTHESIS_POWER.title": "Photosynthesis",
+  "GARDENER-PHOTOSYNTHESIS_PROTOTYPE_POWER.description": "Heal 3 hp and gain 1 {Amount:energyIcons()} per turn.",
+  "GARDENER-PHOTOSYNTHESIS_PROTOTYPE_POWER.smartDescription": "Heal 3 hp and gain 1 {Amount:energyIcons()} per turn.",
+  "GARDENER-PHOTOSYNTHESIS_PROTOTYPE_POWER.title": "Photosynthesis",
 
   "GARDENER-TEMPORARY_THORNS_POWER.description": "You gain Thorns until the start of your next turn.",
   "GARDENER-TEMPORARY_THORNS_POWER.smartDescription": "You gain Thorns until the start of your next turn.",
