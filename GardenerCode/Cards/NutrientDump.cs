@@ -7,32 +7,41 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Gardener;
 
+using System.Security.Cryptography.X509Certificates;
 using BaseLib.Utils;
 using Gardener.GardenerCode.Character;
 using Gardener.GardenerCode.Systems;
 using MegaCrit.Sts2.Core.Models.CardPools;
+using MegaCrit.Sts2.Core.Models.Cards;
 
 [Pool(typeof(GardenerCardPool))]
 public class NutrientDump() : GardenerCode.Cards.GardenerCard(
-  1,
-  CardType.Skill,
+  2,
+  CardType.Attack,
   CardRarity.Common,
-  TargetType.Self)
+  TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
-        new EnergyVar(1),
-        new IntVar("Nutrient", 5),
-    };
-
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new IHoverTip[]
-    {
-        base.EnergyHoverTip
+        new DamageVar(10m, DamageProps.card),
+        new IntVar("Nutrient", 6),
     };
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PlayerCmd.GainEnergy(base.DynamicVars.Energy.BaseValue, base.Owner);
+        ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
+
+        var hand = PileType.Hand.GetPile(base.Owner).Cards;
+        decimal nutrientSum = hand.Aggregate(
+            0m,
+            (acc, card) => acc + card.DynamicVars["Nutrient"]?.BaseValue ?? 0
+        );
+        decimal totalDamage = (int)(nutrientSum + base.DynamicVars.Damage.BaseValue);
+
+        await DamageCmd.Attack(totalDamage).FromCard(this).Targeting(cardPlay.Target)
+        .WithHitFx("vfx/vfx_attack_slash")
+        .Execute(choiceContext);
+
         await GardenerCmd.ConsumeNutrient(this);
     }
 

@@ -10,6 +10,7 @@ namespace Gardener;
 using BaseLib.Utils;
 using Gardener.GardenerCode.Character;
 using Gardener.GardenerCode.Systems;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 
 [Pool(typeof(GardenerCardPool))]
@@ -19,6 +20,7 @@ public class BurningFlower() : GardenerCode.Cards.GardenerCard(
   CardRarity.Rare,
   TargetType.AllEnemies)
 {
+    protected override bool HasEnergyCostX => true;
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
         new DamageVar(8m, DamageProps.card),
@@ -32,7 +34,7 @@ public class BurningFlower() : GardenerCode.Cards.GardenerCard(
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        int cost = base.EnergyCost.GetAmountToSpend();
+        int cost = ResolveEnergyXValue();
         for (int i = 0; i < cost; i++)
         {
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(base.CombatState)
@@ -41,6 +43,14 @@ public class BurningFlower() : GardenerCode.Cards.GardenerCard(
         }
         await GardenerCmd.ConsumeNutrient(this);
     }
+
+    public override async Task AfterCardExhausted(PlayerChoiceContext choiceContext, CardModel card, bool causedByEthereal)
+	{
+		if (card == this && base.CombatState != null)
+		{
+			await GardenerCmd.ConsumeNutrient(this, 2);
+		}
+	}
 
     protected override void OnUpgrade()
     {

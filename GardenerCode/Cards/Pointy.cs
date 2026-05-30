@@ -36,6 +36,6 @@ public class Pointy() : GardenerCode.Cards.GardenerCard(
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Power<TemporaryThornsPower>().UpgradeValueBy(3m);
+        DynamicVars["TemporaryThornsPower"].UpgradeValueBy(3m);
     }
 }

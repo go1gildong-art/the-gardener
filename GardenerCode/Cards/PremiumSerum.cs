@@ -23,21 +23,21 @@ public class PremiumSerum() : GardenerCode.Cards.GardenerCard(
     {
         new IntVar("Nutrient", 8),
         new EnergyVar(1),
-        new IntVar("Draw", 2),
+        new CardsVar(2)
     };
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
         await PlayerCmd.GainEnergy(base.DynamicVars.Energy.BaseValue, base.Owner);
-        await PlayerCmd.DrawCards(base.Owner, (int)DynamicVars["Draw"].BaseValue);
+        await CardPileCmd.Draw(choiceContext, base.DynamicVars.Cards.BaseValue, base.Owner);
         await GardenerCmd.ConsumeNutrient(this);
     }
 
     protected override void OnUpgrade()
     {
         DynamicVars.Energy.UpgradeValueBy(1);
-        DynamicVars["Draw"].UpgradeValueBy(1);
+        DynamicVars.Cards.UpgradeValueBy(1);
         DynamicVars["Nutrient"].UpgradeValueBy(3);
     }
 }
