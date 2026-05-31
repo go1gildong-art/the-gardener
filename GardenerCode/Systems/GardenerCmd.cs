@@ -33,6 +33,13 @@ public static class GardenerCmd
         card.DynamicVars["Nutrient"].UpgradeValueBy(-amount);
         deckCard?.DynamicVars["Nutrient"].UpgradeValueBy(-amount);
 
+        var method = card.GetType().GetMethod("OnConsumed");
+        if (method != null)
+        {
+            var task = (Task) method.Invoke(card, null);
+            if (task != null) await task;
+        }
+
         if (deckCard != null && deckCard.DynamicVars["Nutrient"].IntValue <= 0)
         {
             await Deplete(card);
@@ -53,6 +60,13 @@ public static class GardenerCmd
         GD.Print($"[DEBOOG] Card {card.Id} nutrient is fed from {card.DynamicVars["Nutrient"].BaseValue} by {amount} to {card.DynamicVars["Nutrient"].BaseValue - amount}.");
         card.DynamicVars["Nutrient"].UpgradeValueBy(amount);
         deckCard?.DynamicVars["Nutrient"].UpgradeValueBy(amount);
+
+        var method = card.GetType().GetMethod("OnFed");
+        if (method != null)
+        {
+            var task = (Task) method.Invoke(card, null);
+            if (task != null) await task;
+        }
     }
 
     public static async Task Deplete(
