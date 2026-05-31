@@ -36,8 +36,18 @@ public static class GardenerCmd
         var method = card.GetType().GetMethod("OnConsumed");
         if (method != null)
         {
-            var task = (Task) method.Invoke(card, null);
+            var task = (Task)method.Invoke(card, null);
             if (task != null) await task;
+        }
+
+        foreach (var power in card.Owner.Creature.Powers)
+        {
+            var powerMethod = power.GetType().GetMethod("OnNutrientConsumed");
+            if (powerMethod != null)
+            {
+                var task = (Task)powerMethod.Invoke(card, null);
+                if (task != null) await task;
+            }
         }
 
         if (deckCard != null && deckCard.DynamicVars["Nutrient"].IntValue <= 0)
@@ -64,7 +74,7 @@ public static class GardenerCmd
         var method = card.GetType().GetMethod("OnFed");
         if (method != null)
         {
-            var task = (Task) method.Invoke(card, null);
+            var task = (Task)method.Invoke(card, null);
             if (task != null) await task;
         }
     }
@@ -79,7 +89,7 @@ public static class GardenerCmd
         var method = card.GetType().GetMethod("OnDepletion");
         if (method != null)
         {
-            var task = (Task) method.Invoke(card, null);
+            var task = (Task)method.Invoke(card, null);
             if (task != null) await task;
         }
 
