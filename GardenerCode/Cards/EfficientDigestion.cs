@@ -11,6 +11,7 @@ using BaseLib.Utils;
 using Gardener.GardenerCode.Character;
 using Gardener.GardenerCode.Systems;
 using MegaCrit.Sts2.Core.Models.CardPools;
+using Gardener.GardenerCode.Powers;
 
 [Pool(typeof(GardenerCardPool))]
 public class EfficientDigestion() : GardenerCode.Cards.GardenerCard(
@@ -21,18 +22,22 @@ public class EfficientDigestion() : GardenerCode.Cards.GardenerCard(
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
-        new IntVar("Nutrient", 5),
+        new PowerVar<EfficientDigestionPower>(1)
     };
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
+        await PowerCmd.Apply<EfficientDigestionPower>(
+            choiceContext,
+            base.Owner.Creature,
+            base.DynamicVars["EfficientDigestionPower"].BaseValue,
+            base.Owner.Creature, this);
         await GardenerCmd.ConsumeNutrient(this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars["Nutrient"].UpgradeValueBy(3);
+        DynamicVars["EfficientDigestionPower"].UpgradeValueBy(1);
     }
 }
-UNFINISHED
