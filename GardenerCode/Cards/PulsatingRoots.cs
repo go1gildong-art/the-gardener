@@ -30,7 +30,7 @@ public class PulsatingRoots() : GardenerCode.Cards.GardenerCard(
         await PowerCmd.Apply<PulsatingRootsPower>(
             choiceContext,
             base.Owner.Creature,
-            base.DynamicVars["PhotosynthesisPrototypePower"].BaseValue,
+            base.DynamicVars.Cards.BaseValue,
             base.Owner.Creature, this);
     }
 
