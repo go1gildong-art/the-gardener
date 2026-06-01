@@ -12,97 +12,97 @@
   "GARDENER-SHARP_ROOTS.title": "Sharp Roots",
 
   "GARDENER-VITALITY.description": "Nutrient {Nutrient:diff()}. \nGain {Energy:energyIcons()}.",
-  "GARDENER-VITALITY.title": "Vitality"
-,
+  "GARDENER-VITALITY.title": "Vitality",
+
   "GARDENER-BOMB_BLOSSOM.title": "Bomb Blossom",
-  "GARDENER-BOMB_BLOSSOM.description": "Nutrient 1. Deal 10 damage to ALL enemies.",
+  "GARDENER-BOMB_BLOSSOM.description": "[gold]Nutrient[/gold] {Nutrient:diff()}. Deal {Damage:diff()} damage to ALL enemies.",
 
   "GARDENER-BOUGH_SHIELD.title": "Bough Shield",
-  "GARDENER-BOUGH_SHIELD.description": "Nutrient 4. Gain 4 Block times this card's Nutrient.",
+  "GARDENER-BOUGH_SHIELD.description": "[gold]Nutrient[/gold] {Nutrient:diff()}. Gain {Block:diff()} [gold]Block[/gold] times this card's [gold]Nutrient[/gold].",
 
   "GARDENER-BURNING_FLOWER.title": "Burning Flower",
-  "GARDENER-BURNING_FLOWER.description": "Nutrient 12. Ethereal. Deal 8 damage X times to ALL enemies. When exhausted, lose 2 Nutrient.",
+  "GARDENER-BURNING_FLOWER.description": "[gold]Nutrient[/gold] {Nutrient:diff()}. Ethereal. Deal {Damage:diff()} damage X times to ALL enemies. When [gold]exhausted[/gold], lose 2 [gold]Nutrient[/gold].",
 
   "GARDENER-CELL_WALL.title": "Cell Wall",
-  "GARDENER-CELL_WALL.description": "Gain 8 Block. Gain 2 Thorns this turn.",
+  "GARDENER-CELL_WALL.description": "Gain {Block:diff()} [gold]Block[/gold]. Gain 2 [gold]Thorns[/gold] this turn.",
 
   "GARDENER-COMPOST_BOMBARDMENT.title": "Compost Bombardment",
-  "GARDENER-COMPOST_BOMBARDMENT.description": "Can only be used if at least 6 Nutrient has been consumed this combat. Deal 20 damage to ALL enemies.",
+  "GARDENER-COMPOST_BOMBARDMENT.description": "Can only be used if at least 6 [gold]Nutrient[/gold] has been consumed this combat. Deal {Damage:diff()} damage to ALL enemies.",
 
   "GARDENER-EFFICIENT_DIGESTION.title": "Efficient Digestion",
-  "GARDENER-EFFICIENT_DIGESTION.description": "Whenever Nutrient decreases, gain 2 Block.",
+  "GARDENER-EFFICIENT_DIGESTION.description": "Whenever [gold]Nutrient[/gold] decreases, gain {Block:diff()} [gold]Block[/gold].",
 
   "GARDENER-EXCESS_FOOD.title": "Excess Food",
   "GARDENER-EXCESS_FOOD.description": "The first X-cost card played each turn grants +1 Energy.",
 
   "GARDENER-FERTILIZER.title": "Fertilizer",
-  "GARDENER-FERTILIZER.description": "Nutrient 5. Gain 1 Energy next turn. Choose 1 card in hand, Nutrient +2.",
+  "GARDENER-FERTILIZER.description": "[gold]Nutrient[/gold] {Nutrient:diff()}. Gain 1 Energy next turn. Choose 1 card in hand, [gold]Nutrient[/gold] +2.",
 
   "GARDENER-LAST_DROP.title": "Last Drop",
-  "GARDENER-LAST_DROP.description": "Nutrient 8. Choose 1 card in hand with Nutrient. That card can be played 3 times, then its Nutrient is fully consumed.",
+  "GARDENER-LAST_DROP.description": "[gold]Nutrient[/gold] {Nutrient:diff()}. Choose 1 card in hand with [gold]Nutrient[/gold]. That card can be played 3 times, then its [gold]Nutrient[/gold] is fully consumed.",
 
   "GARDENER-LEAF_SHIELD_PROTOTYPE.title": "Leaf Shield (Prototype)",
-  "GARDENER-LEAF_SHIELD_PROTOTYPE.description": "Nutrient 20. Gain 8 Block. Nutrient decreases twice.",
+  "GARDENER-LEAF_SHIELD_PROTOTYPE.description": "[gold]Nutrient[/gold] {Nutrient:diff()}. Gain {Block:diff()} [gold]Block[/gold]. [gold]Nutrient[/gold] decreases twice.",
 
   "GARDENER-LIFE_COCOON.title": "Life Cocoon",
-  "GARDENER-LIFE_COCOON.description": "Nutrient 6. Exhaust. If Nutrient reaches 0, gain 2 random Relics at the end of combat.",
+  "GARDENER-LIFE_COCOON.description": "[gold]Nutrient[/gold] {Nutrient:diff()}. [gold]Exhaust[/gold]. If [gold]Nutrient[/gold] reaches 0, gain 2 random Relics at the end of combat.",
 
   "GARDENER-NUTRIENT_DUMP.title": "Nutrient Dump",
-  "GARDENER-NUTRIENT_DUMP.description": "Nutrient 6. Deal damage equal to total Nutrient in hand.",
+  "GARDENER-NUTRIENT_DUMP.description": "[gold]Nutrient[/gold] {Nutrient:diff()}. Deal damage equal to total [gold]Nutrient[/gold] in hand.",
 
   "GARDENER-POINTY.title": "Pointy",
-  "GARDENER-POINTY.description": "Gain 8 Temporary Thorns.",
+  "GARDENER-POINTY.description": "Gain 8 [gold]Thorns[/gold].",
 
   "GARDENER-POLLEN_STORM.title": "Pollen Storm",
-  "GARDENER-POLLEN_STORM.description": "Nutrient 15. Deal 11 damage X times. Each hit consumes 1 additional Nutrient.",
+  "GARDENER-POLLEN_STORM.description": "[gold]Nutrient[/gold] {Nutrient:diff()}. Deal {Damage:diff()} damage X times. Each hit consumes 1 additional [gold]Nutrient[/gold].",
 
   "GARDENER-PREMIUM_SERUM.title": "Premium Serum",
-  "GARDENER-PREMIUM_SERUM.description": "Nutrient 8. Gain 1 Energy. Draw 2 cards.",
+  "GARDENER-PREMIUM_SERUM.description": "[gold]Nutrient[/gold] {Nutrient:diff()}. Gain 1 Energy. Draw 2 cards.",
 
   "GARDENER-PRUNING.title": "Pruning",
-  "GARDENER-PRUNING.description": "Deal 8 damage. Choose 1 card in hand, Nutrient +1.",
+  "GARDENER-PRUNING.description": "Deal {Damage:diff()} damage. Choose 1 card in hand, [gold]Nutrient[/gold] +1.",
 
   "GARDENER-PULSATING_ROOTS.title": "Pulsating Roots",
   "GARDENER-PULSATING_ROOTS.description": "Draw 1 card each turn.",
 
   "GARDENER-RAPID_GROWTH.title": "Rapid Growth",
-  "GARDENER-RAPID_GROWTH.description": "Nutrient 5. Draw 4 cards. Exhaust. If Nutrient is 4 or less, cost is reduced by 1.",
+  "GARDENER-RAPID_GROWTH.description": "[gold]Nutrient[/gold] {Nutrient:diff()}. Draw {Cards:diff()} cards. [gold]Exhaust[/gold]. If [gold]Nutrient[/gold] is 4 or less, cost is reduced by 1.",
 
   "GARDENER-ROT_INTO_FOOD.title": "Rot Into Food",
-  "GARDENER-ROT_INTO_FOOD.description": "Whenever Nutrient decreases, gain 1 Temporary Strength.",
+  "GARDENER-ROT_INTO_FOOD.description": "Whenever [gold]Nutrient[/gold] decreases, gain 1 Temporary Strength.",
 
   "GARDENER-SHARP_LEAVES.title": "Sharp Leaves",
-  "GARDENER-SHARP_LEAVES.description": "Gain 3 Thorns.",
+  "GARDENER-SHARP_LEAVES.description": "Gain 3 [gold]Thorns[/gold].",
 
   "GARDENER-SHARP_ROOTS_PROTOTYPE.title": "Sharp Roots (Prototype)",
-  "GARDENER-SHARP_ROOTS_PROTOTYPE.description": "Deal {Damage:diff()} damage. Gain {SharpRootsPower:diff()} Thorns this turn.",
+  "GARDENER-SHARP_ROOTS_PROTOTYPE.description": "Deal {Damage:diff()} damage. Gain {SharpRootsPower:diff()} [gold]Thorns[/gold] this turn.",
 
   "GARDENER-STURDY_STEM.title": "Sturdy Stem",
-  "GARDENER-STURDY_STEM.description": "Gain 10 Block. Retain Block until next turn.",
+  "GARDENER-STURDY_STEM.description": "Gain {Block:diff()} [gold]Block[/gold]. Retain [gold]Block[/gold] until next turn.",
 
   "GARDENER-SURPRISE_MUTATION.title": "Surprise Mutation",
-  "GARDENER-SURPRISE_MUTATION.description": "Gain 1 Strength, 1 Dexterity, 2 Thorns this turn. Exhaust.",
+  "GARDENER-SURPRISE_MUTATION.description": "Gain 1 Strength, 1 Dexterity, 2 [gold]Thorns[/gold] this turn. [gold]Exhaust[/gold].",
 
   "GARDENER-SYMBIOTIC_PLANT.title": "Symbiotic Plant",
-  "GARDENER-SYMBIOTIC_PLANT.description": "Nutrient 4. Deal 7 damage. The next 2 cards played do not consume Nutrient.",
+  "GARDENER-SYMBIOTIC_PLANT.description": "[gold]Nutrient[/gold] {Nutrient:diff()}. Deal {Damage:diff()} damage. The next {Cards:diff()} cards played do not consume [gold]Nutrient[/gold].",
 
   "GARDENER-THORN_BARRAGE.title": "Thorn Barrage",
-  "GARDENER-THORN_BARRAGE.description": "Deal 3 damage 2 times. Gains bonus attack based on current Thorns.",
+  "GARDENER-THORN_BARRAGE.description": "Deal {Damage:diff()} damage 2 times. Gains bonus attack based on current [gold]Thorns[/gold].",
 
   "GARDENER-THORN_CLUMPING.title": "Thorn Clumping",
-  "GARDENER-THORN_CLUMPING.description": "Gain Block equal to your Thorns, twice.",
+  "GARDENER-THORN_CLUMPING.description": "Gain [gold]Block[/gold] equal to your [gold]Thorns[/gold], twice.",
 
   "GARDENER-VINE_STRIKE_PROTOTYPE.title": "Vine Strike (Prototype)",
   "GARDENER-VINE_STRIKE_PROTOTYPE.description": "Deal {Damage:diff()} damage.",
 
   "GARDENER-VITALITY_PROTOTYPE.title": "Vitality (Prototype)",
-  "GARDENER-VITALITY_PROTOTYPE.description": "Nutrient {Nutrient:diff()}. Gain {Energy:energyIcons()}.",
+  "GARDENER-VITALITY_PROTOTYPE.description": "[gold]Nutrient[/gold] {Nutrient:diff()}. Gain {Energy:energyIcons()}.",
 
   "GARDENER-WATER_AND_FOOD.title": "Water And Food",
-  "GARDENER-WATER_AND_FOOD.description": "Choose 1 card in hand. It is Retained, costs 1 less Energy, and gains +2 Nutrient.",
+  "GARDENER-WATER_AND_FOOD.description": "Choose 1 card in hand. It is [gold]Retained[/gold], costs 1 less Energy, and gains +2 [gold]Nutrient[/gold].",
 
   "GARDENER-WRIGGLE.title": "Wriggle",
-  "GARDENER-WRIGGLE.description": "Nutrient 10. Draw 2 cards. If Nutrient is 6 or less, gain 4 Thorns this turn.",
+  "GARDENER-WRIGGLE.description": "[gold]Nutrient[/gold] {Nutrient:diff()}. Draw 2 cards. If [gold]Nutrient[/gold] is 6 or less, gain 4 [gold]Thorns[/gold] this turn.",
 
   "GARDENER-YGGDRASIL_FORM.title": "Yggdrasil Form",
   "GARDENER-YGGDRASIL_FORM.description": "At the start of each turn, add 2 random cards into your draw pile. The added cards cost 0 on their first use."

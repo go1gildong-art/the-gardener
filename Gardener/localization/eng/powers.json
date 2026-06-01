@@ -7,8 +7,8 @@
   "GARDENER-TEMPORARY_THORNS_POWER.smartDescription": "You gain Thorns until the start of your next turn.",
   "GARDENER-TEMPORARY_THORNS_POWER.title": "Temporary Thorns",
 
-  "GARDENER-SHARP_ROOTS_POWER.description": "Deal {Damage:diff()} damage.\nGain {SharpRootsPower:diff()} Thorns this turn.",
-  "GARDENER-SHARP_ROOTS_POWER.smartDescription": "Deal {Damage:diff()} damage.\nGain {SharpRootsPower:diff()} Thorns this turn.",
+  "GARDENER-SHARP_ROOTS_POWER.description": "You gain Thorns until the start of your next turn.",
+  "GARDENER-SHARP_ROOTS_POWER.smartDescription": "You gain Thorns until the start of your next turn.",
   "GARDENER-SHARP_ROOTS_POWER.title": "Sharp Roots"
 ,
   "GARDENER-EXCESS_FOOD_POWER.description": "The first X-cost card played each turn grants +1 Energy.",
@@ -35,16 +35,16 @@
   "GARDENER-SYMBIOTIC_PLANT_POWER.smartDescription": "The next {Amount} cards you play do not consume Nutrient.",
   "GARDENER-SYMBIOTIC_PLANT_POWER.title": "Symbiotic Plant",
 
-  "GARDENER-WRIGGLE_POWER.description": "Nutrient 10. Draw 2 cards. If Nutrient is 6 or less, gain 4 Thorns this turn.",
-  "GARDENER-WRIGGLE_POWER.smartDescription": "Nutrient 10. Draw 2 cards. If Nutrient is 6 or less, gain 4 Thorns this turn.",
+  "GARDENER-WRIGGLE_POWER.description": "You gain Thorns until the start of your next turn.",
+  "GARDENER-WRIGGLE_POWER.smartDescription": "You gain Thorns until the start of your next turn.",
   "GARDENER-WRIGGLE_POWER.title": "Wriggle",
 
   "GARDENER-YGGDRASIL_FORM_POWER.description": "At the start of each turn, add 2 random cards into your draw pile; the added cards cost 0 on first use.",
   "GARDENER-YGGDRASIL_FORM_POWER.smartDescription": "At the start of each turn, add 2 random cards into your draw pile; the added cards cost 0 on first use.",
   "GARDENER-YGGDRASIL_FORM_POWER.title": "Yggdrasil Form",
 
-  "GARDENER-POINTY_POWER.description": "Gain 8 Temporary Thorns.",
-  "GARDENER-POINTY_POWER.smartDescription": "Gain 8 Temporary Thorns.",
+  "GARDENER-POINTY_POWER.description": "You gain Thorns until the start of your next turn.",
+  "GARDENER-POINTY_POWER.smartDescription": "You gain Thorns until the start of your next turn.",
   "GARDENER-POINTY_POWER.title": "Pointy"
 
   ,"GARDENER-EFFICIENT_DIGESTION_POWER.description": "Whenever Nutrient decreases, gain {Amount} Block.",
