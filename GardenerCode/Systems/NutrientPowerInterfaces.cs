@@ -1,9 +1,11 @@
+using MegaCrit.Sts2.Core.Entities.Creatures;
 namespace Gardener.GardenerCode.Systems;
+
 
 
 public interface IShouldConsumeNutrient
 {
-    bool ShouldConsumeNutrient();
+    bool ShouldConsumeNutrient(Creature creature);
     Task OnNutrientConsumeBlocked();
 }
 

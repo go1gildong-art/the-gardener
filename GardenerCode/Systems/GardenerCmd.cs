@@ -28,12 +28,17 @@ public static class GardenerCmd
             GD.Print($"[DEBOOG] Card {card.Id} has no nutrient to consume.");
             return;
         }
-        
+
         foreach (var power in card.Owner.Creature.Powers)
         {
             if (power is IShouldConsumeNutrient shouldConsumePower)
             {
-                bool shouldConsume = shouldConsumePower.ShouldConsumeNutrient();
+                bool shouldConsume = shouldConsumePower.ShouldConsumeNutrient(card.Owner.Creature);
+                if (!shouldConsume)
+                {
+                    await shouldConsumePower.OnNutrientConsumeBlocked();
+                    return;
+                }
             }
         }
 
@@ -43,7 +48,7 @@ public static class GardenerCmd
         GD.Print($"[DEBOOG] Card {card.Id} nutrient is consumed from {card.DynamicVars["Nutrient"].BaseValue} by {amount} to {card.DynamicVars["Nutrient"].BaseValue - amount}.");
         card.DynamicVars["Nutrient"].UpgradeValueBy(-amount);
         deckCard?.DynamicVars["Nutrient"].UpgradeValueBy(-amount);
-        
+
         if (card is IOnConsumed consumableCard)
         {
             await consumableCard.OnConsumed();

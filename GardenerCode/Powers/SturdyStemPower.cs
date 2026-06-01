@@ -1,12 +1,13 @@
 
 using MegaCrit.Sts2.Core.Combat;
+using BaseLib.Abstracts;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
 
-public sealed class SturdyStemPower : PowerModel
+public sealed class SturdyStemPower : CustomPowerModel
 {
 	public override PowerType Type => PowerType.Buff;
 
