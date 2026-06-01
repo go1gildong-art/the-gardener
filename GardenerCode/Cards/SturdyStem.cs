@@ -21,6 +21,7 @@ public class SturdyStem() : GardenerCode.Cards.GardenerCard(
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
         new BlockVar(10m, BlockProps.card),
+        new PowerVar<SturdyStemPower>(1m)
     };
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
