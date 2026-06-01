@@ -42,13 +42,11 @@ public class RapidGrowth() : GardenerCode.Cards.GardenerCard(
     public async Task OnConsumed()
     {
         UpdateCost();
-        await Task.CompletedTask;
     }
 
     public async Task OnFed()
     {
         UpdateCost();
-        await Task.CompletedTask;
     }
 
     protected override void OnUpgrade()

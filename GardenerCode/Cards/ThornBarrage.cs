@@ -12,6 +12,10 @@ using Gardener.GardenerCode.Character;
 using Gardener.GardenerCode.Powers;
 using MegaCrit.Sts2.Core.Models.CardPools;
 
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Models.Powers;
+
 [Pool(typeof(GardenerCardPool))]
 public class ThornBarrage() : GardenerCode.Cards.GardenerCard(
   1,
@@ -21,7 +25,13 @@ public class ThornBarrage() : GardenerCode.Cards.GardenerCard(
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
-        new DamageVar(3m, DamageProps.card),
+        new CalculationBaseVar(3m),
+		new ExtraDamageVar(1m),
+		new CalculatedDamageVar(ValueProp.Move).WithMultiplier((CardModel card, Creature? _) =>
+		{
+			int num = card.Owner.Creature.GetPowerAmount<ThornsPower>();
+			return num;
+		})
     };
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -30,6 +40,7 @@ public class ThornBarrage() : GardenerCode.Cards.GardenerCard(
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
+            
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);

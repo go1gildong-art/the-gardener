@@ -23,22 +23,22 @@ public class VineStrike() : GardenerCode.Cards.GardenerCard(
     {
         new DamageVar(6m, DamageProps.card),
         new IntVar("Nutrient", 4),
+        new RepeatVar(2)
     };
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
-    {
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllEnemies()
+    {   
+        for (int i = 0; i < DynamicVars.Repeat.BaseValue; i++)
+        {
+            await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(base.CombatState)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllEnemies()
-            .WithHitFx("vfx/vfx_attack_slash")
-            .Execute(choiceContext);
+        }
         await GardenerCmd.ConsumeNutrient(this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(2m);
         DynamicVars["Nutrient"].UpgradeValueBy(7);
     }
 }

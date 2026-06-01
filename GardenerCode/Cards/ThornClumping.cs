@@ -12,6 +12,10 @@ using Gardener.GardenerCode.Character;
 using Gardener.GardenerCode.Powers;
 using MegaCrit.Sts2.Core.Models.CardPools;
 
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Models.Powers;
+
 [Pool(typeof(GardenerCardPool))]
 public class ThornClumping() : GardenerCode.Cards.GardenerCard(
   1,
@@ -21,7 +25,13 @@ public class ThornClumping() : GardenerCode.Cards.GardenerCard(
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
-        new BlockVar(2m, BlockProps.card),
+        new CalculationBaseVar(0m),
+        new CalculationExtraVar(1m),
+		new CalculatedBlockVar(ValueProp.Move).WithMultiplier((CardModel card, Creature? _) =>
+		{
+			int num = card.Owner.Creature.GetPowerAmount<ThornsPower>();
+			return num;
+		})
     };
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -33,6 +43,6 @@ public class ThornClumping() : GardenerCode.Cards.GardenerCard(
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Block.UpgradeValueBy(2m);
+        DynamicVars.CalculationBase.UpgradeValueBy(2);
     }
 }

@@ -17,7 +17,7 @@ using MegaCrit.Sts2.Core.Models.CardPools;
 public class Vitality() : GardenerCode.Cards.GardenerCard(
   0,
   CardType.Skill,
-  CardRarity.Common,
+  CardRarity.Uncommon,
   TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
