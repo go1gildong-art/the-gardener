@@ -49,6 +49,8 @@ public static class GardenerCmd
         card.DynamicVars["Nutrient"].UpgradeValueBy(-amount);
         deckCard?.DynamicVars["Nutrient"].UpgradeValueBy(-amount);
 
+        NutrientCombatState.Get(card.CombatState).NutrientConsumedThisCombat += 1;
+
         if (card is IOnConsumed consumableCard)
         {
             await consumableCard.OnConsumed();
