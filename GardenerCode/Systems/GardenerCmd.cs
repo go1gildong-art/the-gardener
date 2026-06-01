@@ -18,6 +18,16 @@ namespace Gardener.GardenerCode.Systems;
 
 public static class GardenerCmd
 {
+    private static async Task Call<T>(T instance, string methodName)
+     where T : class
+    {
+        MethodInfo? method = instance.GetType().GetMethod(methodName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+        if (method == null) return;
+
+        var task = (Task)method.Invoke(instance, null);
+        if (task != null) await task;
+    }
+
     public static async Task ConsumeNutrient(
         CardModel card,
         int amount = 1)
@@ -33,21 +43,11 @@ public static class GardenerCmd
         card.DynamicVars["Nutrient"].UpgradeValueBy(-amount);
         deckCard?.DynamicVars["Nutrient"].UpgradeValueBy(-amount);
 
-        var method = card.GetType().GetMethod("OnConsumed");
-        if (method != null)
-        {
-            var task = (Task)method.Invoke(card, null);
-            if (task != null) await task;
-        }
+        await Call(card, "OnConsumed");
 
         foreach (var power in card.Owner.Creature.Powers)
         {
-            var powerMethod = power.GetType().GetMethod("OnNutrientConsumed");
-            if (powerMethod != null)
-            {
-                var task = (Task)powerMethod.Invoke(card, null);
-                if (task != null) await task;
-            }
+            await Call(power, "OnNutrientConsume");
         }
 
         if (deckCard != null && deckCard.DynamicVars["Nutrient"].IntValue <= 0)
@@ -71,12 +71,7 @@ public static class GardenerCmd
         card.DynamicVars["Nutrient"].UpgradeValueBy(amount);
         deckCard?.DynamicVars["Nutrient"].UpgradeValueBy(amount);
 
-        var method = card.GetType().GetMethod("OnFed");
-        if (method != null)
-        {
-            var task = (Task)method.Invoke(card, null);
-            if (task != null) await task;
-        }
+        await Call(card, "OnFed");
     }
 
     public static async Task Deplete(
@@ -86,12 +81,7 @@ public static class GardenerCmd
         GD.Print($"[DEBOOG] Card {card.Id} is depleted. Removing from combat and deck.");
         await CardPileCmd.RemoveFromCombat(card);
 
-        var method = card.GetType().GetMethod("OnDepletion");
-        if (method != null)
-        {
-            var task = (Task)method.Invoke(card, null);
-            if (task != null) await task;
-        }
+        await Call(card, "OnDepleted");
 
         CardModel? deckCard = card.DeckVersion;
         if (deckCard != null) await CardPileCmd.RemoveFromDeck(deckCard);
