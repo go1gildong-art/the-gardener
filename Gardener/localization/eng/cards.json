@@ -2,7 +2,14 @@
   "GARDENER-VINE_STRIKE.description": "Deal {Damage:diff()} damage.",
   "GARDENER-VINE_STRIKE.title": "Vine Strike",
 
+  "GARDENER-WEEDING.description": "[gold]Nutrient[/gold] {Nutrient:diff()}. Deal {Damage:diff()} damage X times.",
+  "GARDENER-WEEDING.title": "Weeding",
+
+  "GARDENER-NATURE_RETREAT.description": "[gold]Nutrient[/gold] {Nutrient:diff()}. Gain {Block:diff()} [gold]Block[/gold]. Next turn, draw {NatureRetreatPower:diff()} card and gain {NatureRetreatPower:diff()} Energy.",
+  "GARDENER-NATURE_RETREAT.title": "Nature's Retreat",
+
   "GARDENER-PHOTOSYNTHESIS_PROTOTYPE.description": "Heal {PhotosynthesisPower:diff() * 3 + 2} hp and gain {PhotosynthesisPower:diff()} per turn.",
+
   "GARDENER-PHOTOSYNTHESIS_PROTOTYPE.title": "Photosynthesis",
 
   "GARDENER-LEAF_SHIELD.description": "Gain {Block:diff()} block. \nReturns to your hand at the start of your turn.",

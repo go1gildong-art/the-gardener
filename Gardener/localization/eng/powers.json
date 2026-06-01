@@ -27,6 +27,10 @@
   "GARDENER-ROT_INTO_FOOD_THORNS_POWER.smartDescription": "Whenever Nutrient decreases, gain 1 Temporary Thorns.",
   "GARDENER-ROT_INTO_FOOD_THORNS_POWER.title": "Rot Into Food (Thorns)",
 
+  "GARDENER-NATURE_RETREAT_POWER.description": "Draw {Amount} card at the start of your next turn and gain 1 Energy.",
+  "GARDENER-NATURE_RETREAT_POWER.smartDescription": "Draw {Amount} card at the start of your next turn and gain 1 Energy.",
+  "GARDENER-NATURE_RETREAT_POWER.title": "Nature's Retreat",
+
   "GARDENER-STURDY_STEM_POWER.description": "Prevents your Block from being cleared by others; decrements each side turn.",
   "GARDENER-STURDY_STEM_POWER.smartDescription": "Prevents your Block from being cleared by others; decrements each side turn.",
   "GARDENER-STURDY_STEM_POWER.title": "Sturdy Stem",
