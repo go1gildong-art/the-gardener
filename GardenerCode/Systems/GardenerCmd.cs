@@ -18,15 +18,6 @@ namespace Gardener.GardenerCode.Systems;
 
 public static class GardenerCmd
 {
-    private static async Task Call<T>(T instance, string methodName)
-     where T : class
-    {
-        MethodInfo? method = instance.GetType().GetMethod(methodName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
-        if (method == null) return;
-
-        var task = (Task)method.Invoke(instance, null);
-        if (task != null) await task;
-    }
 
     public static async Task ConsumeNutrient(
         CardModel card,
@@ -37,17 +28,33 @@ public static class GardenerCmd
             GD.Print($"[DEBOOG] Card {card.Id} has no nutrient to consume.");
             return;
         }
+        
+        foreach (var power in card.Owner.Creature.Powers)
+        {
+            if (power is IShouldConsumeNutrient shouldConsumePower)
+            {
+                bool shouldConsume = shouldConsumePower.ShouldConsumeNutrient();
+            }
+        }
+
+
         CardModel? deckCard = card.DeckVersion;
 
         GD.Print($"[DEBOOG] Card {card.Id} nutrient is consumed from {card.DynamicVars["Nutrient"].BaseValue} by {amount} to {card.DynamicVars["Nutrient"].BaseValue - amount}.");
         card.DynamicVars["Nutrient"].UpgradeValueBy(-amount);
         deckCard?.DynamicVars["Nutrient"].UpgradeValueBy(-amount);
-
-        await Call(card, "OnConsumed");
+        
+        if (card is IOnConsumed consumableCard)
+        {
+            await consumableCard.OnConsumed();
+        }
 
         foreach (var power in card.Owner.Creature.Powers)
         {
-            await Call(power, "OnNutrientConsume");
+            if (power is IOnNutrientConsume nutrientConsumePower)
+            {
+                await nutrientConsumePower.OnNutrientConsume();
+            }
         }
 
         if (deckCard != null && deckCard.DynamicVars["Nutrient"].IntValue <= 0)
@@ -71,7 +78,10 @@ public static class GardenerCmd
         card.DynamicVars["Nutrient"].UpgradeValueBy(amount);
         deckCard?.DynamicVars["Nutrient"].UpgradeValueBy(amount);
 
-        await Call(card, "OnFed");
+        if (card is IOnFed fedCard)
+        {
+            await fedCard.OnFed();
+        }
     }
 
     public static async Task Deplete(
@@ -81,7 +91,10 @@ public static class GardenerCmd
         GD.Print($"[DEBOOG] Card {card.Id} is depleted. Removing from combat and deck.");
         await CardPileCmd.RemoveFromCombat(card);
 
-        await Call(card, "OnDepleted");
+        if (card is IOnDepleted depletableCard)
+        {
+            await depletableCard.OnDepleted();
+        }
 
         CardModel? deckCard = card.DeckVersion;
         if (deckCard != null) await CardPileCmd.RemoveFromDeck(deckCard);

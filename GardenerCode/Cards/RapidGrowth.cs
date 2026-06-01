@@ -18,7 +18,7 @@ public class RapidGrowth() : GardenerCode.Cards.GardenerCard(
   2,
   CardType.Skill,
   CardRarity.Uncommon,
-  TargetType.Self)
+  TargetType.Self), IOnConsumed, IOnFed
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
@@ -39,13 +39,16 @@ public class RapidGrowth() : GardenerCode.Cards.GardenerCard(
         if (card != this || card.IsClone) return;
         UpdateCost();
     }
-    public void OnConsumed() {
-        UpdateCost();
-    }
-
-    public void OnFed()
+    public async Task OnConsumed()
     {
         UpdateCost();
+        await Task.CompletedTask;
+    }
+
+    public async Task OnFed()
+    {
+        UpdateCost();
+        await Task.CompletedTask;
     }
 
     protected override void OnUpgrade()

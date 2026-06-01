@@ -11,6 +11,7 @@ using MegaCrit.Sts2.Core.Combat;
 
 using Gardener.GardenerCode.Extensions;
 using Gardener.GardenerCode.Cards;
+using Gardener.GardenerCode.Systems;
 
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -19,7 +20,7 @@ using System.Reflection;
 
 namespace Gardener.GardenerCode.Powers;
 
-public class RotIntoFoodThornsPower : CustomPowerModel
+public class RotIntoFoodThornsPower : CustomPowerModel, IOnNutrientConsume
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
@@ -27,6 +28,11 @@ public class RotIntoFoodThornsPower : CustomPowerModel
     public async Task OnNutrientConsumed()
     {
         await PowerCmd.Apply<TemporaryThornsPower>(null, base.Owner, base.Amount, base.Owner, null);
+    }
+
+    public async Task OnNutrientConsume()
+    {
+        await OnNutrientConsumed();
     }
 
 }

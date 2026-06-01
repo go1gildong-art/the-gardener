@@ -5,8 +5,9 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
+using Gardener.GardenerCode.Systems;
 
-public sealed class SymbioticPlantPower : PowerModel
+public sealed class SymbioticPlantPower : PowerModel, IShouldConsumeNutrient
 {
 	public override PowerType Type => PowerType.Buff;
 
@@ -21,6 +22,11 @@ public sealed class SymbioticPlantPower : PowerModel
 			return true;
 		}
 		return false;
+	}
+
+	public bool ShouldConsumeNutrient()
+	{
+		return ShouldConsumeNutrient(base.Owner);
 	}
 
 	public async Task OnNutrientConsumeBlocked()

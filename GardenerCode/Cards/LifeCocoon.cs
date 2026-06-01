@@ -17,9 +17,9 @@ using MegaCrit.Sts2.Core.Rooms;
 [Pool(typeof(GardenerCardPool))]
 public class LifeCocoon() : GardenerCode.Cards.GardenerCard(
   1,
-  CardType.Power,
+  CardType.Skill,
   CardRarity.Rare,
-  TargetType.Self)
+  TargetType.Self), IOnDepleted
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
@@ -36,7 +36,7 @@ public class LifeCocoon() : GardenerCode.Cards.GardenerCard(
         await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
     }
 
-    public async Task OnDepletion()
+    public async Task OnDepleted()
     {
         AbstractRoom currentRoom = base.CombatState.RunState.CurrentRoom;
         if (currentRoom is CombatRoom combatRoom)
