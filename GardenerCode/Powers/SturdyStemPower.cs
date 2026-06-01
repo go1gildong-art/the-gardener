@@ -7,6 +7,8 @@ using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
 
+namespace Gardener.GardenerCode.Powers;
+
 public sealed class SturdyStemPower : CustomPowerModel
 {
 	public override PowerType Type => PowerType.Buff;

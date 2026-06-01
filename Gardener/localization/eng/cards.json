@@ -27,7 +27,7 @@
   "GARDENER-CELL_WALL.description": "Gain 8 Block. Gain 2 Thorns this turn.",
 
   "GARDENER-COMPOST_BOMBARDMENT.title": "Compost Bombardment",
-  "GARDENER-COMPOST_BOMBARDMENT.description": "Can only be used if at least 6 Nutrient has been reduced this combat. Deal 20 damage to ALL enemies.",
+  "GARDENER-COMPOST_BOMBARDMENT.description": "Can only be used if at least 6 Nutrient has been consumed this combat. Deal 20 damage to ALL enemies.",
 
   "GARDENER-EFFICIENT_DIGESTION.title": "Efficient Digestion",
   "GARDENER-EFFICIENT_DIGESTION.description": "Whenever Nutrient decreases, gain 2 Block.",

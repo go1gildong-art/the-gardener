@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
 using Gardener.GardenerCode.Systems;
 using BaseLib.Abstracts;
+namespace Gardener.GardenerCode.Powers;
 
 public sealed class SymbioticPlantPower : CustomPowerModel, IShouldConsumeNutrient
 {

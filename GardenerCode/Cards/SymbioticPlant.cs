@@ -12,6 +12,7 @@ using BaseLib.Utils;
 using Gardener.GardenerCode.Character;
 using Gardener.GardenerCode.Systems;
 using MegaCrit.Sts2.Core.Models.CardPools;
+using Gardener.GardenerCode.Powers;
 
 [Pool(typeof(GardenerCardPool))]
 public class SymbioticPlant() : GardenerCode.Cards.GardenerCard(

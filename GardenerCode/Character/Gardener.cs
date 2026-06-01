@@ -28,7 +28,6 @@ public class Gardener : PlaceholderCharacterModel
         ModelDb.Card<DefendIronclad>(),
         ModelDb.Card<DefendIronclad>(),
         ModelDb.Card<VineStrike>(),
-        ModelDb.Card<Photosynthesis>(),
         ModelDb.Card<LeafShield>(),
         ModelDb.Card<SharpRoots>(),
         ModelDb.Card<Vitality>()

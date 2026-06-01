@@ -31,8 +31,8 @@
   "GARDENER-STURDY_STEM_POWER.smartDescription": "Prevents your Block from being cleared by others; decrements each side turn.",
   "GARDENER-STURDY_STEM_POWER.title": "Sturdy Stem",
 
-  "GARDENER-SYMBIOTIC_PLANT_POWER.description": "Alters nutrient consumption: some cards won't consume Nutrient when triggered.",
-  "GARDENER-SYMBIOTIC_PLANT_POWER.smartDescription": "Alters nutrient consumption: some cards won't consume Nutrient when triggered.",
+  "GARDENER-SYMBIOTIC_PLANT_POWER.description": "The next {Amount} cards you play do not consume Nutrient.",
+  "GARDENER-SYMBIOTIC_PLANT_POWER.smartDescription": "The next {Amount} cards you play do not consume Nutrient.",
   "GARDENER-SYMBIOTIC_PLANT_POWER.title": "Symbiotic Plant",
 
   "GARDENER-WRIGGLE_POWER.description": "Nutrient 10. Draw 2 cards. If Nutrient is 6 or less, gain 4 Thorns this turn.",
@@ -46,4 +46,8 @@
   "GARDENER-POINTY_POWER.description": "Gain 8 Temporary Thorns.",
   "GARDENER-POINTY_POWER.smartDescription": "Gain 8 Temporary Thorns.",
   "GARDENER-POINTY_POWER.title": "Pointy"
+
+  ,"GARDENER-EFFICIENT_DIGESTION_POWER.description": "Whenever Nutrient decreases, gain {Amount} Block.",
+  "GARDENER-EFFICIENT_DIGESTION_POWER.smartDescription": "Whenever Nutrient decreases, gain {Amount} Block.",
+  "GARDENER-EFFICIENT_DIGESTION_POWER.title": "Efficient Digestion"
 }

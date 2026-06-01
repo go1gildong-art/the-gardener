@@ -25,20 +25,8 @@ public class RotIntoFoodPower : CustomPowerModel, IOnNutrientConsume
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    public async Task OnNutrientConsumed()
-    {
-        await PowerCmd.Apply<TemporaryStrengthPower>(null, base.Owner, base.Amount, base.Owner, null);
-    }
-
     public async Task OnNutrientConsume()
     {
-        await OnNutrientConsumed();
-    }
-
-
-    public override async Task AfterSideTurnStart(CombatSide side, IReadOnlyList<Creature> participants, ICombatState combatState)
-    {
-        if (!participants.Contains(base.Owner)) return;
-        ConsumedThisTurn = false;
+        await PowerCmd.Apply<TemporaryStrengthPower>(null, base.Owner, base.Amount, base.Owner, null);
     }
 }
