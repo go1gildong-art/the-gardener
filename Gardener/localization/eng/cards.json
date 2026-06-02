@@ -36,6 +36,9 @@
   "GARDENER-COMPOST_BOMBARDMENT.title": "Compost Bombardment",
   "GARDENER-COMPOST_BOMBARDMENT.description": "Can only be used if at least 6 [gold]Nutrient[/gold] has been consumed this combat. Deal {Damage:diff()} damage to ALL enemies.",
 
+  "GARDENER-DEFEND_GARDENER.description": "Gain {Block:diff()} [gold]Block[/gold].",
+  "GARDENER-DEFEND_GARDENER.title": "Defend",
+
   "GARDENER-EFFICIENT_DIGESTION.title": "Efficient Digestion",
   "GARDENER-EFFICIENT_DIGESTION.description": "Whenever [gold]Nutrient[/gold] decreases, gain {Block:diff()} [gold]Block[/gold].",
 
@@ -83,6 +86,9 @@
 
   "GARDENER-SHARP_ROOTS_PROTOTYPE.title": "Sharp Roots (Prototype)",
   "GARDENER-SHARP_ROOTS_PROTOTYPE.description": "Deal {Damage:diff()} damage. Gain {SharpRootsPower:diff()} [gold]Thorns[/gold] this turn.",
+
+  "GARDENER-STRIKE_GARDENER.description": "Deal {Damage:diff()} damage.",
+  "GARDENER-STRIKE_GARDENER.title": "Strike",
 
   "GARDENER-STURDY_STEM.title": "Sturdy Stem",
   "GARDENER-STURDY_STEM.description": "Gain {Block:diff()} [gold]Block[/gold]. Retain [gold]Block[/gold] until next turn.",
