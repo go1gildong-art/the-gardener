@@ -1,3 +1,15 @@
+Weeding
+X Energy Base Attack
+Deal 7 damage X times.
+Upgraded: +3 damage per hit
+
+Nature's Retreat
+1 Energy Base Skill
+Nutrient 12. Gain 4 Blocks.
+Next turn, draw 1 card and gain 1 Energy.
+Upgraded: +3 blocks
+
+
 Vine Strike
 1 Energy Common Attack
 Nutrient 4.
@@ -153,7 +165,7 @@ Premium Serum
 Nutrient 8. Gain 1 Energy. Draw 2 cards.
 Upgraded: Energy +1, Draw +1, Nutrient +3 
 
-Mutation Form
+Yggdrasil Form
 3 Energy Rare Power
 At the start of each turn, add 2 random cards into your draw pile.
 The added cards cost 0 on their first use.
