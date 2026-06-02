@@ -13,7 +13,7 @@ using Gardener.GardenerCode.Character;
 using Gardener.GardenerCode.Powers;
 using MegaCrit.Sts2.Core.Models.CardPools;
 
-[Pool(typeof(GardenerCardPool))]
+// [Pool(typeof(GardenerCardPool))]
 public class PhotosynthesisPrototype() : GardenerCode.Cards.GardenerCard(
   2,
   CardType.Power,

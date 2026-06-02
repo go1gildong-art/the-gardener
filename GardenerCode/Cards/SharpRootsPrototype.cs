@@ -16,7 +16,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 
 
-[Pool(typeof(GardenerCardPool))]
+// [Pool(typeof(GardenerCardPool))]
 public class SharpRootsPrototype() : GardenerCode.Cards.GardenerCard(
   1,
   CardType.Attack,

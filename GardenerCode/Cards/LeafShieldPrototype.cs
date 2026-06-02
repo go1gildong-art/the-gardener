@@ -16,7 +16,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 
-[Pool(typeof(GardenerCardPool))]
+// [Pool(typeof(GardenerCardPool))]
 public class LeafShieldPrototype() : GardenerCode.Cards.GardenerCard(
   0,
   CardType.Skill,

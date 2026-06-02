@@ -13,7 +13,7 @@ using Godot;
 using MegaCrit.Sts2.Core.Models.CardPools;
 
 
-[Pool(typeof(GardenerCardPool))]
+// [Pool(typeof(GardenerCardPool))]
 public class VineStrikePrototype() : GardenerCode.Cards.GardenerCard(
   1,
   CardType.Attack,
