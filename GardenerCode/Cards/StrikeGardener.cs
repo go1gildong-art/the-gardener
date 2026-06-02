@@ -14,7 +14,7 @@ using MegaCrit.Sts2.Core.Models.CardPools;
 
 [Pool(typeof(GardenerCardPool))]
 public class StrikeGardener() : GardenerCode.Cards.GardenerCard(
-  0,
+  1,
   CardType.Attack,
   CardRarity.Basic,
   TargetType.AnyEnemy)
