@@ -3,43 +3,39 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Gardener;
 
 using BaseLib.Utils;
 using Gardener.GardenerCode.Character;
-using Gardener.GardenerCode.Systems;
+using Gardener.GardenerCode.Powers;
 using MegaCrit.Sts2.Core.Models.CardPools;
 
 [Pool(typeof(GardenerCardPool))]
-public class Vitality() : GardenerCode.Cards.GardenerCard(
-  0,
+public class Pointy() : GardenerCode.Cards.GardenerCard(
+  1,
   CardType.Skill,
   CardRarity.Uncommon,
   TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
-        new IntVar("Nutrient", 8),
-        new EnergyVar(2),
-    };
-
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new IHoverTip[]
-    {
-        base.EnergyHoverTip
+        new PowerVar<TemporaryThornsPower>(8m),
     };
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PlayerCmd.GainEnergy(base.DynamicVars.Energy.BaseValue, base.Owner);
-        await GardenerCmd.ConsumeNutrient(this);
+        await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
+        await PowerCmd.Apply<TemporaryThornsPower>(
+            choiceContext,
+            base.Owner.Creature,
+            base.DynamicVars["TemporaryThornsPower"].BaseValue,
+            base.Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars["Nutrient"].UpgradeValueBy(3);
-        DynamicVars.Energy.UpgradeValueBy(1);
+        DynamicVars["TemporaryThornsPower"].UpgradeValueBy(3m);
     }
 }

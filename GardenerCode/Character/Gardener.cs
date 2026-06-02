@@ -1,6 +1,7 @@
 ﻿using BaseLib.Abstracts;
 using BaseLib.Utils.NodeFactories;
 using Gardener.GardenerCode.Extensions;
+using Gardener.GardenerCode.Relics;
 using Godot;
 using MegaCrit.Sts2.Core.Entities.Characters;
 using MegaCrit.Sts2.Core.Models;
@@ -21,22 +22,19 @@ public class Gardener : PlaceholderCharacterModel
     public override int StartingHp => 70;
     
     public override IEnumerable<CardModel> StartingDeck => [
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<DefendIronclad>(),
-        ModelDb.Card<DefendIronclad>(),
-        ModelDb.Card<DefendIronclad>(),
-        ModelDb.Card<VineStrike>(),
-        ModelDb.Card<Photosynthesis>(),
-        ModelDb.Card<LeafShield>(),
-        ModelDb.Card<SharpRoots>(),
-        ModelDb.Card<Vitality>()
+        ModelDb.Card<StrikeGardener>(),
+        ModelDb.Card<StrikeGardener>(),
+        ModelDb.Card<StrikeGardener>(),
+        ModelDb.Card<DefendGardener>(),
+        ModelDb.Card<DefendGardener>(),
+        ModelDb.Card<DefendGardener>(),
+        ModelDb.Card<Weeding>(),
+        ModelDb.Card<NatureRetreat>()
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics =>
     [
-        ModelDb.Relic<BurningBlood>()
+        ModelDb.Relic<TwinklingSprout>()
     ];
     
     public override CardPoolModel CardPool => ModelDb.CardPool<GardenerCardPool>();

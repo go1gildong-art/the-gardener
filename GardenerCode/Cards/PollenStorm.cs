@@ -3,7 +3,6 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Gardener;
@@ -14,32 +13,36 @@ using Gardener.GardenerCode.Systems;
 using MegaCrit.Sts2.Core.Models.CardPools;
 
 [Pool(typeof(GardenerCardPool))]
-public class Vitality() : GardenerCode.Cards.GardenerCard(
+public class PollenStorm() : GardenerCode.Cards.GardenerCard(
   0,
-  CardType.Skill,
+  CardType.Attack,
   CardRarity.Uncommon,
-  TargetType.Self)
+  TargetType.AllEnemies)
 {
+    protected override bool HasEnergyCostX => true;
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
-        new IntVar("Nutrient", 8),
-        new EnergyVar(2),
-    };
-
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new IHoverTip[]
-    {
-        base.EnergyHoverTip
+        new DamageVar(11m, DamageProps.card),
+        new IntVar("Nutrient", 15),
     };
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PlayerCmd.GainEnergy(base.DynamicVars.Energy.BaseValue, base.Owner);
-        await GardenerCmd.ConsumeNutrient(this);
+        int cost = ResolveEnergyXValue();
+        for (int i = 0; i < cost; i++)
+        {
+            await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
+                .FromCard(this)
+                .TargetingAllOpponents(base.CombatState)
+                .WithHitFx("vfx/vfx_attack_slash")
+                .Execute(choiceContext);
+
+            await GardenerCmd.ConsumeNutrient(this);
+        }
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars["Nutrient"].UpgradeValueBy(3);
-        DynamicVars.Energy.UpgradeValueBy(1);
+        DynamicVars.Damage.UpgradeValueBy(3m);
     }
 }

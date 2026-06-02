@@ -1,7 +1,7 @@
 {
-  "GARDENER-PHOTOSYNTHESIS_POWER.description": "Heal 3 hp and gain 1 {Amount:energyIcons()} per turn.",
-  "GARDENER-PHOTOSYNTHESIS_POWER.smartDescription": "Heal 3 hp and gain 1 {Amount:energyIcons()} per turn.",
-  "GARDENER-PHOTOSYNTHESIS_POWER.title": "Photosynthesis",
+  "GARDENER-PHOTOSYNTHESIS_PROTOTYPE_POWER.description": "Heal 3 hp and gain 1 {Amount:energyIcons()} per turn.",
+  "GARDENER-PHOTOSYNTHESIS_PROTOTYPE_POWER.smartDescription": "Heal 3 hp and gain 1 {Amount:energyIcons()} per turn.",
+  "GARDENER-PHOTOSYNTHESIS_PROTOTYPE_POWER.title": "Photosynthesis",
 
   "GARDENER-TEMPORARY_THORNS_POWER.description": "You gain Thorns until the start of your next turn.",
   "GARDENER-TEMPORARY_THORNS_POWER.smartDescription": "You gain Thorns until the start of your next turn.",
@@ -10,4 +10,48 @@
   "GARDENER-SHARP_ROOTS_POWER.description": "You gain Thorns until the start of your next turn.",
   "GARDENER-SHARP_ROOTS_POWER.smartDescription": "You gain Thorns until the start of your next turn.",
   "GARDENER-SHARP_ROOTS_POWER.title": "Sharp Roots"
+,
+  "GARDENER-EXCESS_FOOD_POWER.description": "The first X-cost card played each turn grants +1 Energy.",
+  "GARDENER-EXCESS_FOOD_POWER.smartDescription": "The first X-cost card played each turn grants +1 Energy.",
+  "GARDENER-EXCESS_FOOD_POWER.title": "Excess Food",
+
+  "GARDENER-PULSATING_ROOTS_POWER.description": "Draw 1 card each turn.",
+  "GARDENER-PULSATING_ROOTS_POWER.smartDescription": "Draw 1 card each turn.",
+  "GARDENER-PULSATING_ROOTS_POWER.title": "Pulsating Roots",
+
+  "GARDENER-ROT_INTO_FOOD_POWER.description": "Whenever Nutrient decreases, gain 1 Temporary Strength.",
+  "GARDENER-ROT_INTO_FOOD_POWER.smartDescription": "Whenever Nutrient decreases, gain 1 Temporary Strength.",
+  "GARDENER-ROT_INTO_FOOD_POWER.title": "Rot Into Food",
+
+  "GARDENER-ROT_INTO_FOOD_THORNS_POWER.description": "Whenever Nutrient decreases, gain 1 Temporary Thorns.",
+  "GARDENER-ROT_INTO_FOOD_THORNS_POWER.smartDescription": "Whenever Nutrient decreases, gain 1 Temporary Thorns.",
+  "GARDENER-ROT_INTO_FOOD_THORNS_POWER.title": "Rot Into Food (Thorns)",
+
+  "GARDENER-NATURE_RETREAT_POWER.description": "Draw {Amount} card at the start of your next turn and gain 1 Energy.",
+  "GARDENER-NATURE_RETREAT_POWER.smartDescription": "Draw {Amount} card at the start of your next turn and gain 1 Energy.",
+  "GARDENER-NATURE_RETREAT_POWER.title": "Nature's Retreat",
+
+  "GARDENER-STURDY_STEM_POWER.description": "Prevents your Block from being cleared by others; decrements each side turn.",
+  "GARDENER-STURDY_STEM_POWER.smartDescription": "Prevents your Block from being cleared by others; decrements each side turn.",
+  "GARDENER-STURDY_STEM_POWER.title": "Sturdy Stem",
+
+  "GARDENER-SYMBIOTIC_PLANT_POWER.description": "The next {Amount} cards you play do not consume Nutrient.",
+  "GARDENER-SYMBIOTIC_PLANT_POWER.smartDescription": "The next {Amount} cards you play do not consume Nutrient.",
+  "GARDENER-SYMBIOTIC_PLANT_POWER.title": "Symbiotic Plant",
+
+  "GARDENER-WRIGGLE_POWER.description": "You gain Thorns until the start of your next turn.",
+  "GARDENER-WRIGGLE_POWER.smartDescription": "You gain Thorns until the start of your next turn.",
+  "GARDENER-WRIGGLE_POWER.title": "Wriggle",
+
+  "GARDENER-YGGDRASIL_FORM_POWER.description": "At the start of each turn, add 2 random cards into your draw pile; the added cards cost 0 on first use.",
+  "GARDENER-YGGDRASIL_FORM_POWER.smartDescription": "At the start of each turn, add 2 random cards into your draw pile; the added cards cost 0 on first use.",
+  "GARDENER-YGGDRASIL_FORM_POWER.title": "Yggdrasil Form",
+
+  "GARDENER-POINTY_POWER.description": "You gain Thorns until the start of your next turn.",
+  "GARDENER-POINTY_POWER.smartDescription": "You gain Thorns until the start of your next turn.",
+  "GARDENER-POINTY_POWER.title": "Pointy"
+
+  ,"GARDENER-EFFICIENT_DIGESTION_POWER.description": "Whenever Nutrient decreases, gain {Amount} Block.",
+  "GARDENER-EFFICIENT_DIGESTION_POWER.smartDescription": "Whenever Nutrient decreases, gain {Amount} Block.",
+  "GARDENER-EFFICIENT_DIGESTION_POWER.title": "Efficient Digestion"
 }

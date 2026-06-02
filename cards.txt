@@ -1,3 +1,4 @@
+
 Weeding
 X Energy Base Attack
 Deal 7 damage X times.

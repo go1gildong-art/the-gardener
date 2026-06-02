@@ -10,36 +10,50 @@ namespace Gardener;
 using BaseLib.Utils;
 using Gardener.GardenerCode.Character;
 using Gardener.GardenerCode.Systems;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 
 [Pool(typeof(GardenerCardPool))]
-public class VineStrike() : GardenerCode.Cards.GardenerCard(
-  1,
+public class BurningFlower() : GardenerCode.Cards.GardenerCard(
+  0,
   CardType.Attack,
-  CardRarity.Common,
+  CardRarity.Rare,
   TargetType.AllEnemies)
 {
+    protected override bool HasEnergyCostX => true;
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
-        new DamageVar(6m, DamageProps.card),
-        new IntVar("Nutrient", 4),
-        new RepeatVar(2)
+        new DamageVar(8m, DamageProps.card),
+        new IntVar("Nutrient", 12),
+    };
+
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new CardKeyword[]
+    {
+        CardKeyword.Ethereal
     };
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
-    {   
-        for (int i = 0; i < DynamicVars.Repeat.BaseValue; i++)
+    {
+        int cost = ResolveEnergyXValue();
+        for (int i = 0; i < cost; i++)
         {
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(base.CombatState)
-            .WithHitFx("vfx/vfx_attack_slash")
-            .Execute(choiceContext);
+                .WithHitFx("vfx/vfx_attack_slash")
+                .Execute(choiceContext);
         }
         await GardenerCmd.ConsumeNutrient(this);
     }
 
+    public override async Task AfterCardExhausted(PlayerChoiceContext choiceContext, CardModel card, bool causedByEthereal)
+	{
+		if (card == this && base.CombatState != null)
+		{
+			await GardenerCmd.ConsumeNutrient(this, 2);
+		}
+	}
+
     protected override void OnUpgrade()
     {
-        DynamicVars["Nutrient"].UpgradeValueBy(7);
+        DynamicVars.Damage.UpgradeValueBy(2m);
     }
 }
-

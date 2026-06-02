@@ -11,26 +11,42 @@ using BaseLib.Utils;
 using Gardener.GardenerCode.Character;
 using Gardener.GardenerCode.Systems;
 using MegaCrit.Sts2.Core.Models.CardPools;
+using MegaCrit.Sts2.Core.Rewards;
+using MegaCrit.Sts2.Core.Rooms;
 
 [Pool(typeof(GardenerCardPool))]
-public class LeafShield() : GardenerCode.Cards.GardenerCard(
-  0,
+public class LifeCocoon() : GardenerCode.Cards.GardenerCard(
+  1,
   CardType.Skill,
-  CardRarity.Common,
-  TargetType.Self)
+  CardRarity.Rare,
+  TargetType.Self), IOnDepleted
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
-        new BlockVar(8m, BlockProps.card),
-        new IntVar("Nutrient", 20),
+        new IntVar("RelicVar", 2)
+    };
+
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new CardKeyword[]
+    {
+        CardKeyword.Exhaust
     };
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
-        await CreatureCmd.GainBlock(base.Owner.Creature, base.DynamicVars.Block, cardPlay);
-        await GardenerCmd.ConsumeNutrient(this);
-        await GardenerCmd.ConsumeNutrient(this);
+    }
+
+    public async Task OnDepleted()
+    {
+        AbstractRoom currentRoom = base.CombatState.RunState.CurrentRoom;
+        if (currentRoom is CombatRoom combatRoom)
+        {
+            for (int i = 0; i < DynamicVars["RelicVar"].BaseValue; i++)
+            combatRoom.AddExtraReward(
+                base.Owner,
+                new RelicReward(base.Owner)
+                );
+        }
     }
 
     protected override void OnUpgrade()

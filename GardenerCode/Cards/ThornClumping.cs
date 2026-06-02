@@ -9,32 +9,40 @@ namespace Gardener;
 
 using BaseLib.Utils;
 using Gardener.GardenerCode.Character;
-using Gardener.GardenerCode.Systems;
+using Gardener.GardenerCode.Powers;
 using MegaCrit.Sts2.Core.Models.CardPools;
 
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Models.Powers;
+
 [Pool(typeof(GardenerCardPool))]
-public class LeafShield() : GardenerCode.Cards.GardenerCard(
-  0,
+public class ThornClumping() : GardenerCode.Cards.GardenerCard(
+  1,
   CardType.Skill,
-  CardRarity.Common,
+  CardRarity.Uncommon,
   TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
-        new BlockVar(8m, BlockProps.card),
-        new IntVar("Nutrient", 20),
+        new CalculationBaseVar(0m),
+        new CalculationExtraVar(1m),
+		new CalculatedBlockVar(ValueProp.Move).WithMultiplier((CardModel card, Creature? _) =>
+		{
+			int num = card.Owner.Creature.GetPowerAmount<ThornsPower>();
+			return num;
+		})
     };
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
         await CreatureCmd.GainBlock(base.Owner.Creature, base.DynamicVars.Block, cardPlay);
-        await GardenerCmd.ConsumeNutrient(this);
-        await GardenerCmd.ConsumeNutrient(this);
+        await CreatureCmd.GainBlock(base.Owner.Creature, base.DynamicVars.Block, cardPlay);
     }
 
     protected override void OnUpgrade()
     {
-        base.EnergyCost.UpgradeBy(-1);
+        DynamicVars.CalculationBase.UpgradeValueBy(2);
     }
 }

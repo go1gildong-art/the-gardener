@@ -11,23 +11,28 @@ using MegaCrit.Sts2.Core.Combat;
 
 using Gardener.GardenerCode.Extensions;
 using Gardener.GardenerCode.Cards;
+using Gardener.GardenerCode.Systems;
 
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-
+using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Models;
+using System.Reflection;
 
 namespace Gardener.GardenerCode.Powers;
 
-public class TemporaryThornsPower : CustomPowerModel
+public class RotIntoFoodThornsPower : CustomPowerModel, IOnNutrientConsume
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
-    public override async Task AfterSideTurnStart(CombatSide side, IReadOnlyList<Creature> participants, ICombatState combatState)
+
+    public async Task OnNutrientConsumed()
     {
-        if (side == base.Owner.Side)
-        {
-            Flash();
-			await PowerCmd.Remove(this);
-			await PowerCmd.Apply<TemporaryThornsPower>(null, base.Owner, base.Amount * -1, base.Owner, null);
-        }
+        await PowerCmd.Apply<TemporaryThornsPower>(null, base.Owner, base.Amount, base.Owner, null);
     }
+
+    public async Task OnNutrientConsume()
+    {
+        await OnNutrientConsumed();
+    }
+
 }

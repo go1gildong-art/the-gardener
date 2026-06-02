@@ -11,30 +11,46 @@ using BaseLib.Utils;
 using Gardener.GardenerCode.Character;
 using Gardener.GardenerCode.Systems;
 using MegaCrit.Sts2.Core.Models.CardPools;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Powers;
 
 [Pool(typeof(GardenerCardPool))]
-public class LeafShield() : GardenerCode.Cards.GardenerCard(
-  0,
+public class Fertilizer() : GardenerCode.Cards.GardenerCard(
+  1,
   CardType.Skill,
   CardRarity.Common,
   TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
-        new BlockVar(8m, BlockProps.card),
-        new IntVar("Nutrient", 20),
+        new IntVar("Nutrient", 5),
+        new EnergyVar(1)
     };
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
-        await CreatureCmd.GainBlock(base.Owner.Creature, base.DynamicVars.Block, cardPlay);
-        await GardenerCmd.ConsumeNutrient(this);
+        
+		if (base.IsUpgraded)
+		{
+			foreach (CardModel item in PileType.Hand.GetPile(base.Owner).Cards.Where((CardModel c) => c.IsUpgradable))
+			{
+				await GardenerCmd.FeedNutrient(item);
+			}
+			return;
+		}
+		CardModel? cardModel = await CardSelectCmd.FromHandForUpgrade(choiceContext, base.Owner, this);
+		if (cardModel != null)
+		{
+			await GardenerCmd.FeedNutrient(cardModel);
+		}
+
+        await PowerCmd.Apply<EnergyNextTurnPower>(choiceContext, base.Owner.Creature, base.DynamicVars.Energy.BaseValue, base.Owner.Creature, this);
         await GardenerCmd.ConsumeNutrient(this);
     }
 
     protected override void OnUpgrade()
     {
-        base.EnergyCost.UpgradeBy(-1);
+        DynamicVars["Nutrient"].UpgradeValueBy(3);
     }
 }

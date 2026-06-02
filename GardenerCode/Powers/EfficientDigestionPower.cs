@@ -13,21 +13,25 @@ using Gardener.GardenerCode.Extensions;
 using Gardener.GardenerCode.Cards;
 
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-
+using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Models;
+using System.Reflection;
+using Gardener.GardenerCode.Systems;
+using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Gardener.GardenerCode.Powers;
 
-public class TemporaryThornsPower : CustomPowerModel
+public class EfficientDigestionPower : CustomPowerModel, IOnNutrientConsume
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
-    public override async Task AfterSideTurnStart(CombatSide side, IReadOnlyList<Creature> participants, ICombatState combatState)
-    {
-        if (side == base.Owner.Side)
-        {
-            Flash();
-			await PowerCmd.Remove(this);
-			await PowerCmd.Apply<TemporaryThornsPower>(null, base.Owner, base.Amount * -1, base.Owner, null);
-        }
+
+    protected bool ConsumedThisTurn = false;
+
+    public async Task OnNutrientConsume()
+    {   
+        Flash();
+        await CreatureCmd.GainBlock(base.Owner, base.Amount, ValueProp.Unpowered, null);
     }
+
 }
