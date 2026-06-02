@@ -47,7 +47,6 @@ public class NutrientDump() : GardenerCode.Cards.GardenerCard(
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Energy.UpgradeValueBy(1);
         DynamicVars["Nutrient"].UpgradeValueBy(2);
     }
 }

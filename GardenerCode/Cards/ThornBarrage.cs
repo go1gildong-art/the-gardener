@@ -48,6 +48,6 @@ public class ThornBarrage() : GardenerCode.Cards.GardenerCard(
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(1m);
+        DynamicVars.CalculationBase.UpgradeValueBy(1m);
     }
 }

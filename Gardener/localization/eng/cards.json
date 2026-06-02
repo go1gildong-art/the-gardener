@@ -2,14 +2,13 @@
   "GARDENER-VINE_STRIKE.description": "Deal {Damage:diff()} damage.",
   "GARDENER-VINE_STRIKE.title": "Vine Strike",
 
-  "GARDENER-WEEDING.description": "[gold]Nutrient[/gold] {Nutrient:diff()}. Deal {Damage:diff()} damage X times.",
+  "GARDENER-WEEDING.description": "Deal {Damage:diff()} damage X times.",
   "GARDENER-WEEDING.title": "Weeding",
 
   "GARDENER-NATURE_RETREAT.description": "[gold]Nutrient[/gold] {Nutrient:diff()}. Gain {Block:diff()} [gold]Block[/gold]. Next turn, draw {NatureRetreatPower:diff()} card and gain {NatureRetreatPower:diff()} Energy.",
   "GARDENER-NATURE_RETREAT.title": "Nature's Retreat",
 
-  "GARDENER-PHOTOSYNTHESIS_PROTOTYPE.description": "Heal {PhotosynthesisPower:diff() * 3 + 2} hp and gain {PhotosynthesisPower:diff()} per turn.",
-
+  "GARDENER-PHOTOSYNTHESIS_PROTOTYPE.description": "Heal 3 hp and gain {PhotosynthesisPower:diff()} energy per turn.",
   "GARDENER-PHOTOSYNTHESIS_PROTOTYPE.title": "Photosynthesis",
 
   "GARDENER-LEAF_SHIELD.description": "Gain {Block:diff()} block. \nReturns to your hand at the start of your turn.",
@@ -40,7 +39,7 @@
   "GARDENER-DEFEND_GARDENER.title": "Defend",
 
   "GARDENER-EFFICIENT_DIGESTION.title": "Efficient Digestion",
-  "GARDENER-EFFICIENT_DIGESTION.description": "Whenever [gold]Nutrient[/gold] decreases, gain {Block:diff()} [gold]Block[/gold].",
+  "GARDENER-EFFICIENT_DIGESTION.description": "Whenever [gold]Nutrient[/gold] decreases, gain {EfficientDigestionPower:diff()} [gold]Block[/gold].",
 
   "GARDENER-EXCESS_FOOD.title": "Excess Food",
   "GARDENER-EXCESS_FOOD.description": "The first X-cost card played each turn grants +1 Energy.",
@@ -97,7 +96,7 @@
   "GARDENER-SURPRISE_MUTATION.description": "Gain 1 Strength, 1 Dexterity, 2 [gold]Thorns[/gold] this turn. [gold]Exhaust[/gold].",
 
   "GARDENER-SYMBIOTIC_PLANT.title": "Symbiotic Plant",
-  "GARDENER-SYMBIOTIC_PLANT.description": "[gold]Nutrient[/gold] {Nutrient:diff()}. Deal {Damage:diff()} damage. The next {Cards:diff()} cards played do not consume [gold]Nutrient[/gold].",
+  "GARDENER-SYMBIOTIC_PLANT.description": "[gold]Nutrient[/gold] {Nutrient:diff()}. Deal {Damage:diff()} damage. The next {SymbioticPlantPower:diff()} cards played do not consume [gold]Nutrient[/gold].",
 
   "GARDENER-THORN_BARRAGE.title": "Thorn Barrage",
   "GARDENER-THORN_BARRAGE.description": "Deal {Damage:diff()} damage 2 times. Gains bonus attack based on current [gold]Thorns[/gold].",

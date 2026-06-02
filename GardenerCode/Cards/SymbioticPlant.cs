@@ -25,7 +25,7 @@ public class SymbioticPlant() : GardenerCode.Cards.GardenerCard(
     {
         new DamageVar(7, DamageProps.card),
         new PowerVar<SymbioticPlantPower>(2),
-        new NutrientVar(4)
+        new IntVar("Nutrient", 4)
     };
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

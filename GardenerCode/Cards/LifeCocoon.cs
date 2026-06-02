@@ -23,7 +23,8 @@ public class LifeCocoon() : GardenerCode.Cards.GardenerCard(
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
-        new IntVar("RelicVar", 2)
+        new IntVar("RelicVar", 2),
+        new IntVar("Nutrient", 6)
     };
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => new CardKeyword[]
@@ -51,6 +52,6 @@ public class LifeCocoon() : GardenerCode.Cards.GardenerCard(
 
     protected override void OnUpgrade()
     {
-        base.EnergyCost.UpgradeBy(-1);
+        base.DynamicVars["RelicVar"].UpgradeValueBy(1);
     }
 }
