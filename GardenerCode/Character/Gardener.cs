@@ -25,6 +25,8 @@ public class Gardener : PlaceholderCharacterModel
         ModelDb.Card<StrikeGardener>(),
         ModelDb.Card<StrikeGardener>(),
         ModelDb.Card<StrikeGardener>(),
+        ModelDb.Card<StrikeGardener>(),
+        ModelDb.Card<DefendGardener>(),
         ModelDb.Card<DefendGardener>(),
         ModelDb.Card<DefendGardener>(),
         ModelDb.Card<DefendGardener>(),
