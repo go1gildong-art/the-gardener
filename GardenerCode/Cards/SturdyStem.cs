@@ -28,6 +28,11 @@ public class SturdyStem() : GardenerCode.Cards.GardenerCard(
     {
         await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
         await CreatureCmd.GainBlock(base.Owner.Creature, base.DynamicVars.Block, cardPlay);
+        await PowerCmd.Apply<SturdyStemPower>(
+            choiceContext,
+            base.Owner.Creature,
+            base.DynamicVars["SturdyStemPower"].BaseValue,
+            base.Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
