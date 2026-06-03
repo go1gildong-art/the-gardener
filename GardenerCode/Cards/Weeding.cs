@@ -17,7 +17,7 @@ using MegaCrit.Sts2.Core.Models;
 public class Weeding() : GardenerCode.Cards.GardenerCard(
   0,
   CardType.Attack,
-  CardRarity.Common,
+  CardRarity.Basic,
   TargetType.AnyEnemy)
 {
     protected override bool HasEnergyCostX => true;

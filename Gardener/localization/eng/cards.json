@@ -46,9 +46,11 @@
 
   "GARDENER-FERTILIZER.title": "Fertilizer",
   "GARDENER-FERTILIZER.description": "[gold]Nutrient[/gold] {Nutrient:diff()}. Gain 1 Energy next turn. Choose 1 card in hand, [gold]Nutrient[/gold] +2.",
+  "GARDENER-FERTILIZER.selectionScreenPrompt": "Choose the card to feed [gold]Nutrient[/gold].",
 
   "GARDENER-LAST_DROP.title": "Last Drop",
   "GARDENER-LAST_DROP.description": "[gold]Nutrient[/gold] {Nutrient:diff()}. Choose 1 card in hand with [gold]Nutrient[/gold]. That card can be played 3 times, then its [gold]Nutrient[/gold] is fully consumed.",
+  "GARDENER-LAST_DROP.selectionScreenPrompt": "Choose a card to drain all of its [gold]Nutrient[/gold].",
 
   "GARDENER-LEAF_SHIELD_PROTOTYPE.title": "Leaf Shield (Prototype)",
   "GARDENER-LEAF_SHIELD_PROTOTYPE.description": "[gold]Nutrient[/gold] {Nutrient:diff()}. Gain {Block:diff()} [gold]Block[/gold]. [gold]Nutrient[/gold] decreases twice.",
@@ -112,6 +114,7 @@
 
   "GARDENER-WATER_AND_FOOD.title": "Water And Food",
   "GARDENER-WATER_AND_FOOD.description": "Choose 1 card in hand. It is [gold]Retained[/gold], costs 1 less Energy, and gains +2 [gold]Nutrient[/gold].",
+  "GARDENER-WATER_AND_FOOD.selectionScreenPrompt": "Choose the card to support the growth.",
 
   "GARDENER-WRIGGLE.title": "Wriggle",
   "GARDENER-WRIGGLE.description": "[gold]Nutrient[/gold] {Nutrient:diff()}. Draw 2 cards. If [gold]Nutrient[/gold] is 6 or less, gain 4 [gold]Thorns[/gold] this turn.",

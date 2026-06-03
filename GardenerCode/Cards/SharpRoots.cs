@@ -20,7 +20,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 public class SharpRoots() : GardenerCode.Cards.GardenerCard(
   1,
   CardType.Attack,
-  CardRarity.Uncommon,
+  CardRarity.Common,
   TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]

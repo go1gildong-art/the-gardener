@@ -9,29 +9,34 @@ namespace Gardener;
 
 using BaseLib.Utils;
 using Gardener.GardenerCode.Character;
+using Gardener.GardenerCode.Powers;
 using Gardener.GardenerCode.Systems;
 using MegaCrit.Sts2.Core.Models.CardPools;
 
 [Pool(typeof(GardenerCardPool))]
 public class ExcessFood() : GardenerCode.Cards.GardenerCard(
-  1,
-  CardType.Skill,
-  CardRarity.Common,
+  2,
+  CardType.Power,
+  CardRarity.Uncommon,
   TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
-        new IntVar("Nutrient", 6),
+        new PowerVar<ExcessFoodPower>(2)
     };
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
-        await GardenerCmd.ConsumeNutrient(this);
+        await PowerCmd.Apply<ExcessFoodPower>(
+            choiceContext,
+            base.Owner.Creature,
+            base.DynamicVars["ExcessFoodPower"].BaseValue,
+            base.Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars["Nutrient"].UpgradeValueBy(2);
+        DynamicVars.Energy.UpgradeValueBy(-1);
     }
 }

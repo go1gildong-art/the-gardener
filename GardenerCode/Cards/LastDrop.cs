@@ -28,14 +28,13 @@ public class LastDrop() : GardenerCode.Cards.GardenerCard(
         new IntVar("Nutrient", 8),
         new RepeatVar(3)
     };
-
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         CardModel? cardModel = (await CardSelectCmd.FromHand(
             prefs: new CardSelectorPrefs(base.SelectionScreenPrompt, 1),
             context: choiceContext,
             player: base.Owner,
-            filter: (CardModel c) => c.DynamicVars["Nutrient"] != null,
+            filter: c => c.DynamicVars.TryGetValue("Nutrient", out var value),
             source: this
             )
             ).FirstOrDefault();

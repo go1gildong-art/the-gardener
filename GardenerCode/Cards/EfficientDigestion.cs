@@ -16,13 +16,13 @@ using Gardener.GardenerCode.Powers;
 [Pool(typeof(GardenerCardPool))]
 public class EfficientDigestion() : GardenerCode.Cards.GardenerCard(
   1,
-  CardType.Skill,
+  CardType.Power,
   CardRarity.Uncommon,
   TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
-        new PowerVar<EfficientDigestionPower>(1)
+        new PowerVar<EfficientDigestionPower>(2)
     };
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -33,7 +33,6 @@ public class EfficientDigestion() : GardenerCode.Cards.GardenerCard(
             base.Owner.Creature,
             base.DynamicVars["EfficientDigestionPower"].BaseValue,
             base.Owner.Creature, this);
-        await GardenerCmd.ConsumeNutrient(this);
     }
 
     protected override void OnUpgrade()

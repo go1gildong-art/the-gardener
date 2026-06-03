@@ -32,13 +32,20 @@ public class NutrientDump() : GardenerCode.Cards.GardenerCard(
         new CalculatedDamageVar(ValueProp.Move).WithMultiplier(delegate(CardModel card, Creature? _)
         {
             var hand = PileType.Hand.GetPile(card.Owner).Cards;
+            var playArea = PileType.Play.GetPile(card.Owner).Cards;
 
-            decimal nutrientSum = hand.Aggregate(
-                0m,
-                (acc, card) => acc + card.DynamicVars["Nutrient"]?.BaseValue ?? 0
-            );
+            Func<decimal, CardModel, decimal> getNutrientSum = (acc, c) => {
+                    if (c.DynamicVars.TryGetValue("Nutrient", out var value))
+                    {
+                        return acc + value.BaseValue;
+                    }
+                    return acc;
+                };
 
-            return nutrientSum;
+            decimal handNutrientSum = hand.Aggregate(0m, getNutrientSum);
+            decimal playNutrientSum = playArea.Aggregate(0m, getNutrientSum);
+
+            return handNutrientSum + playNutrientSum;
         })
     };
 
