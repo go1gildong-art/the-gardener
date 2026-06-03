@@ -25,7 +25,6 @@ public class NutrientDump() : GardenerCode.Cards.GardenerCard(
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
-        new DamageVar(10m, DamageProps.card),
         new IntVar("Nutrient", 6),
 
         new CalculationBaseVar(0m),

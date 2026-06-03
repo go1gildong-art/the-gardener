@@ -57,7 +57,7 @@
   "GARDENER-LIFE_COCOON.description": "[gold]양분[/gold] {Nutrient:diff()}. [gold]소멸[/gold]. \n[gold]고갈[/gold]되었다면, 이번 전투 보상에 유물이 {RelicVar:diff()}개 추가됩니다.",
 
   "GARDENER-NUTRIENT_DUMP.title": "비료 쏟아붓기",
-  "GARDENER-NUTRIENT_DUMP.description": "[gold]양분[/gold] {Nutrient:diff()}. 손의 카드들의 [gold]양분[/gold] 총합{IfUpgraded:show: +4|}만큼 피해를 줍니다. (CalculatedDamage:diff()})",
+  "GARDENER-NUTRIENT_DUMP.description": "[gold]양분[/gold] {Nutrient:diff()}. 손의 카드들의 [gold]양분[/gold] {IfUpgraded:show:총합 +4|총합}만큼 피해를 줍니다. ({CalculatedDamage:diff()})",
 
   "GARDENER-POINTY.title": "뾰족뾰족",
   "GARDENER-POINTY.description": "이번 턴 동안 [gold]가시[/gold]를 {TemporaryThornsPower:diff()} 얻습니다.",
