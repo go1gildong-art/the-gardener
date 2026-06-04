@@ -22,7 +22,7 @@ public class ExcessFood() : GardenerCode.Cards.GardenerCard(
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
-        new PowerVar<ExcessFoodPower>(2)
+        new PowerVar<ExcessFoodPower>(1)
     };
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -37,6 +37,6 @@ public class ExcessFood() : GardenerCode.Cards.GardenerCard(
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Energy.UpgradeValueBy(-1);
+        base.EnergyCost.UpgradeBy(-1);
     }
 }
