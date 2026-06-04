@@ -56,8 +56,9 @@ public static class GardenerCmd
             await consumableCard.OnConsumed();
         }
 
-        foreach (var power in card.Owner.Creature.Powers)
+        foreach (var power in card.Owner.Creature.Powers.ToList())
         {
+            GD.Print($"[DEBOOG] Checking power {power.GetType().Name} for nutrient consume trigger.");
             if (power is IOnNutrientConsume nutrientConsumePower)
             {
                 await nutrientConsumePower.OnNutrientConsume();

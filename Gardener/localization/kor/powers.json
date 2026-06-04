@@ -53,5 +53,9 @@
 
   ,"GARDENER-EFFICIENT_DIGESTION_POWER.description": "Whenever Nutrient decreases, gain {Amount} Block.",
   "GARDENER-EFFICIENT_DIGESTION_POWER.smartDescription": "Whenever Nutrient decreases, gain {Amount} Block.",
-  "GARDENER-EFFICIENT_DIGESTION_POWER.title": "Efficient Digestion"
+  "GARDENER-EFFICIENT_DIGESTION_POWER.title": "Efficient Digestion",
+
+  "GARDENER-SURPRISE_MUTATION_POWER.description": "Gain {Amount} Temporary Strength, Dexterity, and Thorns until the start of your next turn.",
+  "GARDENER-SURPRISE_MUTATION_POWER.smartDescription": "Gain {Amount} Temporary Strength, Dexterity, and Thorns until the start of your next turn.",
+  "GARDENER-SURPRISE_MUTATION_POWER.title": "Surprise Mutation"
 }

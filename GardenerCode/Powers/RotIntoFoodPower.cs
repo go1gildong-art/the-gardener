@@ -27,6 +27,8 @@ public class RotIntoFoodPower : CustomPowerModel, IOnNutrientConsume
 
     public async Task OnNutrientConsume()
     {
-        await PowerCmd.Apply<TemporaryStrengthPower>(null, base.Owner, base.Amount, base.Owner, null);
+        GD.Print("[DEBOOG] ROTINTOFOOD TRIGGERED");
+        Flash();
+        await PowerCmd.Apply<RotIntoFoodTempStrengthPower>(null, base.Owner, base.Amount, base.Owner, null);
     }
 }

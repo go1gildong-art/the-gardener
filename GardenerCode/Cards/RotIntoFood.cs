@@ -33,7 +33,7 @@ public class RotIntoFood() : GardenerCode.Cards.GardenerCard(
         await PowerCmd.Apply<RotIntoFoodPower>(
             choiceContext,
             base.Owner.Creature,
-            base.DynamicVars["RotIntoFoodThornsPower"].BaseValue,
+            base.DynamicVars["RotIntoFoodPower"].BaseValue,
             base.Owner.Creature, this);
 
             await PowerCmd.Apply<RotIntoFoodThornsPower>(

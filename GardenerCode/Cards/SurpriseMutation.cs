@@ -3,6 +3,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models.Events;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Gardener;
@@ -22,9 +23,10 @@ public class SurpriseMutation() : GardenerCode.Cards.GardenerCard(
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
-        new PowerVar<TemporaryStrengthPower_>(1m),
-        new PowerVar<TemporaryDexterityPower_>(1m),
+        new IntVar("TemporaryStrengthPower_", 1m),
+        new IntVar("TemporaryDexterityPower_", 1m),
         new PowerVar<TemporaryThornsPower>(2m),
+        new PowerVar<SurpriseMutationPower>(1m)
     };
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => new CardKeyword[]
@@ -35,13 +37,8 @@ public class SurpriseMutation() : GardenerCode.Cards.GardenerCard(
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
-        foreach (var dynamicVar in this.DynamicVars)
-        {
-            GD.Print($"[DEBOOG] {dynamicVar}");
-        }
-        await PowerCmd.Apply<TemporaryStrengthPower_>(choiceContext, base.Owner.Creature, base.DynamicVars["TemporaryStrengthPower_"].BaseValue, base.Owner.Creature, this);
-        await PowerCmd.Apply<TemporaryDexterityPower_>(choiceContext, base.Owner.Creature, base.DynamicVars["TemporaryDexterityPower_"].BaseValue, base.Owner.Creature, this);
-        await PowerCmd.Apply<TemporaryThornsPower>(choiceContext, base.Owner.Creature, base.DynamicVars["TemporaryThornsPower"].BaseValue, base.Owner.Creature, this);
+        await PowerCmd.Apply<SurpriseMutationPower>(choiceContext, base.Owner.Creature, base.DynamicVars["SurpriseMutationPower"].BaseValue, base.Owner.Creature, this);
+
     }
 
     protected override void OnUpgrade()
