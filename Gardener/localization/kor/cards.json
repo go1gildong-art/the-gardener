@@ -95,7 +95,7 @@
   "GARDENER-STURDY_STEM.description": "[gold]방어도[/gold]를 {Block:diff()} 얻습니다. \n[gold]방어도[/gold]가 다음 턴까지 유지됩니다.",
 
   "GARDENER-SURPRISE_MUTATION.title": "깜짝 변이!",
-  "GARDENER-SURPRISE_MUTATION.description": "이번 턴 동안 힘을 {TemporaryStrengthPower:diff()}, \n민첩을 {TemporaryDexterityPower:diff()}, [gold]가시[/gold]를 {TemporaryThornsPower:diff()} 얻습니다.",
+  "GARDENER-SURPRISE_MUTATION.description": "이번 턴 동안 힘을 {TemporaryStrengthPower_:diff()}, \n민첩을 {TemporaryDexterityPower_:diff()}, [gold]가시[/gold]를 {TemporaryThornsPower:diff()} 얻습니다.",
 
   "GARDENER-SYMBIOTIC_PLANT.title": "공생성 식물",
   "GARDENER-SYMBIOTIC_PLANT.description": "[gold]양분[/gold] {Nutrient:diff()}. \n피해를 {Damage:diff()}만큼 줍니다. \n다음으로 플레이하는 카드 {SymbioticPlantPower:diff()}장은 [gold]양분[/gold]을 소모하지 않습니다.",
