@@ -21,8 +21,8 @@ public class CompostBombardment() : GardenerCode.Cards.GardenerCard(
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
-        new DamageVar(8m, DamageProps.card),
-        new IntVar("NutrientThreshold", 20)
+        new DamageVar(20m, DamageProps.card),
+        new IntVar("NutrientThreshold", 4)
     };
 
     protected override bool ShouldGlowGoldInternal => IsPlayable;
@@ -32,7 +32,6 @@ public class CompostBombardment() : GardenerCode.Cards.GardenerCard(
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(base.CombatState)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);

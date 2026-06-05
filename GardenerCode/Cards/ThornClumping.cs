@@ -36,9 +36,11 @@ public class ThornClumping() : GardenerCode.Cards.GardenerCard(
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        var blockAmount = new BlockVar(base.DynamicVars.CalculatedBlock.BaseValue, ValueProp.Move);
+
         await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
-        await CreatureCmd.GainBlock(base.Owner.Creature, base.DynamicVars.Block, cardPlay);
-        await CreatureCmd.GainBlock(base.Owner.Creature, base.DynamicVars.Block, cardPlay);
+        await CreatureCmd.GainBlock(base.Owner.Creature, blockAmount, cardPlay);
+        await CreatureCmd.GainBlock(base.Owner.Creature, blockAmount, cardPlay);
     }
 
     protected override void OnUpgrade()

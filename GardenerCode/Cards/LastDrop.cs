@@ -59,6 +59,6 @@ public class LastDrop() : GardenerCode.Cards.GardenerCard(
 
     protected override void OnUpgrade()
     {
-        DynamicVars["Nutrient"].UpgradeValueBy(1);
+        CardCmd.ApplyKeyword(this, CardKeyword.Retain);
     }
 }

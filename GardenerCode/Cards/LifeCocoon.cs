@@ -35,6 +35,7 @@ public class LifeCocoon() : GardenerCode.Cards.GardenerCard(
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
+        await GardenerCmd.ConsumeNutrient(this);
     }
 
     public async Task OnDepleted()

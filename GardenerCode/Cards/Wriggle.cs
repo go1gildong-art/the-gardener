@@ -24,6 +24,7 @@ public class Wriggle() : GardenerCode.Cards.GardenerCard(
     {
         new IntVar("Nutrient", 10),
         new CardsVar(2),
+        new IntVar("NutrientThreshold", 4),
         new PowerVar<WrigglePower>(4)
     };
 
@@ -32,7 +33,7 @@ public class Wriggle() : GardenerCode.Cards.GardenerCard(
         await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
         await CardPileCmd.Draw(choiceContext, base.DynamicVars.Cards.BaseValue, base.Owner);
         
-        if (base.DynamicVars["Nutrient"].BaseValue <= 6)
+        if (base.DynamicVars["Nutrient"].BaseValue >= base.DynamicVars["NutrientThreshold"].BaseValue)
         {
             await PowerCmd.Apply<WrigglePower>(
                 choiceContext,

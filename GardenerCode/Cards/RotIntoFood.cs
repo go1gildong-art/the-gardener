@@ -22,7 +22,7 @@ public class RotIntoFood() : GardenerCode.Cards.GardenerCard(
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
-        new PowerVar<RotIntoFoodPower>(1),
+        new PowerVar<RotIntoFoodPower>(2),
         new PowerVar<RotIntoFoodThornsPower>(0)
     };
 
@@ -46,6 +46,6 @@ public class RotIntoFood() : GardenerCode.Cards.GardenerCard(
 
     protected override void OnUpgrade()
     {
-        DynamicVars["RotIntoFoodThornsPower"].UpgradeValueBy(1);
+        DynamicVars["RotIntoFoodThornsPower"].UpgradeValueBy(2);
     }
 }

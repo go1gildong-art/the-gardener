@@ -14,7 +14,7 @@ using MegaCrit.Sts2.Core.Models.CardPools;
 
 [Pool(typeof(GardenerCardPool))]
 public class LeafShield() : GardenerCode.Cards.GardenerCard(
-  0,
+  1,
   CardType.Skill,
   CardRarity.Common,
   TargetType.Self)

@@ -17,7 +17,7 @@ public class PollenStorm() : GardenerCode.Cards.GardenerCard(
   0,
   CardType.Attack,
   CardRarity.Uncommon,
-  TargetType.AllEnemies)
+  TargetType.AnyEnemy)
 {
     protected override bool HasEnergyCostX => true;
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
@@ -28,12 +28,13 @@ public class PollenStorm() : GardenerCode.Cards.GardenerCard(
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
         int cost = ResolveEnergyXValue();
         for (int i = 0; i < cost; i++)
         {
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
                 .FromCard(this)
-                .TargetingAllOpponents(base.CombatState)
+                .Targeting(cardPlay.Target)
                 .WithHitFx("vfx/vfx_attack_slash")
                 .Execute(choiceContext);
 

@@ -45,7 +45,7 @@
   "GARDENER-EXCESS_FOOD.description": "매 턴 비용인 X인 카드를 \n처음으로 사용한다면, 그 후 \n에너지를 {ExcessFoodPower:diff()} 얻습니다.",
 
   "GARDENER-FERTILIZER.title": "비료",
-  "GARDENER-FERTILIZER.description": "[gold]양분[/gold] {Nutrient:diff()}. \n다음 턴에 {Energy:energyIcons()}를 얻습니다. \n손에 카드를 1장 고르고, [gold]양분[/gold]을 2 보충합니다.",
+  "GARDENER-FERTILIZER.description": "[gold]양분[/gold] {Nutrient:diff()}. \n다음 턴에 {Energy:energyIcons()}를 얻습니다. \n{IfUpgraded:show:손에 카드를 {Cards:diff()}장 고르고,|손에 모든 카드에} [gold]양분[/gold]을 2 보충합니다.",
   "GARDENER-FERTILIZER.selectionScreenPrompt": "[gold]양분[/gold]을 공급할 카드를 선택하세요.",
 
   "GARDENER-LAST_DROP.title": "한 방울도 남김없이",
@@ -80,7 +80,7 @@
   "GARDENER-RAPID_GROWTH.description": "[gold]양분[/gold] {Nutrient:diff()}. \n카드를 {Cards:diff()}장 뽑습니다. \n[gold]양분[/gold]이 4 이하라면, 비용이 1 줄어듭니다.",
 
   "GARDENER-ROT_INTO_FOOD.title": "썩어서 비료로",
-  "GARDENER-ROT_INTO_FOOD.description": "[gold]양분[/gold]이 감소할 때마다, \n이번 턴 동안 힘{IfUpgraded:show:과 가시를|을} 1 얻습니다.",
+  "GARDENER-ROT_INTO_FOOD.description": "[gold]양분[/gold]이 감소할 때마다, \n이번 턴 동안 힘{IfUpgraded:show:과 가시를|을} {RotIntoFoodPower:diff()} 얻습니다.",
 
   "GARDENER-SHARP_LEAVES.title": "날카로운 잎",
   "GARDENER-SHARP_LEAVES.description": "[gold]가시[/gold]를 {ThornsPower:diff()} 얻습니다.",
@@ -117,7 +117,7 @@
   "GARDENER-WATER_AND_FOOD.selectionScreenPrompt": "성장시킬 카드를 선택하세요.",
 
   "GARDENER-WRIGGLE.title": "꿈틀",
-  "GARDENER-WRIGGLE.description": "[gold]양분[/gold] {Nutrient:diff()}. \n카드를 {Cards:diff()}장 뽑습니다. \n[gold]양분[/gold]이 6 이하라면, \n이번 턴 동안 [gold]가시[/gold]를 4 얻습니다.",
+  "GARDENER-WRIGGLE.description": "[gold]양분[/gold] {Nutrient:diff()}. \n카드를 {Cards:diff()}장 뽑습니다. \n[gold]양분[/gold]이 {NutrientThreshold:diff()} 이상이라면, \n이번 턴 동안 [gold]가시[/gold]를 {WrigglePower:diff()} 얻습니다.",
 
   "GARDENER-YGGDRASIL_FORM.title": "세계수의 형상",
   "GARDENER-YGGDRASIL_FORM.description": "매 턴 시작 시, 무작위 카드 {YggdrasilFormPower:diff()}장을 \n뽑을 더미에 섞어 넣습니다. \n사용 전까지 비용이 0이 됩니다."

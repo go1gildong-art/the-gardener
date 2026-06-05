@@ -23,7 +23,7 @@ public class Fertilizer() : GardenerCode.Cards.GardenerCard(
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
-        new IntVar("Nutrient", 5),
+        new IntVar("Nutrient", 8),
         new EnergyVar(1)
     };
 
