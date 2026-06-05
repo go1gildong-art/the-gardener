@@ -4,7 +4,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
-
+using MegaCrit.Sts2.Core.CardSelection;
 namespace Gardener;
 
 using BaseLib.Utils;
@@ -24,28 +24,35 @@ public class Fertilizer() : GardenerCode.Cards.GardenerCard(
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
         new IntVar("Nutrient", 8),
+        new IntVar("NutrientFeed", 2),
+        new CardsVar(1),
         new EnergyVar(1)
     };
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
-        
-		if (base.IsUpgraded)
-		{
-			foreach (CardModel item in PileType.Hand.GetPile(base.Owner).Cards.Where((CardModel c) => c.IsUpgradable))
-			{
-				await GardenerCmd.FeedNutrient(item);
-			}
-			return;
-		}
-		CardModel? cardModel = await CardSelectCmd.FromHandForUpgrade(choiceContext, base.Owner, this);
-		if (cardModel != null)
-		{
-			await GardenerCmd.FeedNutrient(cardModel);
-		}
-
         await PowerCmd.Apply<EnergyNextTurnPower>(choiceContext, base.Owner.Creature, base.DynamicVars.Energy.BaseValue, base.Owner.Creature, this);
+        
+		var list = this.IsUpgraded 
+        ? PileType.Hand.GetPile(base.Owner).Cards
+        : (
+            await CardSelectCmd.FromHand(
+                prefs: new CardSelectorPrefs(base.SelectionScreenPrompt, 0, (int) base.DynamicVars.Cards.BaseValue),
+                context: choiceContext,
+                player: base.Owner,
+                filter: card => card.DynamicVars.ContainsKey("Nutrient"),
+                source: this
+        )).ToList();
+
+        foreach (CardModel item in list)
+        {
+            CardCmd.ApplyKeyword(item, CardKeyword.Retain);
+            item.EnergyCost.AddThisCombat(-1);
+            await GardenerCmd.FeedNutrient(item, (int) base.DynamicVars["NutrientFeed"].BaseValue);
+        }
+
+        
         await GardenerCmd.ConsumeNutrient(this);
     }
 

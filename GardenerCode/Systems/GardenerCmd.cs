@@ -57,7 +57,7 @@ public static class GardenerCmd
                 }
             }
 
-            if (deckCard.DynamicVars["Nutrient"].IntValue <= 0) await Deplete(card);
+            if (deckCard?.DynamicVars["Nutrient"].IntValue <= 0) await Deplete(card);
         }
 
         GD.Print($"[DEBOOG] Card {card.Id} has no nutrient to consume.");

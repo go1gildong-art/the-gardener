@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
+using MegaCrit.Sts2.Core.CardSelection;
 
 namespace Gardener;
 
@@ -33,14 +34,25 @@ public class Pruning() : GardenerCode.Cards.GardenerCard(
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
 
-        for (int i = 0; i < base.DynamicVars.Cards.BaseValue; i++)
+        var list = this.IsUpgraded 
+        ? PileType.Hand.GetPile(base.Owner).Cards
+        : (
+            await CardSelectCmd.FromHand(
+                prefs: new CardSelectorPrefs(base.SelectionScreenPrompt, 0, (int) base.DynamicVars.Cards.BaseValue),
+                context: choiceContext,
+                player: base.Owner,
+                filter: card => card.DynamicVars.ContainsKey("Nutrient"),
+                source: this
+        )).ToList();
+
+        foreach (CardModel item in list)
         {
-            CardModel? cardModel = await CardSelectCmd.FromHandForUpgrade(choiceContext, base.Owner, this);
-            if (cardModel != null)
-            {
-                await GardenerCmd.FeedNutrient(cardModel);
-            }
+            CardCmd.ApplyKeyword(item, CardKeyword.Retain);
+            item.EnergyCost.AddThisCombat(-1);
+            await GardenerCmd.FeedNutrient(item, (int) base.DynamicVars["NutrientFeed"].BaseValue);
         }
+
+        await GardenerCmd.ConsumeNutrient(this);
     }
 
     protected override void OnUpgrade()

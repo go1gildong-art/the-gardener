@@ -72,6 +72,7 @@
 
   "GARDENER-PRUNING.title": "가지치기",
   "GARDENER-PRUNING.description": "피해를 {Damage:diff()}만큼 줍니다. \n손에 카드를 1장 고르고, [gold]양분[/gold]을 1 보충합니다.",
+  "GARDENER-PRUNING.selectionScreenPrompt": "[gold]양분[/gold]을 공급할 카드를 선택하세요.",
 
   "GARDENER-PULSATING_ROOTS.title": "맥동하는 뿌리",
   "GARDENER-PULSATING_ROOTS.description": "매 턴 시작 시 카드를 1장 뽑습니다.",
