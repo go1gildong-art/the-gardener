@@ -23,72 +23,63 @@ public static class GardenerCmd
         CardModel card,
         int amount = 1)
     {
-        if (card.DynamicVars["Nutrient"] == null)
+        if (card.DynamicVars.TryGetValue("Nutrient", out var nutrientVar))
         {
-            GD.Print($"[DEBOOG] Card {card.Id} has no nutrient to consume.");
-            return;
-        }
-
-        foreach (var power in card.Owner.Creature.Powers)
-        {
-            if (power is IShouldConsumeNutrient shouldConsumePower)
+            foreach (var power in card.Owner.Creature.Powers)
             {
-                bool shouldConsume = shouldConsumePower.ShouldConsumeNutrient(card.Owner.Creature);
-                if (!shouldConsume)
+                if (power is IShouldConsumeNutrient shouldConsumePower)
                 {
-                    await shouldConsumePower.OnNutrientConsumeBlocked();
-                    return;
+                    bool shouldConsume = shouldConsumePower.ShouldConsumeNutrient(card.Owner.Creature);
+                    if (!shouldConsume)
+                    {
+                        await shouldConsumePower.OnNutrientConsumeBlocked();
+                        return;
+                    }
                 }
             }
-        }
 
+            CardModel? deckCard = card.DeckVersion;
 
-        CardModel? deckCard = card.DeckVersion;
+            GD.Print($"[DEBOOG] Card {card.Id} nutrient is consumed from {card.DynamicVars["Nutrient"].BaseValue} by {amount} to {card.DynamicVars["Nutrient"].BaseValue - amount}.");
+            card.DynamicVars["Nutrient"].UpgradeValueBy(-amount);
+            deckCard?.DynamicVars["Nutrient"].UpgradeValueBy(-amount);
 
-        GD.Print($"[DEBOOG] Card {card.Id} nutrient is consumed from {card.DynamicVars["Nutrient"].BaseValue} by {amount} to {card.DynamicVars["Nutrient"].BaseValue - amount}.");
-        card.DynamicVars["Nutrient"].UpgradeValueBy(-amount);
-        deckCard?.DynamicVars["Nutrient"].UpgradeValueBy(-amount);
+            NutrientCombatState.Get(card.CombatState).NutrientConsumedThisCombat += 1;
 
-        NutrientCombatState.Get(card.CombatState).NutrientConsumedThisCombat += 1;
+            if (card is IOnConsumed consumableCard) await consumableCard.OnConsumed();
 
-        if (card is IOnConsumed consumableCard)
-        {
-            await consumableCard.OnConsumed();
-        }
-
-        foreach (var power in card.Owner.Creature.Powers.ToList())
-        {
-            GD.Print($"[DEBOOG] Checking power {power.GetType().Name} for nutrient consume trigger.");
-            if (power is IOnNutrientConsume nutrientConsumePower)
+            foreach (var power in card.Owner.Creature.Powers.ToList())
             {
-                await nutrientConsumePower.OnNutrientConsume();
+                GD.Print($"[DEBOOG] Checking power {power.GetType().Name} for nutrient consume trigger.");
+                if (power is IOnNutrientConsume nutrientConsumePower)
+                {
+                    await nutrientConsumePower.OnNutrientConsume();
+                }
             }
+
+            if (deckCard.DynamicVars["Nutrient"].IntValue <= 0) await Deplete(card);
         }
 
-        if (deckCard != null && deckCard.DynamicVars["Nutrient"].IntValue <= 0)
-        {
-            await Deplete(card);
-        }
+        GD.Print($"[DEBOOG] Card {card.Id} has no nutrient to consume.");
     }
 
     public static async Task FeedNutrient(
         CardModel card,
         int amount = 1)
     {
-        if (card.DynamicVars["Nutrient"] == null)
+        if (card.DynamicVars.TryGetValue("Nutrient", out var nutrientVar))
+        {
+            CardModel? deckCard = card.DeckVersion;
+
+            GD.Print($"[DEBOOG] Card {card.Id} nutrient is fed from {card.DynamicVars["Nutrient"].BaseValue} by {amount} to {card.DynamicVars["Nutrient"].BaseValue - amount}.");
+            card.DynamicVars["Nutrient"].UpgradeValueBy(amount);
+            deckCard?.DynamicVars["Nutrient"].UpgradeValueBy(amount);
+
+            if (card is IOnFed fedCard) await fedCard.OnFed();
+        }
+        else
         {
             GD.Print($"[DEBOOG] Card {card.Id} has no nutrient to feed");
-            return;
-        }
-        CardModel? deckCard = card.DeckVersion;
-
-        GD.Print($"[DEBOOG] Card {card.Id} nutrient is fed from {card.DynamicVars["Nutrient"].BaseValue} by {amount} to {card.DynamicVars["Nutrient"].BaseValue - amount}.");
-        card.DynamicVars["Nutrient"].UpgradeValueBy(amount);
-        deckCard?.DynamicVars["Nutrient"].UpgradeValueBy(amount);
-
-        if (card is IOnFed fedCard)
-        {
-            await fedCard.OnFed();
         }
     }
 
