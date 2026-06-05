@@ -14,7 +14,7 @@ using Gardener.GardenerCode.Cards;
 using MegaCrit.Sts2.Core.Models;
 
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-
+using BaseLib.Extensions;
 
 namespace Gardener.GardenerCode.Powers;
 
@@ -75,4 +75,7 @@ public class TemporaryThornsPower : CustomPowerModel
             await PowerCmd.Apply<ThornsPower>(null, base.Owner, -Sign * base.Amount, base.Owner, null);
         }
     }
+
+    public override string CustomBigIconPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".PowerImagePath();
+    public override string CustomPackedIconPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".BigPowerImagePath();
 }

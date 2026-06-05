@@ -1,4 +1,5 @@
 
+using BaseLib.Extensions;
 using MegaCrit.Sts2.Core.Combat;
 using BaseLib.Abstracts;
 using MegaCrit.Sts2.Core.Commands;
@@ -6,7 +7,7 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
-
+using Gardener.GardenerCode.Extensions;
 namespace Gardener.GardenerCode.Powers;
 
 public sealed class SturdyStemPower : CustomPowerModel
@@ -43,4 +44,7 @@ public sealed class SturdyStemPower : CustomPowerModel
 			await PowerCmd.Decrement(this);
 		}
 	}
+
+	public override string CustomBigIconPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".PowerImagePath();
+	public override string CustomPackedIconPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".BigPowerImagePath();
 }

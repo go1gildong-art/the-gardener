@@ -45,7 +45,7 @@
   "GARDENER-EXCESS_FOOD.description": "매 턴 비용인 X인 카드를 \n처음으로 사용한다면, 그 후 \n에너지를 {ExcessFoodPower:diff()} 얻습니다.",
 
   "GARDENER-FERTILIZER.title": "비료",
-  "GARDENER-FERTILIZER.description": "[gold]양분[/gold] {Nutrient:diff()}. \n다음 턴에 {Energy:energyIcons()}를 얻습니다. \n{IfUpgraded:show:손에 카드를 {Cards:diff()}장 고르고,|손에 모든 카드에} [gold]양분[/gold]을 2 보충합니다.",
+  "GARDENER-FERTILIZER.description": "[gold]양분[/gold] {Nutrient:diff()}. \n다음 턴에 {Energy:energyIcons()}를 얻습니다. \n{IfUpgraded:show:손에 모든 카드에|손에 카드를 {Cards:diff()}장 고르고,} [gold]양분[/gold]을 2 보충합니다.",
   "GARDENER-FERTILIZER.selectionScreenPrompt": "[gold]양분[/gold]을 공급할 카드를 선택하세요.",
 
   "GARDENER-LAST_DROP.title": "한 방울도 남김없이",

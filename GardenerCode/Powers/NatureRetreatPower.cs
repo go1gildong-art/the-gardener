@@ -7,6 +7,17 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using BaseLib.Abstracts;
 
+using BaseLib.Abstracts;
+using BaseLib.Extensions;
+using Gardener.GardenerCode.Extensions;
+using MegaCrit.Sts2.Core.Entities.Powers;
+
+using Godot;
+
+
+
+
+
 namespace Gardener.GardenerCode.Powers;
 
 public class NatureRetreatPower : CustomPowerModel
@@ -22,4 +33,8 @@ public class NatureRetreatPower : CustomPowerModel
         await CardPileCmd.Draw(choiceContext, base.Amount, base.Owner.Player);
         await PowerCmd.Remove(this);
     }
+
+
+    public override string CustomBigIconPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".PowerImagePath();
+    public override string CustomPackedIconPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".BigPowerImagePath();
 }

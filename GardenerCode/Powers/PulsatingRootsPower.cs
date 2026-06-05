@@ -29,4 +29,7 @@ public class PulsatingRootsPower : CustomPowerModel
 		}
 		return count + (decimal)base.Amount;
 	}
+
+	public override string CustomBigIconPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".PowerImagePath();
+	public override string CustomPackedIconPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".BigPowerImagePath();
 }

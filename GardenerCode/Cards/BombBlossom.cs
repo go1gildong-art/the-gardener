@@ -38,6 +38,6 @@ public class BombBlossom() : GardenerCode.Cards.GardenerCard(
 
     protected override void OnUpgrade()
     {
-        DynamicVars["Nutrient"].UpgradeValueBy(4);
+        DynamicVars["Nutrient"].UpgradeValueBy(7);
     }
 }

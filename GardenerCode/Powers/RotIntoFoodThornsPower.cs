@@ -1,4 +1,5 @@
 
+using BaseLib.Extensions;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using Godot;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -35,4 +36,6 @@ public class RotIntoFoodThornsPower : CustomPowerModel, IOnNutrientConsume
         await OnNutrientConsumed();
     }
 
+    public override string CustomBigIconPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".PowerImagePath();
+    public override string CustomPackedIconPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".BigPowerImagePath();
 }

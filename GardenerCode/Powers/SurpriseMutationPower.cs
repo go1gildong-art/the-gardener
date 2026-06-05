@@ -1,4 +1,5 @@
 
+using BaseLib.Extensions;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using Godot;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -14,7 +15,7 @@ using Gardener.GardenerCode.Cards;
 using MegaCrit.Sts2.Core.Models;
 
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-
+using BaseLib.Extensions;
 
 namespace Gardener.GardenerCode.Powers;
 
@@ -95,4 +96,7 @@ public class SurpriseMutationPower : CustomPowerModel
             await ApplyEffects(null, base.Owner, -base.Amount, base.Owner, null);
         }
     }
+
+    public override string CustomBigIconPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".PowerImagePath();
+    public override string CustomPackedIconPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".BigPowerImagePath();
 }

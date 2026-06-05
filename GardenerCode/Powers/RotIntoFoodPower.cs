@@ -7,6 +7,8 @@ using MegaCrit.Sts2.Core.Commands;
 
 using BaseLib.Abstracts;
 using MegaCrit.Sts2.Core.Combat;
+using Gardener.GardenerCode.Extensions;
+using BaseLib.Extensions;
 
 
 using Gardener.GardenerCode.Extensions;
@@ -31,4 +33,7 @@ public class RotIntoFoodPower : CustomPowerModel, IOnNutrientConsume
         Flash();
         await PowerCmd.Apply<RotIntoFoodTempStrengthPower>(null, base.Owner, base.Amount, base.Owner, null);
     }
+
+    public override string CustomBigIconPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".PowerImagePath();
+    public override string CustomPackedIconPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".BigPowerImagePath();
 }

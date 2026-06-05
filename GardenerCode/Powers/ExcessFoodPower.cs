@@ -1,4 +1,6 @@
 
+using BaseLib.Extensions;
+using BaseLib.Extensions;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using Godot;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -7,9 +9,9 @@ using MegaCrit.Sts2.Core.Commands;
 
 using BaseLib.Abstracts;
 using MegaCrit.Sts2.Core.Combat;
-
-
 using Gardener.GardenerCode.Extensions;
+
+
 using Gardener.GardenerCode.Cards;
 
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -64,4 +66,7 @@ public class ExcessFoodPower : CustomPowerModel
         if (!participants.Contains(base.Owner)) return;
         ConsumedThisTurn = false;
     }
+
+    public override string CustomBigIconPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".PowerImagePath();
+    public override string CustomPackedIconPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".BigPowerImagePath();
 }
