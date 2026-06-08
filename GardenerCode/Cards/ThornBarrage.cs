@@ -15,7 +15,7 @@ using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Models.Powers;
-
+/// <summary>
 [Pool(typeof(GardenerCardPool))]
 public class ThornBarrage() : GardenerCode.Cards.GardenerCard(
   1,
