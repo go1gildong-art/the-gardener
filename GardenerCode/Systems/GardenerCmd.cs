@@ -44,7 +44,7 @@ public static class GardenerCmd
             card.DynamicVars["Nutrient"].UpgradeValueBy(-amount);
             deckCard?.DynamicVars["Nutrient"].UpgradeValueBy(-amount);
 
-            NutrientCombatState.Get(card.CombatState).NutrientConsumedThisCombat += 1;
+            NutrientCombatState.Get(card.CombatState).NutrientConsumedThisCombat += amount;
 
             if (card is IOnConsumed consumableCard) await consumableCard.OnConsumed();
 
@@ -87,13 +87,15 @@ public static class GardenerCmd
         CardModel card
         )
     {
-        GD.Print($"[DEBOOG] Card {card.Id} is depleted. Removing from combat and deck.");
-        await CardPileCmd.RemoveFromCombat(card);
-
         if (card is IOnDepleted depletableCard)
         {
             await depletableCard.OnDepleted();
         }
+        
+        GD.Print($"[DEBOOG] Card {card.Id} is depleted. Removing from combat and deck.");
+        await CardPileCmd.RemoveFromCombat(card);
+
+        
 
         CardModel? deckCard = card.DeckVersion;
         if (deckCard != null) await CardPileCmd.RemoveFromDeck(deckCard);

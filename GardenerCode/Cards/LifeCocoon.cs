@@ -4,7 +4,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
-
+using Godot;
 namespace Gardener;
 
 using BaseLib.Utils;
@@ -40,7 +40,7 @@ public class LifeCocoon() : GardenerCode.Cards.GardenerCard(
 
     public async Task OnDepleted()
     {
-        AbstractRoom currentRoom = base.CombatState.RunState.CurrentRoom;
+        AbstractRoom? currentRoom = base.CombatState?.RunState.CurrentRoom;
         if (currentRoom is CombatRoom combatRoom)
         {
             for (int i = 0; i < DynamicVars["RelicVar"].BaseValue; i++)
@@ -48,6 +48,10 @@ public class LifeCocoon() : GardenerCode.Cards.GardenerCard(
                 base.Owner,
                 new RelicReward(base.Owner)
                 );
+        } 
+        else
+        {
+            GD.Print($"[DEBOOG] OnDepleted was triggered but current room is not a CombatRoom. Room: {currentRoom?.GetType().Name}");
         }
     }
 

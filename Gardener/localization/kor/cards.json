@@ -1,5 +1,5 @@
 {
-  "GARDENER-VINE_STRIKE.description": "모든 적에게 피해를 {Damage:diff()}만큼 {Repeat:diff()}번 줍니다.",
+  "GARDENER-VINE_STRIKE.description": "[gold]양분[/gold] {Nutrient:diff()}. \n모든 적에게 피해를 {Damage:diff()}만큼 {Repeat:diff()}번 줍니다.",
   "GARDENER-VINE_STRIKE.title": "덩굴 타격",
 
   "GARDENER-WEEDING.description": "피해를 {Damage:diff()}만큼 X번 줍니다.",
@@ -33,7 +33,7 @@
   "GARDENER-CELL_WALL.description": "[gold]방어도[/gold]를 {Block:diff()} 얻습니다. \n이번 턴 동안 가시를 {TemporaryThornsPower:diff()} 얻습니다.",
 
   "GARDENER-COMPOST_BOMBARDMENT.title": "퇴비 폭격",
-  "GARDENER-COMPOST_BOMBARDMENT.description": "이번 전투동안 [gold]양분[/gold]이 6개 이상 소모되었다면, \n모든 적에게 피해를 {Damage:diff()} 줍니다.",
+  "GARDENER-COMPOST_BOMBARDMENT.description": "이번 전투동안 [gold]양분[/gold]이 {NutrientThreshold:diff()}개 이상 소모되었다면 (현재: {CurrentNutrientConsumed:diff()}), \n모든 적에게 피해를 {Damage:diff()} 줍니다.",
 
   "GARDENER-DEFEND_GARDENER.description": "[gold]방어도[/gold]를 {Block:diff()} 얻습니다.",
   "GARDENER-DEFEND_GARDENER.title": "수비",
@@ -71,7 +71,7 @@
   "GARDENER-PREMIUM_SERUM.description": "[gold]양분[/gold] {Nutrient:diff()}. \n{Energy:energyIcons()}를 얻습니다. \n카드를 {Cards:diff()}장 뽑습니다.",
 
   "GARDENER-PRUNING.title": "가지치기",
-  "GARDENER-PRUNING.description": "피해를 {Damage:diff()}만큼 줍니다. \n손에 카드를 1장 고르고, [gold]양분[/gold]을 1 보충합니다.",
+  "GARDENER-PRUNING.description": "피해를 {Damage:diff()}만큼 줍니다. \n손에 카드를 1장 고르고, [gold]양분[/gold]을 {NutrientFeed:diff()} 보충합니다.",
   "GARDENER-PRUNING.selectionScreenPrompt": "[gold]양분[/gold]을 공급할 카드를 선택하세요.",
 
   "GARDENER-PULSATING_ROOTS.title": "맥동하는 뿌리",

@@ -47,8 +47,6 @@ public class Fertilizer() : GardenerCode.Cards.GardenerCard(
 
         foreach (CardModel item in list)
         {
-            CardCmd.ApplyKeyword(item, CardKeyword.Retain);
-            item.EnergyCost.AddThisCombat(-1);
             await GardenerCmd.FeedNutrient(item, (int) base.DynamicVars["NutrientFeed"].BaseValue);
         }
 

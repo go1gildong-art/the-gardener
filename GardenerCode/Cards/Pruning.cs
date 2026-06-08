@@ -24,6 +24,7 @@ public class Pruning() : GardenerCode.Cards.GardenerCard(
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
         new DamageVar(8m, DamageProps.card),
+        new IntVar("NutrientFeed", 1),
         new CardsVar(1)
     };
 
@@ -47,8 +48,6 @@ public class Pruning() : GardenerCode.Cards.GardenerCard(
 
         foreach (CardModel item in list)
         {
-            CardCmd.ApplyKeyword(item, CardKeyword.Retain);
-            item.EnergyCost.AddThisCombat(-1);
             await GardenerCmd.FeedNutrient(item, (int) base.DynamicVars["NutrientFeed"].BaseValue);
         }
 
