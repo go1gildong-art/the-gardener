@@ -28,8 +28,8 @@ public class ExcessFoodPower : CustomPowerModel
 
     protected bool ConsumedThisTurn = false;
 
-// could not find "AfterCardPlay()" or similar method. 
-// using some hacks here
+    // could not find "AfterCardPlay()" or similar method. 
+    // using some hacks here
     public override (PileType, CardPilePosition) ModifyCardPlayResultPileTypeAndPosition(
         CardModel card,
         bool isAutoPlay,
@@ -55,10 +55,18 @@ public class ExcessFoodPower : CustomPowerModel
 
         if (isXCost) return;
 
-        Flash();
-        ConsumedThisTurn = true;
-        var player = base.Owner.Player;
-        if (player != null) await PlayerCmd.GainEnergy(base.Amount, player);
+
+    }
+
+    public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    {
+        if (cardPlay.Card.Owner == base.Owner.Player && cardPlay.Card.EnergyCost.CostsX)
+        {
+            Flash();
+            ConsumedThisTurn = true;
+            var player = base.Owner.Player;
+            if (player != null) await PlayerCmd.GainEnergy(base.Amount, player);
+        }
     }
 
     public override async Task AfterSideTurnStart(CombatSide side, IReadOnlyList<Creature> participants, ICombatState combatState)

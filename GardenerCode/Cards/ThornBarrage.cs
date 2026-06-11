@@ -25,6 +25,7 @@ public class ThornBarrage() : GardenerCode.Cards.GardenerCard(
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
+        new RepeatVar(2),
         new CalculationBaseVar(3m),
 		new ExtraDamageVar(1m),
 		new CalculatedDamageVar(ValueProp.Move).WithMultiplier((CardModel card, Creature? _) =>
@@ -37,11 +38,9 @@ public class ThornBarrage() : GardenerCode.Cards.GardenerCard(
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
-        await DamageCmd.Attack(DynamicVars.CalculatedDamage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
-            .WithHitFx("vfx/vfx_attack_slash")
-            .Execute(choiceContext);
-            
-        await DamageCmd.Attack(DynamicVars.CalculatedDamage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
+        var dmg = DynamicVars.CalculatedDamage.Calculate(cardPlay.Target);
+        await DamageCmd.Attack(dmg).FromCard(this).Targeting(cardPlay.Target)
+            .WithHitCount((int) DynamicVars.Repeat.BaseValue)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
     }

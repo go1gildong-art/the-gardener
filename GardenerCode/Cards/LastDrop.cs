@@ -49,7 +49,12 @@ public class LastDrop() : GardenerCode.Cards.GardenerCard(
             await CardCmd.AutoPlay(choiceContext, cardModel, null);
         }
 
-        while (cardModel?.IsInCombat ?? false)
+        while 
+        (
+            cardModel != null
+            && cardModel.DynamicVars.TryGetValue("Nutrient", out var value)
+            && value.BaseValue > 0
+        )
         {
             await GardenerCmd.ConsumeNutrient(cardModel);
         }

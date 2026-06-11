@@ -25,6 +25,7 @@ public class ThornClumping() : GardenerCode.Cards.GardenerCard(
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
+        new RepeatVar(2),
         new CalculationBaseVar(0m),
         new CalculationExtraVar(1m),
 		new CalculatedBlockVar(ValueProp.Move).WithMultiplier((CardModel card, Creature? _) =>
@@ -36,11 +37,13 @@ public class ThornClumping() : GardenerCode.Cards.GardenerCard(
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var blockAmount = new BlockVar(base.DynamicVars.CalculatedBlock.BaseValue, ValueProp.Move);
-
+        var blockAmount = base.DynamicVars.CalculatedBlock.Calculate(cardPlay.Target);
         await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
-        await CreatureCmd.GainBlock(base.Owner.Creature, blockAmount, cardPlay);
-        await CreatureCmd.GainBlock(base.Owner.Creature, blockAmount, cardPlay);
+        
+        for (int i = 0; i < base.DynamicVars.Repeat.BaseValue; i++)
+        {
+            await CreatureCmd.GainBlock(base.Owner.Creature, blockAmount, base.DynamicVars.CalculatedBlock.Props, cardPlay);
+        }
     }
 
     protected override void OnUpgrade()

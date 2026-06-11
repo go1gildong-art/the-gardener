@@ -102,10 +102,10 @@
   "GARDENER-SYMBIOTIC_PLANT.description": "[gold]양분[/gold] {Nutrient:diff()}. \n피해를 {Damage:diff()}만큼 줍니다. \n다음으로 플레이하는 카드 {SymbioticPlantPower:diff()}장은 [gold]양분[/gold]을 소모하지 않습니다.",
 
   "GARDENER-THORN_BARRAGE.title": "가시 폭격",
-  "GARDENER-THORN_BARRAGE.description": "피해를 {CalculatedDamage:diff()}만큼 2번 줍니다. 현재 가진 [gold]가시[/gold]에 따라 피해량이 상승합니다.",
+  "GARDENER-THORN_BARRAGE.description": "피해를 {CalculatedDamage:diff()}만큼 {Repeat:diff()}번 줍니다. 현재 가진 [gold]가시[/gold]에 따라 피해량이 상승합니다.",
 
   "GARDENER-THORN_CLUMPING.title": "가시 뭉치기",
-  "GARDENER-THORN_CLUMPING.description": "[gold]방어도를[/gold] 현재 가진 \n[gold]가시[/gold]만큼 2번 얻습니다.",
+  "GARDENER-THORN_CLUMPING.description": "[gold]방어도를[/gold] {CalculatedBlock:diff()}만큼 {Repeat:diff()}번 얻습니다. 현재 가진 [gold]가시[/gold]에 따라 방어량이 상승합니다.",
 
   "GARDENER-VINE_STRIKE_PROTOTYPE.title": "덩굴 타격 (Prototype)",
   "GARDENER-VINE_STRIKE_PROTOTYPE.description": "피해를 {Damage:diff()}만큼 줍니다.",

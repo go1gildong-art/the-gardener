@@ -40,7 +40,8 @@ public class YggdrasilFormPower : CustomPowerModel
 
         foreach (CardModel item in cards)
         {
-            item.SetToFreeThisCombat();
+            item.EnergyCost.SetUntilPlayed(0);
+            item.SetStarCostUntilPlayed(0);
             CardCmd.PreviewCardPileAdd(
                 await CardPileCmd.AddGeneratedCardToCombat(
                     item,
