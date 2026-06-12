@@ -35,10 +35,10 @@ public class LifeCocoon() : GardenerCode.Cards.GardenerCard(
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
-        await GardenerCmd.ConsumeNutrient(this);
+        await GardenerCmd.ConsumeNutrient(choiceContext, this);
     }
 
-    public async Task OnDepleted()
+    public async Task OnDepleted(PlayerChoiceContext choiceContext)
     {
         AbstractRoom? currentRoom = base.CombatState?.RunState.CurrentRoom;
         if (currentRoom is CombatRoom combatRoom)

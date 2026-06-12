@@ -34,7 +34,7 @@ public class VitalityPrototype() : GardenerCode.Cards.GardenerCard(
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await PlayerCmd.GainEnergy(base.DynamicVars.Energy.BaseValue, base.Owner);
-        await GardenerCmd.ConsumeNutrient(this);
+        await GardenerCmd.ConsumeNutrient(choiceContext, this);
     }
 
     protected override void OnUpgrade()

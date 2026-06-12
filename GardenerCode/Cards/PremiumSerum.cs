@@ -31,7 +31,7 @@ public class PremiumSerum() : GardenerCode.Cards.GardenerCard(
         await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
         await PlayerCmd.GainEnergy(base.DynamicVars.Energy.BaseValue, base.Owner);
         await CardPileCmd.Draw(choiceContext, base.DynamicVars.Cards.BaseValue, base.Owner);
-        await GardenerCmd.ConsumeNutrient(this);
+        await GardenerCmd.ConsumeNutrient(choiceContext, this);
     }
 
     protected override void OnUpgrade()

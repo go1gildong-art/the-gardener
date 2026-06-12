@@ -42,7 +42,7 @@ public class WaterAndFood() : GardenerCode.Cards.GardenerCard(
 
         if (list.Count == 0)
         {
-            await GardenerCmd.ConsumeNutrient(this);
+            await GardenerCmd.ConsumeNutrient(choiceContext, this);
             return;
         }
 
@@ -53,7 +53,7 @@ public class WaterAndFood() : GardenerCode.Cards.GardenerCard(
             await GardenerCmd.FeedNutrient(item, (int) base.DynamicVars["NutrientFeed"].BaseValue);
         }
 
-        await GardenerCmd.ConsumeNutrient(this);
+        await GardenerCmd.ConsumeNutrient(choiceContext, this);
     }
 
     protected override void OnUpgrade()

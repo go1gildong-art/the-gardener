@@ -51,7 +51,7 @@ public class Fertilizer() : GardenerCode.Cards.GardenerCard(
         }
 
         
-        await GardenerCmd.ConsumeNutrient(this);
+        await GardenerCmd.ConsumeNutrient(choiceContext, this);
     }
 
     protected override void OnUpgrade()

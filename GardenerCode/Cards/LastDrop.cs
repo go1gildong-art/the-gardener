@@ -59,7 +59,7 @@ public class LastDrop() : GardenerCode.Cards.GardenerCard(
             await GardenerCmd.ConsumeNutrient(cardModel);
         }
 
-        await GardenerCmd.ConsumeNutrient(this);
+        await GardenerCmd.ConsumeNutrient(choiceContext, this);
     }
 
     protected override void OnUpgrade()

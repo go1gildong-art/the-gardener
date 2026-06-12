@@ -40,7 +40,7 @@ public class PollenStorm() : GardenerCode.Cards.GardenerCard(
 
         for (var i = 0; i < cost; i++)
         {
-            await GardenerCmd.ConsumeNutrient(this);
+            await GardenerCmd.ConsumeNutrient(choiceContext, this);
         }
     }
 

@@ -42,7 +42,7 @@ public class Wriggle() : GardenerCode.Cards.GardenerCard(
                 base.Owner.Creature, this);
         }
 
-        await GardenerCmd.ConsumeNutrient(this);
+        await GardenerCmd.ConsumeNutrient(choiceContext, this);
     }
 
     protected override void OnUpgrade()

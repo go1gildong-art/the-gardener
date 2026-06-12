@@ -32,7 +32,7 @@ public class NatureRetreat() : GardenerCode.Cards.GardenerCard(
         await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
         await CreatureCmd.GainBlock(base.Owner.Creature, base.DynamicVars.Block, cardPlay);
         await PowerCmd.Apply<NatureRetreatPower>(choiceContext, base.Owner.Creature, base.DynamicVars["NatureRetreatPower"].BaseValue, base.Owner.Creature, this);
-        await GardenerCmd.ConsumeNutrient(this);
+        await GardenerCmd.ConsumeNutrient(choiceContext, this);
     }
 
     protected override void OnUpgrade()

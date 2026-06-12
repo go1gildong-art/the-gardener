@@ -13,16 +13,17 @@ using Gardener.GardenerCode.Systems;
 using MegaCrit.Sts2.Core.Models.CardPools;
 
 [Pool(typeof(GardenerCardPool))]
-public class BombBlossom() : GardenerCode.Cards.GardenerCard(
+public class WinterBreeze() : GardenerCode.Cards.GardenerCard(
   0,
-  CardType.Attack,
-  CardRarity.Uncommon,
+  CardType.Skill,
+  CardRarity.Common,
   TargetType.AllEnemies)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
-        new DamageVar(10m, DamageProps.card),
-        new IntVar("Nutrient", 1),
+        new DamageVar(2m, DamageProps.card),
+        new IntVar("Weak", 2),
+        new IntVar("Nutrient", 10),
     };
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -32,12 +33,18 @@ public class BombBlossom() : GardenerCode.Cards.GardenerCard(
             .TargetingAllOpponents(base.CombatState)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
-            
+
+        await PowerCmd.Apply<WeakPower>(
+            choiceContext,
+            base.CombatState.GetAllOpponents(base.Owner.Creature),
+            DynamicVars["Weak"].BaseValue,
+            base.Owner.Creature, this);
+
         await GardenerCmd.ConsumeNutrient(choiceContext, this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars["Nutrient"].UpgradeValueBy(7);
+        TargetType = TargetType.AllEnemies;
     }
 }

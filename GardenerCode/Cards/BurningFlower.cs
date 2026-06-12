@@ -47,7 +47,7 @@ public class BurningFlower() : GardenerCode.Cards.GardenerCard(
     {
         if (card == this && base.CombatState != null)
         {
-            await GardenerCmd.ConsumeNutrient(this, 2);
+            await GardenerCmd.ConsumeNutrient(choiceContext, this, 2);
         }
     }
 

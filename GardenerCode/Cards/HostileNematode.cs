@@ -9,36 +9,46 @@ namespace Gardener;
 
 using BaseLib.Utils;
 using Gardener.GardenerCode.Character;
+using Gardener.GardenerCode.Powers;
 using Gardener.GardenerCode.Systems;
 using MegaCrit.Sts2.Core.Models.CardPools;
 
 [Pool(typeof(GardenerCardPool))]
-public class BoughShield() : GardenerCode.Cards.GardenerCard(
-  0,
+public class HostileNematode() : GardenerCode.Cards.GardenerCard(
+  1,
   CardType.Skill,
   CardRarity.Uncommon,
   TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
-        new BlockVar(4m, BlockProps.card),
-        new IntVar("Nutrient", 4),
+        new IntVar("Nutrient", 10),
+        new PowerVar<TemporaryThornsPower>(3m),
     };
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
-        decimal nutrient = DynamicVars["Nutrient"].BaseValue;
-
-        for (int i = 0; i < nutrient; i++)
+        var hand = base.Owner.Hand;
+        if (hand.Count > 0)
         {
-            await CreatureCmd.GainBlock(base.Owner.Creature, DynamicVars.Block, cardPlay);
+            var cardToExhaust = hand.FirstOrDefault();
+            if (cardToExhaust != null)
+            {
+                await CardPileCmd.Move(choiceContext, cardToExhaust, PileType.Exhaust);
+            }
         }
+
+        await PowerCmd.Apply<TemporaryThornsPower>(
+            choiceContext,
+            base.Owner.Creature,
+            DynamicVars["TemporaryThornsPower"].BaseValue,
+            base.Owner.Creature, this);
 
         await GardenerCmd.ConsumeNutrient(choiceContext, this);
     }
 
     protected override void OnUpgrade()
     {
+        DynamicVars["TemporaryThornsPower"].UpgradeValueBy(1);
     }
 }

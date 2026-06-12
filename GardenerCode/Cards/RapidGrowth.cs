@@ -33,15 +33,15 @@ public class RapidGrowth() : GardenerCode.Cards.GardenerCard(
     {
         await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
         await CardPileCmd.Draw(choiceContext, base.DynamicVars.Cards.BaseValue, base.Owner);
-        await GardenerCmd.ConsumeNutrient(this);
+        await GardenerCmd.ConsumeNutrient(choiceContext, this);
         UpdateCost();
     }
-    public async Task OnConsumed()
+    public async Task OnConsumed(PlayerChoiceContext choiceContext)
     {
         UpdateCost();
     }
 
-    public async Task OnFed()
+    public async Task OnFed(PlayerChoiceContext choiceContext)
     {
         UpdateCost();
     }

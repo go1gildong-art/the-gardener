@@ -10,6 +10,19 @@ Nutrient 12. Gain 4 Blocks.
 Next turn, draw 1 card and gain 1 Energy.
 Upgraded: +3 blocks
 
+Fungi Remover
+0 Energy Common Attack
+Nutrient 8.
+Deal 4 damage. Apply 1 Vulnerable.
+When Depleted, Apply 3 Vulnerable to all enemies.
+Upgraded: targets all enemies
+
+Winter Breeze
+0 Energy Common Skill
+Nutrient 10.
+Deal 2 damage. Apply 2 Weak.
+When Depleted, Apply 1 Vulnerable to yourself.
+Upgraded: targets all enemies
 
 Vine Strike
 1 Energy Common Attack
@@ -64,7 +77,12 @@ Surprise Mutation
 Gain 1 Strength, 1 Dexterity, 2 Thorns this turn. Exhaust.
 Upgraded: Exhaust removed
 
-
+## Hostile Nematode
+1 Energy Special Skill
+Nutrient 10.
+Exhaust 1 card in your hand.
+Gain 3 Thorns.
+Upgraded: 3 -> 4 Thorns
 
 Thorn Barrage
 1 Energy Special Attack
@@ -142,6 +160,12 @@ Whenever Nutrient decreases, gain 2 Block.
 Upgraded: +1 Block
 
 
+
+Pyrrhic Blossom
+1 Energy Rare Skill
+Nutrient 10.
+Double your Thorns.
+Upgraded: Nutrient +10
 
 Compost Bombardment
 0 Energy Rare Attack

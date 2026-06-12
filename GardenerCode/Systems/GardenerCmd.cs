@@ -20,7 +20,8 @@ public static class GardenerCmd
 {
 
     public static async Task ConsumeNutrient(
-        CardModel card,
+        PlayerChoiceContext choiceContext,
+        CardModel card, 
         int amount = 1)
     {
         if (card.DynamicVars.TryGetValue("Nutrient", out var nutrientVar))
@@ -46,7 +47,7 @@ public static class GardenerCmd
 
             NutrientCombatState.Get(card.CombatState).NutrientConsumedThisCombat += amount;
 
-            if (card is IOnConsumed consumableCard) await consumableCard.OnConsumed();
+            if (card is IOnConsumed consumableCard) await consumableCard.OnConsumed(choiceContext);
 
             foreach (var power in card.Owner.Creature.Powers.ToList())
             {
@@ -57,13 +58,14 @@ public static class GardenerCmd
                 }
             }
 
-            if (deckCard?.DynamicVars["Nutrient"].IntValue <= 0) await Deplete(card);
+            if (deckCard?.DynamicVars["Nutrient"].IntValue <= 0) await Deplete(choiceContext, card);
         }
 
         GD.Print($"[DEBOOG] Card {card.Id} has no nutrient to consume.");
     }
 
     public static async Task FeedNutrient(
+        PlayerChoiceContext choiceContext,
         CardModel card,
         int amount = 1)
     {
@@ -75,7 +77,7 @@ public static class GardenerCmd
             card.DynamicVars["Nutrient"].UpgradeValueBy(amount);
             deckCard?.DynamicVars["Nutrient"].UpgradeValueBy(amount);
 
-            if (card is IOnFed fedCard) await fedCard.OnFed();
+            if (card is IOnFed fedCard) await fedCard.OnFed(choiceContext);
         }
         else
         {
@@ -84,12 +86,13 @@ public static class GardenerCmd
     }
 
     public static async Task Deplete(
+        PlayerChoiceContext choiceContext,
         CardModel card
         )
     {
         if (card is IOnDepleted depletableCard)
         {
-            await depletableCard.OnDepleted();
+            await depletableCard.OnDepleted(choiceContext);
         }
         
         GD.Print($"[DEBOOG] Card {card.Id} is depleted. Removing from combat and deck.");

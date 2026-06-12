@@ -34,7 +34,7 @@ public class VineStrike() : GardenerCode.Cards.GardenerCard(
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
 
-        await GardenerCmd.ConsumeNutrient(this);
+        await GardenerCmd.ConsumeNutrient(choiceContext, this);
     }
 
     protected override void OnUpgrade()
