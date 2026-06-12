@@ -20,10 +20,13 @@ public class RapidGrowth() : GardenerCode.Cards.GardenerCard(
   CardRarity.Uncommon,
   TargetType.Self), IOnConsumed, IOnFed
 {
+    private bool _isCostReduced = false;
+
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
         new IntVar("Nutrient", 5),
-        new CardsVar(4)
+        new IntVar("NutrientThreshold", 4),
+        new CardsVar(4),
     };
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -31,12 +34,6 @@ public class RapidGrowth() : GardenerCode.Cards.GardenerCard(
         await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
         await CardPileCmd.Draw(choiceContext, base.DynamicVars.Cards.BaseValue, base.Owner);
         await GardenerCmd.ConsumeNutrient(this);
-        UpdateCost();
-    }
-
-    public override async Task AfterCardEnteredCombat(CardModel card)
-    {
-        if (card != this || card.IsClone) return;
         UpdateCost();
     }
     public async Task OnConsumed()
@@ -56,10 +53,26 @@ public class RapidGrowth() : GardenerCode.Cards.GardenerCard(
     }
 
     private void UpdateCost()
-	{
-        if (base.DynamicVars["Nutrient"].BaseValue <= 4)
+    {
+        if 
+        (
+            !_isCostReduced 
+            && base.DynamicVars["Nutrient"].BaseValue <= base.DynamicVars["NutrientThreshold"].BaseValue
+        )
         {
-            base.EnergyCost.AddThisTurn(-1);    
+            base.EnergyCost.UpgradeBy(-1);
+            base.DeckVersion?.EnergyCost.UpgradeBy(-1);
+            _isCostReduced = true;
         }
-	}
+        else if 
+        (
+            _isCostReduced
+            && base.DynamicVars["Nutrient"].BaseValue > base.DynamicVars["NutrientThreshold"].BaseValue
+        )
+        {
+            base.EnergyCost.UpgradeBy(1);
+            base.DeckVersion?.EnergyCost.UpgradeBy(1);
+            _isCostReduced = false;
+        }
+    }
 }
