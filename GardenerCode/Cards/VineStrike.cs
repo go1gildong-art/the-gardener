@@ -28,12 +28,12 @@ public class VineStrike() : GardenerCode.Cards.GardenerCard(
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {   
-        for (int i = 0; i < DynamicVars.Repeat.BaseValue; i++)
-        {
+
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(base.CombatState)
+            .WithHitCount((int)DynamicVars.Repeat.BaseValue)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
-        }
+
         await GardenerCmd.ConsumeNutrient(this);
     }
 
