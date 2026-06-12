@@ -56,7 +56,7 @@ public class LastDrop() : GardenerCode.Cards.GardenerCard(
             && value.BaseValue > 0
         )
         {
-            await GardenerCmd.ConsumeNutrient(cardModel);
+            await GardenerCmd.ConsumeNutrient(choiceContext, cardModel);
         }
 
         await GardenerCmd.ConsumeNutrient(choiceContext, this);

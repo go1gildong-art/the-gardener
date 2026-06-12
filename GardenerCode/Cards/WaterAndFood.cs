@@ -50,7 +50,7 @@ public class WaterAndFood() : GardenerCode.Cards.GardenerCard(
         {
             CardCmd.ApplyKeyword(item, CardKeyword.Retain);
             item.EnergyCost.AddThisCombat(-1);
-            await GardenerCmd.FeedNutrient(item, (int) base.DynamicVars["NutrientFeed"].BaseValue);
+            await GardenerCmd.FeedNutrient(choiceContext, item, (int) base.DynamicVars["NutrientFeed"].BaseValue);
         }
 
         await GardenerCmd.ConsumeNutrient(choiceContext, this);

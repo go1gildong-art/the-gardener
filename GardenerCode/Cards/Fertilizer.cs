@@ -47,7 +47,7 @@ public class Fertilizer() : GardenerCode.Cards.GardenerCard(
 
         foreach (CardModel item in list)
         {
-            await GardenerCmd.FeedNutrient(item, (int) base.DynamicVars["NutrientFeed"].BaseValue);
+            await GardenerCmd.FeedNutrient(choiceContext, item, (int) base.DynamicVars["NutrientFeed"].BaseValue);
         }
 
         
