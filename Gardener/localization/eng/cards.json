@@ -1,4 +1,17 @@
 {
+  "GARDENER-WINTER_BREEZE.description": "[gold]Nutrient[/gold] {Nutrient:diff()}. Deal {Damage:diff()} damage and apply {Weak:diff()} [gold]Weak[/gold] to all enemies. When [gold]Depleted[/gold], apply 1 [gold]Vulnerable[/gold] to yourself.",
+  "GARDENER-WINTER_BREEZE.title": "Winter Breeze",
+
+  "GARDENER-FUNGI_REMOVER.title": "Fungi Remover",
+  "GARDENER-FUNGI_REMOVER.description": "[gold]Nutrient[/gold] {Nutrient:diff()}. Deal {Damage:diff()} damage. Apply {Vulnerable:diff()} [gold]Vulnerable[/gold]. When [gold]Depleted[/gold], apply 3 [gold]Vulnerable[/gold] to all enemies.",
+
+  "GARDENER-HOSTILE_NEMATODE.title": "Hostile Nematode",
+  "GARDENER-HOSTILE_NEMATODE.description": "[gold]Nutrient[/gold] {Nutrient:diff()}. [gold]Exhaust[/gold] 1 card in your hand. Gain {ThornsPower:diff()} [gold]Thorns[/gold].",
+
+  "GARDENER-PYRRHIC_BLOSSOM.title": "Pyrrhic Blossom",
+  "GARDENER-PYRRHIC_BLOSSOM.description": "[gold]Nutrient[/gold] {Nutrient:diff()}. Multiply your [gold]Thorns[/gold] by {Multiplier:diff()}.",
+
+
   "GARDENER-VINE_STRIKE.description": "Deal {Damage:diff()} damage.",
   "GARDENER-VINE_STRIKE.title": "Vine Strike",
 

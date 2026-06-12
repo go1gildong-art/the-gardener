@@ -11,6 +11,7 @@ using BaseLib.Utils;
 using Gardener.GardenerCode.Character;
 using Gardener.GardenerCode.Systems;
 using MegaCrit.Sts2.Core.Models.CardPools;
+using MegaCrit.Sts2.Core.Models.Powers;
 
 [Pool(typeof(GardenerCardPool))]
 public class PyrrhicBlossom() : GardenerCode.Cards.GardenerCard(
@@ -21,19 +22,23 @@ public class PyrrhicBlossom() : GardenerCode.Cards.GardenerCard(
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
+        new IntVar("Multiplier", 2),
         new IntVar("Nutrient", 10),
     };
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         var thorns = base.Owner.Creature.GetPowerAmount<ThornsPower>();
-        var doubleThorns = thorns * 2;
+        var mult = base.DynamicVars["Multiplier"].BaseValue;
 
-        await PowerCmd.Apply<ThornsPower>(
-            choiceContext,
-            base.Owner.Creature,
-            doubleThorns,
-            base.Owner.Creature, this);
+        for (int i = 0; i < (mult - 1); i++)
+        {
+            await PowerCmd.Apply<ThornsPower>(
+                choiceContext,
+                base.Owner.Creature,
+                thorns,
+                base.Owner.Creature, this);
+        }
 
         await GardenerCmd.ConsumeNutrient(choiceContext, this);
     }

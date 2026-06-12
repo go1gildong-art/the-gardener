@@ -67,12 +67,10 @@ public class FungiRemover() : GardenerCode.Cards.GardenerCard(
                 base.Owner.Creature, this);
         }
 
-
         await GardenerCmd.ConsumeNutrient(choiceContext, this);
     }
 
     protected override void OnUpgrade()
     {
-        TargetType = TargetType.AllEnemies;
     }
 }

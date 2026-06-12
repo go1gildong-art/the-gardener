@@ -12,6 +12,9 @@ using Gardener.GardenerCode.Character;
 using Gardener.GardenerCode.Powers;
 using Gardener.GardenerCode.Systems;
 using MegaCrit.Sts2.Core.Models.CardPools;
+using MegaCrit.Sts2.Core.Models.Powers;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.CardSelection;
 
 [Pool(typeof(GardenerCardPool))]
 public class HostileNematode() : GardenerCode.Cards.GardenerCard(
@@ -26,29 +29,33 @@ public class HostileNematode() : GardenerCode.Cards.GardenerCard(
         new PowerVar<TemporaryThornsPower>(3m),
     };
 
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new CardKeyword[] { CardKeyword.Exhaust };
+
+
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var hand = base.Owner.Hand;
-        if (hand.Count > 0)
-        {
-            var cardToExhaust = hand.FirstOrDefault();
-            if (cardToExhaust != null)
-            {
-                await CardPileCmd.Move(choiceContext, cardToExhaust, PileType.Exhaust);
-            }
-        }
-
-        await PowerCmd.Apply<TemporaryThornsPower>(
+        await PowerCmd.Apply<ThornsPower>(
             choiceContext,
             base.Owner.Creature,
-            DynamicVars["TemporaryThornsPower"].BaseValue,
+            DynamicVars["ThornsPower"].BaseValue,
             base.Owner.Creature, this);
+
+        CardModel cardModel =
+        (await CardSelectCmd.FromHand(
+            prefs: new CardSelectorPrefs(CardSelectorPrefs.ExhaustSelectionPrompt, 1),
+            context: choiceContext,
+            player: base.Owner,
+            filter: null,
+            source: this
+            )
+        ).FirstOrDefault();
+        if (cardModel != null) await CardCmd.Exhaust(choiceContext, cardModel);
 
         await GardenerCmd.ConsumeNutrient(choiceContext, this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars["TemporaryThornsPower"].UpgradeValueBy(1);
+        RemoveKeyword(CardKeyword.Exhaust);
     }
 }
