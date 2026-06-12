@@ -35,22 +35,21 @@ public class BurningFlower() : GardenerCode.Cards.GardenerCard(
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         int cost = ResolveEnergyXValue();
-        for (int i = 0; i < cost; i++)
-        {
-            await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(base.CombatState)
-                .WithHitFx("vfx/vfx_attack_slash")
-                .Execute(choiceContext);
-        }
-        await GardenerCmd.ConsumeNutrient(this);
+
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(base.CombatState)
+            .WithHitCount(cost)
+            .WithHitFx("vfx/vfx_attack_slash")
+            .Execute(choiceContext);
+
     }
 
     public override async Task AfterCardExhausted(PlayerChoiceContext choiceContext, CardModel card, bool causedByEthereal)
-	{
-		if (card == this && base.CombatState != null)
-		{
-			await GardenerCmd.ConsumeNutrient(this, 2);
-		}
-	}
+    {
+        if (card == this && base.CombatState != null)
+        {
+            await GardenerCmd.ConsumeNutrient(this, 2);
+        }
+    }
 
     protected override void OnUpgrade()
     {

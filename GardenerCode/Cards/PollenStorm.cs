@@ -30,14 +30,16 @@ public class PollenStorm() : GardenerCode.Cards.GardenerCard(
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
         int cost = ResolveEnergyXValue();
-        for (int i = 0; i < cost; i++)
-        {
-            await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-                .FromCard(this)
-                .Targeting(cardPlay.Target)
-                .WithHitFx("vfx/vfx_attack_slash")
-                .Execute(choiceContext);
 
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
+            .FromCard(this)
+            .WithHitCount(cost)
+            .Targeting(cardPlay.Target)
+            .WithHitFx("vfx/vfx_attack_slash")
+            .Execute(choiceContext);
+
+        for (var i = 0; i < cost; i++)
+        {
             await GardenerCmd.ConsumeNutrient(this);
         }
     }
