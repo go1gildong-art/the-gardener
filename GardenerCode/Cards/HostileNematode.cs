@@ -26,7 +26,7 @@ public class HostileNematode() : GardenerCode.Cards.GardenerCard(
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
         new IntVar("Nutrient", 10),
-        new PowerVar<TemporaryThornsPower>(3m),
+        new PowerVar<ThornsPower>(3m),
     };
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => new CardKeyword[] { CardKeyword.Exhaust };

@@ -17,7 +17,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 [Pool(typeof(GardenerCardPool))]
 public class WinterBreeze() : GardenerCode.Cards.GardenerCard(
   0,
-  CardType.Skill,
+  CardType.Attack,
   CardRarity.Common,
   TargetType.AllEnemies), IOnDepleted
 {
@@ -49,7 +49,7 @@ public class WinterBreeze() : GardenerCode.Cards.GardenerCard(
                 .WithHitFx("vfx/vfx_attack_slash")
                 .Execute(choiceContext);
 
-            await PowerCmd.Apply<VulnerablePower>(
+            await PowerCmd.Apply<WeakPower>(
                 choiceContext,
                 base.CombatState.HittableEnemies,
                 DynamicVars["WeakPower"].BaseValue,
@@ -62,7 +62,7 @@ public class WinterBreeze() : GardenerCode.Cards.GardenerCard(
                 .WithHitFx("vfx/vfx_attack_slash")
                 .Execute(choiceContext);
 
-            await PowerCmd.Apply<VulnerablePower>(
+            await PowerCmd.Apply<WeakPower>(
                 choiceContext,
                 cardPlay.Target,
                 DynamicVars["WeakPower"].BaseValue,
