@@ -18,13 +18,13 @@ using MegaCrit.Sts2.Core.Models.Powers;
 public class Fertilizer() : GardenerCode.Cards.GardenerCard(
   1,
   CardType.Skill,
-  CardRarity.Common,
+  CardRarity.Rare,
   TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
         new IntVar("Nutrient", 8),
-        new IntVar("NutrientFeed", 2),
+        new IntVar("NutrientFeed", 3),
         new CardsVar(1),
         new EnergyVar(1)
     };

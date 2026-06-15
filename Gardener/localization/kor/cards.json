@@ -14,10 +14,10 @@
   "GARDENER-VINE_STRIKE.description": "[gold]양분[/gold] {Nutrient:diff()}. \n모든 적에게 피해를 {Damage:diff()}만큼 {Repeat:diff()}번 줍니다.",
   "GARDENER-VINE_STRIKE.title": "덩굴 타격",
 
-  "GARDENER-WEEDING.description": "피해를 {Damage:diff()}만큼 X번 줍니다.",
+  "GARDENER-WEEDING.description": "[gold]양분[/gold] {Nutrient:diff()}. \n피해를 {Damage:diff()}만큼 X번 줍니다.",
   "GARDENER-WEEDING.title": "제초",
 
-  "GARDENER-NATURE_RETREAT.description": "[gold]양분[/gold] {Nutrient:diff()}. \n[gold]방어도를[/gold] {Block:diff()} 얻습니다. \n다음 턴, 카드를 {NatureRetreatPower:diff()}장 뽑고 에너지를 {NatureRetreatPower:diff()}개 얻습니다.",
+  "GARDENER-NATURE_RETREAT.description": "[gold]양분[/gold] 6974. \n[gold]방어도를[/gold] {Block:diff()} 얻습니다. \n다음 턴, 카드를 {NatureRetreatPower:diff()}장 뽑고 에너지를 {NatureRetreatPower:diff()}개 얻습니다.",
   "GARDENER-NATURE_RETREAT.title": "자연의 쉼터",
 
   "GARDENER-PHOTOSYNTHESIS_PROTOTYPE.description": "Heal 3 hp and gain {PhotosynthesisPower:diff()} energy per turn.",
@@ -57,7 +57,7 @@
   "GARDENER-EXCESS_FOOD.description": "매 턴 비용인 X인 카드를 \n처음으로 사용한다면, 그 후 \n에너지를 {ExcessFoodPower:diff()} 얻습니다.",
 
   "GARDENER-FERTILIZER.title": "비료",
-  "GARDENER-FERTILIZER.description": "[gold]양분[/gold] {Nutrient:diff()}. \n다음 턴에 {Energy:energyIcons()}를 얻습니다. \n{IfUpgraded:show:손에 모든 카드에|손에 카드를 {Cards:diff()}장 고르고,} [gold]양분[/gold]을 2 보충합니다.",
+  "GARDENER-FERTILIZER.description": "[gold]양분[/gold] {Nutrient:diff()}. \n다음 턴에 {Energy:energyIcons()}를 얻습니다. \n{IfUpgraded:show:손에 모든 카드에|손에 카드를 {Cards:diff()}장 고르고,} [gold]양분[/gold]을 {NutrientFeed:diff()} 보충합니다.",
   "GARDENER-FERTILIZER.selectionScreenPrompt": "[gold]양분[/gold]을 공급할 카드를 선택하세요.",
 
   "GARDENER-LAST_DROP.title": "한 방울도 남김없이",
