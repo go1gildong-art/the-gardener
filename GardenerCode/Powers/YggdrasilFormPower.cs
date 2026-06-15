@@ -14,6 +14,8 @@ using Gardener.GardenerCode.Extensions;
 using Gardener.GardenerCode.Character;
 using MegaCrit.Sts2.Core.Factories;
 
+using System.Reflection;
+
 namespace Gardener.GardenerCode.Powers;
 
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -28,12 +30,22 @@ public class YggdrasilFormPower : CustomPowerModel
 
     public override async Task BeforeHandDraw(Player player, PlayerChoiceContext choiceContext, ICombatState combatState)
     {
+        if (player != base.Owner.Player) return;
+
         List<CardModel> cards =
         CardFactory
         .GetDistinctForCombat
         (
             player,
-            ModelDb.CardPool<GardenerCardPool>().GetUnlockedCards(player.UnlockState, player.RunState.CardMultiplayerConstraint),
+            ModelDb.CardPool<GardenerCardPool>()
+                .GetUnlockedCards(player.UnlockState, player.RunState.CardMultiplayerConstraint)
+                .Where(card =>
+                {
+                    var field = card.GetType().GetField("CannotBeGeneratedFromYggdrasilForm");
+                    if (field == null) return true;
+                    if (field.GetValue(card) is bool b && !b) return true;
+                    return false;
+                }),
             base.Amount,
             player.RunState.Rng.CombatCardGeneration
         ).ToList();

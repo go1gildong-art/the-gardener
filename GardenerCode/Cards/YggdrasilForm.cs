@@ -22,6 +22,7 @@ public class YggdrasilForm() : GardenerCard(
   CardRarity.Rare,
   TargetType.Self)
 {
+    public bool CannotBeGeneratedFromYggdrasilForm = true;
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
         new PowerVar<YggdrasilFormPower>(2)

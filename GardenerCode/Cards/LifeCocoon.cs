@@ -17,6 +17,7 @@ using MegaCrit.Sts2.Core.Rooms;
 [Pool(typeof(GardenerCardPool))]
 public class LifeCocoon : GardenerCard, IOnDepleted
 {
+    public override bool CanBeGeneratedInCombat => false;
     public int Nutrient => NutrientModifier.GetFrom(this)?.Nutrient ?? 0;
 
     public LifeCocoon() : base(
