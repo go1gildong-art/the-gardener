@@ -4,7 +4,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
-
+using MegaCrit.Sts2.Core.Rooms;
 namespace Gardener;
 
 using BaseLib.Extensions;
@@ -20,12 +20,12 @@ using MegaCrit.Sts2.Core.Models.Powers;
 public class SharpRoots() : GardenerCode.Cards.GardenerCard(
   1,
   CardType.Attack,
-  CardRarity.Uncommon,
+  CardRarity.Common,
   TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
-{ new DamageVar(6m, DamageProps.card),
-new PowerVar<SharpRootsPower>(4m) };
+{ new DamageVar(4m, DamageProps.card),
+new PowerVar<SharpRootsPower>(3m) };
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
@@ -39,18 +39,10 @@ new PowerVar<SharpRootsPower>(4m) };
             base.Owner.Creature,
             base.DynamicVars["SharpRootsPower"].BaseValue,
             base.Owner.Creature, this);
-
-        await PowerCmd.Apply<ThornsPower>(
-            choiceContext,
-            base.Owner.Creature,
-            base.DynamicVars["SharpRootsPower"].BaseValue,
-            base.Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(1m);
         DynamicVars.Power<SharpRootsPower>().UpgradeValueBy(3m);
     }
 }
-

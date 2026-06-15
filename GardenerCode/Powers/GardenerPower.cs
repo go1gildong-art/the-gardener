@@ -2,6 +2,7 @@
 using BaseLib.Extensions;
 using Gardener.GardenerCode.Extensions;
 using MegaCrit.Sts2.Core.Entities.Powers;
+using Godot;
 
 namespace Gardener.GardenerCode.Powers;
 
@@ -13,15 +14,32 @@ namespace Gardener.GardenerCode.Powers;
 /// </summary>
 public abstract class GardenerPower : CustomPowerModel
 {
+
     //Loads from Gardener/images/powers/your_power.png
-    public override string CustomPackedIconPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".PowerImagePath();
-    public override string CustomBigIconPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".BigPowerImagePath();
+    public override string CustomPackedIconPath
+    {
+        get
+        {
+            var path = $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".PowerImagePath();
+            GD.Print($"[DEBOOG] Checking for power icon at {path}");
+            return ResourceLoader.Exists(path) ? path : "power.png".PowerImagePath();
+        }
+    }
+    public override string CustomBigIconPath
+    {
+        get
+        {
+            var path = $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".BigPowerImagePath();
+            GD.Print($"[DEBOOG] Checking for big power icon at {path}");
+            return ResourceLoader.Exists(path) ? path : "power.png".BigPowerImagePath();
+        }
+    }
 
     /// <summary>
     /// Whether this power is a buff or debuff.
     /// </summary>
     public abstract override PowerType Type { get; }
-    
+
     /// <summary>
     /// How this power stacks if reapplied. Counter is the most common type, where applying the power again just
     /// adds to the amount. Single means the power does not stack, like Barricade. None functions identically to

@@ -12,35 +12,85 @@ using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Runs;
 using Godot;
 
+using System.Reflection;
+
 namespace Gardener.GardenerCode.Systems;
 
 public static class GardenerCmd
 {
+
     public static async Task ConsumeNutrient(
+        PlayerChoiceContext choiceContext,
         CardModel card,
         int amount = 1)
     {
-        if (card.DynamicVars["Nutrient"] == null)
+        if (!card.DynamicVars.ContainsKey("Nutrient"))
         {
             GD.Print($"[DEBOOG] Card {card.Id} has no nutrient to consume.");
             return;
         }
+
+
+        foreach (var power in card.Owner.Creature.Powers)
+        {
+            if (power is not IShouldConsumeNutrient shouldConsumePower) continue;
+            if (shouldConsumePower.ShouldConsumeNutrient(card.Owner.Creature)) continue;
+
+            await shouldConsumePower.OnNutrientConsumeBlocked();
+            return;
+        }
+
         CardModel? deckCard = card.DeckVersion;
 
         GD.Print($"[DEBOOG] Card {card.Id} nutrient is consumed from {card.DynamicVars["Nutrient"].BaseValue} by {amount} to {card.DynamicVars["Nutrient"].BaseValue - amount}.");
         card.DynamicVars["Nutrient"].UpgradeValueBy(-amount);
         deckCard?.DynamicVars["Nutrient"].UpgradeValueBy(-amount);
 
-        if (deckCard != null && deckCard.DynamicVars["Nutrient"].IntValue <= 0)
+        NutrientCombatState.Get(card.CombatState).NutrientConsumedThisCombat += amount;
+
+        if (card is IOnConsumed consumableCard) await consumableCard.OnConsumed(choiceContext);
+
+        foreach (var power in card.Owner.Creature.Powers)
         {
-            await Deplete(card);
+            GD.Print($"[DEBOOG] Checking power {power.GetType().Name} for nutrient consume trigger.");
+            if (power is not IOnNutrientConsume nutrientConsumePower) continue;
+
+            await nutrientConsumePower.OnNutrientConsume();
         }
+
+        if (card.DynamicVars["Nutrient"].IntValue <= 0) await Deplete(choiceContext, card);
+    }
+
+
+
+
+    public static async Task FeedNutrient(
+        PlayerChoiceContext choiceContext,
+        CardModel card,
+        int amount = 1)
+    {
+        if (!card.DynamicVars.ContainsKey("Nutrient"))
+        {
+            GD.Print($"[DEBOOG] Card {card.Id} has no nutrient to feed");
+            return;
+        }
+
+        CardModel? deckCard = card.DeckVersion;
+
+        GD.Print($"[DEBOOG] Card {card.Id} nutrient is fed from {card.DynamicVars["Nutrient"].BaseValue} by {amount} to {card.DynamicVars["Nutrient"].BaseValue - amount}.");
+        card.DynamicVars["Nutrient"].UpgradeValueBy(amount);
+        deckCard?.DynamicVars["Nutrient"].UpgradeValueBy(amount);
+
+        if (card is IOnFed fedCard) await fedCard.OnFed(choiceContext);
     }
 
     public static async Task Deplete(
+        PlayerChoiceContext choiceContext,
         CardModel card
         )
     {
+        if (card is IOnDepleted depletableCard) await depletableCard.OnDepleted(choiceContext);
+
         GD.Print($"[DEBOOG] Card {card.Id} is depleted. Removing from combat and deck.");
         await CardPileCmd.RemoveFromCombat(card);
 

@@ -1,0 +1,16 @@
+{
+  "GARDENER-GARDENER.aromaPrinciple": "Lore",
+  "GARDENER-GARDENER.banter.alive.endTurnPing": "Co-op hurry up end turn ping message",
+  "GARDENER-GARDENER.banter.dead.endTurnPing": "...",
+  "GARDENER-GARDENER.cardsModifierDescription": "__ cards will now appear in rewards and shops.",
+  "GARDENER-GARDENER.cardsModifierTitle": "__ Cards",
+  "GARDENER-GARDENER.description": "Character Selection\nScreen Description",
+  "GARDENER-GARDENER.eventDeathPrevention": "Co-op survival line",
+  "GARDENER-GARDENER.goldMonologue": "Line spoken when obtaining a large amount of gold",
+  "GARDENER-GARDENER.possessiveAdjective": "his/her/its",
+  "GARDENER-GARDENER.pronounObject": "him/her/it",
+  "GARDENER-GARDENER.pronounPossessive": "his/hers/its",
+  "GARDENER-GARDENER.pronounSubject": "he/she/it",
+  "GARDENER-GARDENER.title": "The Gardener",
+  "GARDENER-GARDENER.titleObject": "The Gardener"
+}
