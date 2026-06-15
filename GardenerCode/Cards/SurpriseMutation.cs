@@ -6,7 +6,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Events;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace Gardener;
+namespace Gardener.GardenerCode.Cards;
 
 using BaseLib.Utils;
 using Gardener.GardenerCode.Character;
@@ -15,7 +15,7 @@ using Godot;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 [Pool(typeof(GardenerCardPool))]
-public class SurpriseMutation() : GardenerCode.Cards.GardenerCard(
+public class SurpriseMutation() : GardenerCard(
   0,
   CardType.Skill,
   CardRarity.Common,

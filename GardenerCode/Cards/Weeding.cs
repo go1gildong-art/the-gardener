@@ -5,7 +5,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace Gardener;
+namespace Gardener.GardenerCode.Cards;
 
 using BaseLib.Utils;
 using Gardener.GardenerCode.Character;
@@ -14,19 +14,26 @@ using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models;
 
 [Pool(typeof(GardenerCardPool))]
-public class Weeding() : GardenerCode.Cards.GardenerCard(
+public class Weeding : GardenerCard
+{
+    protected override bool HasEnergyCostX => true;
+
+
+    public int Nutrient => NutrientModifier.GetFrom(this)?.Nutrient ?? 0;
+
+    public Weeding() : base(
   0,
   CardType.Attack,
   CardRarity.Basic,
   TargetType.AnyEnemy)
-{
-    protected override bool HasEnergyCostX => true;
-
-    protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
+        NutrientModifier.AddTo(this, 7);
+    }
+    protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
+        {
         new DamageVar(7m, DamageProps.card),
-        new IntVar("Nutrient", 7m)
-    };
+        new IntVar("Nutrient", Nutrient)
+        };
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => new CardKeyword[]
     {
@@ -43,7 +50,6 @@ public class Weeding() : GardenerCode.Cards.GardenerCard(
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
 
-        await GardenerCmd.ConsumeNutrient(choiceContext, this);
     }
 
     protected override void OnUpgrade()

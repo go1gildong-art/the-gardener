@@ -5,7 +5,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace Gardener;
+namespace Gardener.GardenerCode.Cards;
 
 using BaseLib.Extensions;
 using BaseLib.Utils;
@@ -16,7 +16,7 @@ using MegaCrit.Sts2.Core.Saves.Runs;
 using static MegaCrit.Sts2.Core.Runs.RunState;
 
 [Pool(typeof(GardenerCardPool))]
-public class YggdrasilForm() : GardenerCode.Cards.GardenerCard(
+public class YggdrasilForm() : GardenerCard(
   3,
   CardType.Power,
   CardRarity.Rare,

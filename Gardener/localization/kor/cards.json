@@ -1,23 +1,23 @@
 {
-    "GARDENER-WINTER_BREEZE.description": "[gold]양분[/gold] {Nutrient:diff()}. \n{IfUpgraded:show:모든 적에게 }피해를 {Damage:diff()} 주고 \n[gold]약화[/gold]를 {WeakPower:diff()} 부여합니다. \n[gold]고갈되었다면[/gold], 스스로에게 [gold]약화[/gold]를 {WeakPowerOnDepleted:diff()} 부여합니다.",
+    "GARDENER-WINTER_BREEZE.description": "{IfUpgraded:show:모든 적에게 }피해를 {Damage:diff()} 주고 \n[gold]약화[/gold]를 {WeakPower:diff()} 부여합니다. \n[gold]고갈되었다면[/gold], 스스로에게 [gold]약화[/gold]를 {WeakPowerOnDepleted:diff()} 부여합니다.",
   "GARDENER-WINTER_BREEZE.title": "겨울바람",
 
   "GARDENER-FUNGI_REMOVER.title": "곰팡이 제거제",
-  "GARDENER-FUNGI_REMOVER.description": "[gold]양분[/gold] {Nutrient:diff()}. \n{IfUpgraded:show:모든 적에게 }피해를 {Damage:diff()} 주고 \n[gold]취약[/gold]을 {VulnerablePower:diff()} 부여합니다. \n[gold]고갈[/gold]되었다면, 보든 적에게 [gold]취약[/gold]을 {VulnerablePowerOnDepleted:diff()} 부여합니다.",
+  "GARDENER-FUNGI_REMOVER.description": "{IfUpgraded:show:모든 적에게 }피해를 {Damage:diff()} 주고 \n[gold]취약[/gold]을 {VulnerablePower:diff()} 부여합니다. \n[gold]고갈[/gold]되었다면, 보든 적에게 [gold]취약[/gold]을 {VulnerablePowerOnDepleted:diff()} 부여합니다.",
 
   "GARDENER-HOSTILE_NEMATODE.title": "공격형 선충",
-  "GARDENER-HOSTILE_NEMATODE.description": "[gold]양분[/gold] {Nutrient:diff()}. \n손에서 카드 1장을 [gold]소멸[/gold]시킵니다. \n[gold]가시[/gold]를 {ThornsPower:diff()} 얻습니다.",
+  "GARDENER-HOSTILE_NEMATODE.description": "손에서 카드 1장을 [gold]소멸[/gold]시킵니다. \n[gold]가시[/gold]를 {ThornsPower:diff()} 얻습니다.",
 
   "GARDENER-PYRRHIC_BLOSSOM.title": "상처뿐인 개화",
-  "GARDENER-PYRRHIC_BLOSSOM.description": "[gold]양분[/gold] {Nutrient:diff()}. \n[gold]가시[/gold]를 {Multiplier:diff()}배로 늘립니다.",
+  "GARDENER-PYRRHIC_BLOSSOM.description": "[gold]가시[/gold]를 {Multiplier:diff()}배로 늘립니다.",
 
-  "GARDENER-VINE_STRIKE.description": "[gold]양분[/gold] {Nutrient:diff()}. \n모든 적에게 피해를 {Damage:diff()}만큼 {Repeat:diff()}번 줍니다.",
+  "GARDENER-VINE_STRIKE.description": "모든 적에게 피해를 {Damage:diff()}만큼 {Repeat:diff()}번 줍니다.",
   "GARDENER-VINE_STRIKE.title": "덩굴 타격",
 
-  "GARDENER-WEEDING.description": "[gold]양분[/gold] {Nutrient:diff()}. \n피해를 {Damage:diff()}만큼 X번 줍니다.",
+  "GARDENER-WEEDING.description": "피해를 {Damage:diff()}만큼 X번 줍니다.",
   "GARDENER-WEEDING.title": "제초",
 
-  "GARDENER-NATURE_RETREAT.description": "[gold]양분[/gold] 6974. \n[gold]방어도를[/gold] {Block:diff()} 얻습니다. \n다음 턴, 카드를 {NatureRetreatPower:diff()}장 뽑고 에너지를 {NatureRetreatPower:diff()}개 얻습니다.",
+  "GARDENER-NATURE_RETREAT.description": "[gold]방어도를[/gold] {Block:diff()} 얻습니다. \n다음 턴, 카드를 {NatureRetreatPower:diff()}장 뽑고 에너지를 {NatureRetreatPower:diff()}개 얻습니다.",
   "GARDENER-NATURE_RETREAT.title": "자연의 쉼터",
 
   "GARDENER-PHOTOSYNTHESIS_PROTOTYPE.description": "Heal 3 hp and gain {PhotosynthesisPower:diff()} energy per turn.",
@@ -29,17 +29,17 @@
   "GARDENER-SHARP_ROOTS.description": "피해를 {Damage:diff()}만큼 줍니다.\n이번 턴 동안 가시를 {SharpRootsPower:diff()}만큼 얻습니다.",
   "GARDENER-SHARP_ROOTS.title": "날카로운 뿌리",
 
-  "GARDENER-VITALITY.description": "[gold]양분[/gold] {Nutrient:diff()}. \n {Energy:energyIcons()}를 얻습니다.",
+  "GARDENER-VITALITY.description": " {Energy:energyIcons()}를 얻습니다.",
   "GARDENER-VITALITY.title": "원기왕성",
 
   "GARDENER-BOMB_BLOSSOM.title": "폭탄꽃",
-  "GARDENER-BOMB_BLOSSOM.description": "[gold]양분[/gold] {Nutrient:diff()}. \n모든 적에게 피해를 {Damage:diff()}만큼 줍니다.",
+  "GARDENER-BOMB_BLOSSOM.description": "모든 적에게 피해를 {Damage:diff()}만큼 줍니다.",
 
   "GARDENER-BOUGH_SHIELD.title": "나무줄기 방어막",
-  "GARDENER-BOUGH_SHIELD.description": "[gold]양분[/gold] {Nutrient:diff()}. \n[gold]방어도[/gold] {Block:diff()}를 현재 [gold]양분[/gold] 수 번 얻습니다.",
+  "GARDENER-BOUGH_SHIELD.description": "[gold]방어도[/gold] {Block:diff()}를 현재 [gold]양분[/gold] 수 번 얻습니다.",
 
   "GARDENER-BURNING_FLOWER.title": "불타는 꽃",
-  "GARDENER-BURNING_FLOWER.description": "[gold]양분[/gold] {Nutrient:diff()}. \n모든 적에게 피해를 {Damage:diff()}만큼 X번 줍니다. \n[gold]소멸[/gold]될 시, [gold]양분을[/gold] 2번 잃습니다.",
+  "GARDENER-BURNING_FLOWER.description": "모든 적에게 피해를 {Damage:diff()}만큼 X번 줍니다. \n[gold]소멸[/gold]될 시, [gold]양분을[/gold] 2번 잃습니다.",
 
   "GARDENER-CELL_WALL.title": "세포벽",
   "GARDENER-CELL_WALL.description": "[gold]방어도[/gold]를 {Block:diff()} 얻습니다. \n이번 턴 동안 가시를 {TemporaryThornsPower:diff()} 얻습니다.",
@@ -57,30 +57,30 @@
   "GARDENER-EXCESS_FOOD.description": "매 턴 비용인 X인 카드를 \n처음으로 사용한다면, 그 후 \n에너지를 {ExcessFoodPower:diff()} 얻습니다.",
 
   "GARDENER-FERTILIZER.title": "비료",
-  "GARDENER-FERTILIZER.description": "[gold]양분[/gold] {Nutrient:diff()}. \n다음 턴에 {Energy:energyIcons()}를 얻습니다. \n{IfUpgraded:show:손에 모든 카드에|손에 카드를 {Cards:diff()}장 고르고,} [gold]양분[/gold]을 {NutrientFeed:diff()} 보충합니다.",
+  "GARDENER-FERTILIZER.description": "다음 턴에 {Energy:energyIcons()}를 얻습니다. \n{IfUpgraded:show:손에 모든 카드에|손에 카드를 {Cards:diff()}장 고르고,} [gold]양분[/gold]을 {NutrientFeed:diff()} 보충합니다.",
   "GARDENER-FERTILIZER.selectionScreenPrompt": "[gold]양분[/gold]을 공급할 카드를 선택하세요.",
 
   "GARDENER-LAST_DROP.title": "한 방울도 남김없이",
-  "GARDENER-LAST_DROP.description": "[gold]양분[/gold] {Nutrient:diff()}. \n손에서 [gold]양분[/gold]을 가진 카드를 1장 선택합니다. \n그 카드를 {Repeat:diff()}번 사용하고, \n그 카드의 [gold]양분[/gold]을 전부 소진합니다.",
+  "GARDENER-LAST_DROP.description": "손에서 [gold]양분[/gold]을 가진 카드를 1장 선택합니다. \n그 카드를 {Repeat:diff()}번 사용하고, \n그 카드의 [gold]양분[/gold]을 전부 소진합니다.",
   "GARDENER-LAST_DROP.selectionScreenPrompt": "[gold]양분[/gold]을 불사를 카드를 선택하세요.",
 
   "GARDENER-LEAF_SHIELD.title": "잎사귀 방어막",
-  "GARDENER-LEAF_SHIELD.description": "[gold]양분[/gold] {Nutrient:diff()}. \n[gold]방어도[/gold]를 {Block:diff()} 얻습니다. \n[gold]양분[/gold]이 2번씩 감소합니다.",
+  "GARDENER-LEAF_SHIELD.description": "[gold]방어도[/gold]를 {Block:diff()} 얻습니다. \n[gold]양분[/gold]이 2번씩 감소합니다.",
 
   "GARDENER-LIFE_COCOON.title": "생명의 고치",
-  "GARDENER-LIFE_COCOON.description": "[gold]양분[/gold] {Nutrient:diff()}. \n[gold]고갈[/gold]되었다면, 이번 전투 보상에 \n유물이 {RelicVar:diff()}개 추가됩니다.",
+  "GARDENER-LIFE_COCOON.description": "[gold]고갈[/gold]되었다면, 이번 전투 보상에 \n유물이 {RelicVar:diff()}개 추가됩니다.",
 
   "GARDENER-NUTRIENT_DUMP.title": "비료 쏟아붓기",
-  "GARDENER-NUTRIENT_DUMP.description": "[gold]양분[/gold] {Nutrient:diff()}. \n손의 카드들의 [gold]양분[/gold] {IfUpgraded:show:총합 +4|총합}만큼 피해를 줍니다. ({CalculatedDamage:diff()})",
+  "GARDENER-NUTRIENT_DUMP.description": "손의 카드들의 [gold]양분[/gold] {IfUpgraded:show:총합 +4|총합}만큼 피해를 줍니다. ({CalculatedDamage:diff()})",
 
   "GARDENER-POINTY.title": "뾰족뾰족",
   "GARDENER-POINTY.description": "이번 턴 동안 [gold]가시[/gold]를 {TemporaryThornsPower:diff()} 얻습니다.",
 
   "GARDENER-POLLEN_STORM.title": "꽃가루 폭풍",
-  "GARDENER-POLLEN_STORM.description": "[gold]양분[/gold] {Nutrient:diff()}. \n피해를 {Damage:diff()}만큼 X번 줍니다. \n각 공격은 [gold]양분[/gold]을 추가로 1회씩 소모합니다.",
+  "GARDENER-POLLEN_STORM.description": "피해를 {Damage:diff()}만큼 X번 줍니다. \n각 공격은 [gold]양분[/gold]을 추가로 1회씩 소모합니다.",
 
   "GARDENER-PREMIUM_SERUM.title": "특제 영양제",
-  "GARDENER-PREMIUM_SERUM.description": "[gold]양분[/gold] {Nutrient:diff()}. \n{Energy:energyIcons()}를 얻습니다. \n카드를 {Cards:diff()}장 뽑습니다.",
+  "GARDENER-PREMIUM_SERUM.description": "{Energy:energyIcons()}를 얻습니다. \n카드를 {Cards:diff()}장 뽑습니다.",
 
   "GARDENER-PRUNING.title": "가지치기",
   "GARDENER-PRUNING.description": "피해를 {Damage:diff()}만큼 줍니다. \n손에 카드를 1장 고르고, [gold]양분[/gold]을 {NutrientFeed:diff()} 보충합니다.",
@@ -90,7 +90,7 @@
   "GARDENER-PULSATING_ROOTS.description": "매 턴 시작 시 카드를 1장 뽑습니다.",
 
   "GARDENER-RAPID_GROWTH.title": "급속 성장",
-  "GARDENER-RAPID_GROWTH.description": "[gold]양분[/gold] {Nutrient:diff()}. \n카드를 {Cards:diff()}장 뽑습니다. \n[gold]양분[/gold]이 4 이하라면, 비용이 1 줄어듭니다.",
+  "GARDENER-RAPID_GROWTH.description": "카드를 {Cards:diff()}장 뽑습니다. \n[gold]양분[/gold]이 4 이하라면, 비용이 1 줄어듭니다.",
 
   "GARDENER-ROT_INTO_FOOD.title": "썩어서 비료로",
   "GARDENER-ROT_INTO_FOOD.description": "[gold]양분[/gold]이 감소할 때마다, \n이번 턴 동안 힘{IfUpgraded:show:과 가시를|을} {RotIntoFoodPower:diff()} 얻습니다.",
@@ -111,7 +111,7 @@
   "GARDENER-SURPRISE_MUTATION.description": "이번 턴 동안 힘을 {TemporaryStrengthPower_:diff()}, \n민첩을 {TemporaryDexterityPower_:diff()}, [gold]가시[/gold]를 {TemporaryThornsPower:diff()} 얻습니다.",
 
   "GARDENER-SYMBIOTIC_PLANT.title": "공생성 식물",
-  "GARDENER-SYMBIOTIC_PLANT.description": "[gold]양분[/gold] {Nutrient:diff()}. \n피해를 {Damage:diff()}만큼 줍니다. \n다음으로 플레이하는 카드 {SymbioticPlantPower:diff()}장은 [gold]양분[/gold]을 소모하지 않습니다.",
+  "GARDENER-SYMBIOTIC_PLANT.description": "피해를 {Damage:diff()}만큼 줍니다. \n다음으로 플레이하는 카드 {SymbioticPlantPower:diff()}장은 [gold]양분[/gold]을 소모하지 않습니다.",
 
   "GARDENER-THORN_BARRAGE.title": "가시 폭격",
   "GARDENER-THORN_BARRAGE.description": "피해를 {CalculatedDamage:diff()}만큼 {Repeat:diff()}번 줍니다. 현재 가진 [gold]가시[/gold]에 따라 피해량이 상승합니다.",
@@ -130,7 +130,7 @@
   "GARDENER-WATER_AND_FOOD.selectionScreenPrompt": "성장시킬 카드를 선택하세요.",
 
   "GARDENER-WRIGGLE.title": "꿈틀",
-  "GARDENER-WRIGGLE.description": "[gold]양분[/gold] {Nutrient:diff()}. \n카드를 {Cards:diff()}장 뽑습니다. \n[gold]양분[/gold]이 {NutrientThreshold:diff()} 이상이라면, \n이번 턴 동안 [gold]가시[/gold]를 {WrigglePower:diff()} 얻습니다.",
+  "GARDENER-WRIGGLE.description": "카드를 {Cards:diff()}장 뽑습니다. \n[gold]양분[/gold]이 {NutrientThreshold:diff()} 이상이라면, \n이번 턴 동안 [gold]가시[/gold]를 {WrigglePower:diff()} 얻습니다.",
 
   "GARDENER-YGGDRASIL_FORM.title": "세계수의 형상",
   "GARDENER-YGGDRASIL_FORM.description": "매 턴 시작 시, 무작위 카드 {YggdrasilFormPower:diff()}장을 \n뽑을 더미에 섞어 넣습니다. \n사용 전까지 비용이 0이 됩니다."

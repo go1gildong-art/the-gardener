@@ -5,7 +5,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace Gardener;
+namespace Gardener.GardenerCode.Cards;
 
 using BaseLib.Utils;
 using Gardener.GardenerCode.Character;
@@ -14,15 +14,18 @@ using Gardener.GardenerCode.Systems;
 using MegaCrit.Sts2.Core.Models.CardPools;
 
 [Pool(typeof(GardenerCardPool))]
-public class Wriggle() : GardenerCode.Cards.GardenerCard(
-  1,
-  CardType.Skill,
-  CardRarity.Common,
-  TargetType.Self)
+public class Wriggle : GardenerCard
 {
+    public int Nutrient => NutrientModifier.GetFrom(this)?.Nutrient ?? 0;
+
+    public Wriggle() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
+    {
+        NutrientModifier.AddTo(this, 10);
+    }
+
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
-        new IntVar("Nutrient", 10),
+        new IntVar("Nutrient", Nutrient),
         new CardsVar(2),
         new IntVar("NutrientThreshold", 4),
         new PowerVar<WrigglePower>(4)
@@ -42,11 +45,10 @@ public class Wriggle() : GardenerCode.Cards.GardenerCard(
                 base.Owner.Creature, this);
         }
 
-        await GardenerCmd.ConsumeNutrient(choiceContext, this);
-    }
+        }
 
     protected override void OnUpgrade()
     {
-        DynamicVars["Nutrient"].UpgradeValueBy(4);
+        NutrientModifier.GetFrom(this)?.Increase(4);
     }
 }

@@ -20,7 +20,6 @@ using MegaCrit.Sts2.Core.Saves.Runs;
 [Pool(typeof(GardenerCardPool))]
 public class NatureRetreat : GardenerCard
 {
-    private int _baseNutrient = 12;
     public int Nutrient => NutrientModifier.GetFrom(this)?.Nutrient ?? 0;
     public NatureRetreat() : base(1, CardType.Skill, CardRarity.Basic, TargetType.Self)
     {

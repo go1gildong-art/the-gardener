@@ -5,7 +5,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace Gardener;
+namespace Gardener.GardenerCode.Cards;
 
 using System.Security.Cryptography.X509Certificates;
 using BaseLib.Utils;
@@ -17,16 +17,18 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 
 [Pool(typeof(GardenerCardPool))]
-public class NutrientDump() : GardenerCode.Cards.GardenerCard(
-  2,
-  CardType.Attack,
-  CardRarity.Common,
-  TargetType.AnyEnemy)
+public class NutrientDump : GardenerCard
 {
+    public int Nutrient => NutrientModifier.GetFrom(this)?.Nutrient ?? 0;
+
+    public NutrientDump() : base(2, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
+    {
+        NutrientModifier.AddTo(this, 6);
+    }
+
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
-        new IntVar("Nutrient", 6),
-
+        new IntVar("Nutrient", Nutrient),
         new CalculationBaseVar(0m),
         new ExtraDamageVar(1m),
         new CalculatedDamageVar(ValueProp.Move).WithMultiplier(delegate(CardModel card, Creature? _)
@@ -57,8 +59,7 @@ public class NutrientDump() : GardenerCode.Cards.GardenerCard(
         .WithHitFx("vfx/vfx_attack_slash")
         .Execute(choiceContext);
 
-        await GardenerCmd.ConsumeNutrient(choiceContext, this);
-    }
+        }
 
     protected override void OnUpgrade()
     {

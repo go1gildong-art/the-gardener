@@ -5,7 +5,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace Gardener;
+namespace Gardener.GardenerCode.Cards;
 
 using BaseLib.Utils;
 using Gardener.GardenerCode.Character;
@@ -15,17 +15,19 @@ using MegaCrit.Sts2.Core.Models;
 
 using MegaCrit.Sts2.Core.CardSelection;
 
-
 [Pool(typeof(GardenerCardPool))]
-public class LastDrop() : GardenerCode.Cards.GardenerCard(
-  2,
-  CardType.Skill,
-  CardRarity.Uncommon,
-  TargetType.Self)
+public class LastDrop : GardenerCard
 {
+    public int Nutrient => NutrientModifier.GetFrom(this)?.Nutrient ?? 0;
+
+    public LastDrop() : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+    {
+        NutrientModifier.AddTo(this, 8);
+    }
+
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
-        new IntVar("Nutrient", 8),
+        new IntVar("Nutrient", Nutrient),
         new RepeatVar(3)
     };
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -59,8 +61,7 @@ public class LastDrop() : GardenerCode.Cards.GardenerCard(
             await GardenerCmd.ConsumeNutrient(choiceContext, cardModel);
         }
 
-        await GardenerCmd.ConsumeNutrient(choiceContext, this);
-    }
+        }
 
     protected override void OnUpgrade()
     {

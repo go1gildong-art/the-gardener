@@ -5,7 +5,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 using MegaCrit.Sts2.Core.Rooms;
-namespace Gardener;
+namespace Gardener.GardenerCode.Cards;
 
 using BaseLib.Extensions;
 using BaseLib.Utils;
@@ -17,7 +17,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 
 [Pool(typeof(GardenerCardPool))]
-public class SharpRoots() : GardenerCode.Cards.GardenerCard(
+public class SharpRoots() : GardenerCard(
   1,
   CardType.Attack,
   CardRarity.Common,

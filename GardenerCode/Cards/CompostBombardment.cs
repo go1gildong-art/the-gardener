@@ -14,7 +14,7 @@ using MegaCrit.Sts2.Core.Models;
 using Gardener.GardenerCode.Systems;
 
 [Pool(typeof(GardenerCardPool))]
-public class CompostBombardment() : GardenerCode.Cards.GardenerCard(
+public class CompostBombardment() : GardenerCard(
   0,
   CardType.Attack,
   CardRarity.Rare,

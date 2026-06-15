@@ -5,7 +5,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace Gardener;
+namespace Gardener.GardenerCode.Cards;
 
 using BaseLib.Utils;
 using Gardener.GardenerCode.Character;
@@ -13,16 +13,19 @@ using Gardener.GardenerCode.Systems;
 using MegaCrit.Sts2.Core.Models.CardPools;
 
 [Pool(typeof(GardenerCardPool))]
-public class BombBlossom() : GardenerCode.Cards.GardenerCard(
-  0,
-  CardType.Attack,
-  CardRarity.Uncommon,
-  TargetType.AllEnemies)
+public class BombBlossom : GardenerCard
 {
+    public int Nutrient => NutrientModifier.GetFrom(this)?.Nutrient ?? 0;
+
+    public BombBlossom() : base(0, CardType.Attack, CardRarity.Uncommon, TargetType.AllEnemies)
+    {
+        NutrientModifier.AddTo(this, 1);
+    }
+
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
-        new DamageVar(10m, DamageProps.card),
-        new IntVar("Nutrient", 1),
+    new DamageVar(10m, DamageProps.card),
+        new IntVar("Nutrient", Nutrient),
     };
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -33,11 +36,10 @@ public class BombBlossom() : GardenerCode.Cards.GardenerCard(
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
             
-        await GardenerCmd.ConsumeNutrient(choiceContext, this);
-    }
+        }
 
     protected override void OnUpgrade()
     {
-        DynamicVars["Nutrient"].UpgradeValueBy(7);
+        NutrientModifier.GetFrom(this)?.Increase(7);
     }
 }

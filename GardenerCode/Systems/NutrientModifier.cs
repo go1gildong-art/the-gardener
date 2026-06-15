@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using BaseLib.Extensions;
 using BaseLib.Config;
+using Gardener.GardenerCode.Cards;
 
 namespace Gardener.GardenerCode.Systems;
 
@@ -56,7 +57,7 @@ public class NutrientModifier() : CardModifier
     {
         if (card == null)
         {
-            GD.Print($"[DEBOOG] Cannot attach NutrientModifier to null card {card.Id}");
+            GD.Print($"[DEBOOG] Cannot attach NutrientModifier to null card {card?.Id}");
             return;
         }
 
@@ -66,9 +67,14 @@ public class NutrientModifier() : CardModifier
             return;
         }
 
-        var modif = ModelDb.CardModifier<NutrientModifier>();
-        modif.Increase(amount);
-        CardModifier.AddModifier(card, modif);
+        var modif = ModelDb.CardModifier<NutrientModifier>().MutableClone();
+        GD.Print($"[DEBOOG] {System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode(modif)}");
+        if (modif is NutrientModifier nutrientModif)
+        {
+            nutrientModif.Increase(amount);
+            CardModifier.AddModifier(card, nutrientModif);
+        }
+
     }
 
     public override void ModifyDescription(Creature? target, ref string description)
