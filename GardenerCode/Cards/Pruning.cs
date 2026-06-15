@@ -35,9 +35,7 @@ public class Pruning() : GardenerCard(
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
 
-        var list = this.IsUpgraded 
-        ? PileType.Hand.GetPile(base.Owner).Cards
-        : (
+        var list = (
             await CardSelectCmd.FromHand(
                 prefs: new CardSelectorPrefs(base.SelectionScreenPrompt, 0, (int) base.DynamicVars.Cards.BaseValue),
                 context: choiceContext,
