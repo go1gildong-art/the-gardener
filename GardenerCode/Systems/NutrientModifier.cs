@@ -5,14 +5,16 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Saves.Runs;
 using Godot;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Entities.Creatures;
+using BaseLib.Extensions;
+using BaseLib.Config;
 
 namespace Gardener.GardenerCode.Systems;
 
 
-public class NutrientModifier(int baseNutrient) : CardModifier
+public class NutrientModifier() : CardModifier
 {
-    [SavedProperty]
-    public int Nutrient = baseNutrient;
+    public int Nutrient;
 
     public override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
@@ -27,14 +29,14 @@ public class NutrientModifier(int baseNutrient) : CardModifier
     {
         if (card == null)
         {
-            GD.Print($"[DEBOOG] Card {card.Id} does not have NutrientModifier");
+            GD.Print($"[DEBOOG] Invalid card {card.Id} ");
             return null;
         }
 
         var matches = Modifiers(card)
-    .Where(m => m is NutrientModifier)
-    .Take(2)
-    .ToList();
+            .Where(m => m is NutrientModifier)
+            .Take(2)
+            .ToList();
 
         if (matches.Count == 0)
         {
@@ -50,7 +52,7 @@ public class NutrientModifier(int baseNutrient) : CardModifier
         return (NutrientModifier)matches[0];
     }
 
-    public static void AddFor(CardModel? card, int amount)
+    public static void AddTo(CardModel? card, int amount)
     {
         if (card == null)
         {
@@ -64,6 +66,28 @@ public class NutrientModifier(int baseNutrient) : CardModifier
             return;
         }
 
-        CardModifier.AddModifier(card, new NutrientModifier(amount));
+        var modif = ModelDb.CardModifier<NutrientModifier>();
+        modif.Increase(amount);
+        CardModifier.AddModifier(card, modif);
     }
+
+    public override void ModifyDescription(Creature? target, ref string description)
+    {
+        description += $"\n[gold]양분[/gold] {Nutrient}.";
+        base.ModifyDescription(target, ref description);
+    }
+
+    public override void StoreSaveData(ModifierSave save)
+    {
+        save.IntProperties.Add("Nutrient", Nutrient);
+        base.StoreSaveData(save);
+    }
+
+    public override void LoadSaveData(ModifierSave save)
+    {
+        Nutrient = save.IntProperties.TryGetValue("Nutrient", out var nut) ? nut : 1;
+        base.LoadSaveData(save);
+    }
+
+
 }

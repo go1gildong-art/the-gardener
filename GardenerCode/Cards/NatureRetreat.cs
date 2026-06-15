@@ -24,7 +24,7 @@ public class NatureRetreat : GardenerCard
     public int Nutrient => NutrientModifier.GetFrom(this)?.Nutrient ?? 0;
     public NatureRetreat() : base(1, CardType.Skill, CardRarity.Basic, TargetType.Self)
     {
-        CardModifier.AddModifier(this, new NutrientModifier(_baseNutrient));
+        NutrientModifier.AddTo(this, 12);
     }
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {

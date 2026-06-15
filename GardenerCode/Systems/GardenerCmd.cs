@@ -75,7 +75,7 @@ public static class GardenerCmd
 
         CardModel? deckCard = card.DeckVersion;
         NutrientModifier? deckNutrientModif = null;
-        if (deckCard != null) deckNutrientModif = NutrientModifier.GetFrom(card);
+        if (deckCard != null) deckNutrientModif = NutrientModifier.GetFrom(deckCard);
 
         foreach (var power in card.Owner.Creature.Powers)
         {
@@ -89,6 +89,8 @@ public static class GardenerCmd
         GD.Print($"[DEBOOG] Card {card.Id} nutrient is consumed from {card.DynamicVars["Nutrient"].BaseValue} by {amount} to {card.DynamicVars["Nutrient"].BaseValue - amount}.");
         
         nutrientModif.Decrease(amount);
+
+        if (deckNutrientModif == null) GD.Print($"[DEBOOG] Deck Card {card.Id} does not have NutrientModifier.");
         deckNutrientModif?.Decrease(amount);
 
         NutrientCombatState.Get(card.CombatState).NutrientConsumedThisCombat += amount;
