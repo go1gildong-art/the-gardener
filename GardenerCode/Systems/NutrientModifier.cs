@@ -19,7 +19,7 @@ public class NutrientModifier() : CardModifier
 
     public override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await GardenerCmd.ConsumeNutrientNew(choiceContext, cardPlay.Card);
+        await GardenerCmd.ConsumeNutrient(choiceContext, cardPlay.Card);
     }
 
     public void Decrease(int amount) { Nutrient -= amount; }

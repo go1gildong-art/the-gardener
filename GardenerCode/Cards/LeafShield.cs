@@ -32,7 +32,7 @@ public class LeafShield : GardenerCard
     {
         await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
         await CreatureCmd.GainBlock(base.Owner.Creature, base.DynamicVars.Block, cardPlay);
-                await GardenerCmd.ConsumeNutrientNew(choiceContext, this);
+                await GardenerCmd.ConsumeNutrient(choiceContext, this);
 }
 
     protected override void OnUpgrade()
