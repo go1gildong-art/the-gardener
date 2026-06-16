@@ -13,7 +13,7 @@ using Gardener.GardenerCode.Systems;
 using MegaCrit.Sts2.Core.Models.CardPools;
 
 [Pool(typeof(GardenerCardPool))]
-public class BombBlossom : GardenerCard
+public class BombBlossom : GardenerCard, IOnDepleted
 {
     public int Nutrient => NutrientModifier.GetFrom(this)?.Nutrient ?? 0;
 
@@ -25,6 +25,7 @@ public class BombBlossom : GardenerCard
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
     new DamageVar(10m, DamageProps.card),
+    new IntVar("DamageOnDepleted", 5m),
         new IntVar("Nutrient", Nutrient),
     };
 
@@ -41,5 +42,16 @@ public class BombBlossom : GardenerCard
     protected override void OnUpgrade()
     {
         NutrientModifier.GetFrom(this)?.Increase(7);
+        DynamicVars["DamageOnDepleted"].UpgradeValueBy(5);
+    }
+
+    public async Task OnDepleted(PlayerChoiceContext choiceContext)
+    {
+        var dmg = new DamageVar(DynamicVars["DamageOnDepleted"].BaseValue, DamageProps.card);
+        await DamageCmd.Attack(dmg.BaseValue)
+            .FromCard(this)
+            .TargetingAllOpponents(base.CombatState)
+            .WithHitFx("vfx/vfx_attack_slash")
+            .Execute(choiceContext);
     }
 }

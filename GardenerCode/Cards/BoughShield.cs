@@ -17,10 +17,15 @@ public class BoughShield : GardenerCard
 {
     public int Nutrient => NutrientModifier.GetFrom(this)?.Nutrient ?? 0;
 
-    public BoughShield() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+    public BoughShield() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
         NutrientModifier.AddTo(this, 4);
     }
+
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new CardKeyword[]
+    {
+        CardKeyword.Exhaust
+    };
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
@@ -42,5 +47,6 @@ public class BoughShield : GardenerCard
 
     protected override void OnUpgrade()
     {
+        NutrientModifier.GetFrom(this)?.Increase(2);
     }
 }

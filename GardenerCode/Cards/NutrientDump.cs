@@ -21,7 +21,7 @@ public class NutrientDump : GardenerCard
 {
     public int Nutrient => NutrientModifier.GetFrom(this)?.Nutrient ?? 0;
 
-    public NutrientDump() : base(3, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
+    public NutrientDump() : base(3, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
         NutrientModifier.AddTo(this, 10);
     }

@@ -23,8 +23,8 @@ public class SurpriseMutation() : GardenerCard(
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
-        new IntVar("TemporaryStrengthPower_", 1m),
-        new IntVar("TemporaryDexterityPower_", 1m),
+        new IntVar("TemporaryStrengthPower_", 2m),
+        new IntVar("TemporaryDexterityPower_", 2m),
         new PowerVar<TemporaryThornsPower>(2m),
         new PowerVar<SurpriseMutationPower>(1m)
     };

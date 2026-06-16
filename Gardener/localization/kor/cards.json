@@ -33,7 +33,7 @@
   "GARDENER-VITALITY.title": "원기왕성",
 
   "GARDENER-BOMB_BLOSSOM.title": "폭탄꽃",
-  "GARDENER-BOMB_BLOSSOM.description": "모든 적에게 피해를 {Damage:diff()}만큼 줍니다.",
+  "GARDENER-BOMB_BLOSSOM.description": "모든 적에게 피해를 {Damage:diff()}만큼 줍니다. \n[gold]고갈[/gold]된다면, 모든 적에게 피해를 추가로 {DamageOnDepleted:diff()} 줍니다.",
 
   "GARDENER-BOUGH_SHIELD.title": "나무줄기 방어막",
   "GARDENER-BOUGH_SHIELD.description": "[gold]방어도[/gold] {Block:diff()}를 현재 [gold]양분[/gold] 수 번 얻습니다.",
@@ -90,7 +90,7 @@
   "GARDENER-PULSATING_ROOTS.description": "매 턴 시작 시 카드를 1장 뽑습니다.",
 
   "GARDENER-RAPID_GROWTH.title": "급속 성장",
-  "GARDENER-RAPID_GROWTH.description": "카드를 {Cards:diff()}장 뽑습니다. \n[gold]양분[/gold]이 4 이하라면, 비용이 1 줄어듭니다.",
+  "GARDENER-RAPID_GROWTH.description": "카드를 {Cards:diff()}장 뽑습니다. \n[gold]양분[/gold]이 4 이하라면, {Energy:energyIcons()}를 얻습니다.",
 
   "GARDENER-ROT_INTO_FOOD.title": "썩어서 비료로",
   "GARDENER-ROT_INTO_FOOD.description": "[gold]양분[/gold]이 감소할 때마다, \n이번 턴 동안 힘{IfUpgraded:show:과 가시를|을} {RotIntoFoodPower:diff()} 얻습니다.",
