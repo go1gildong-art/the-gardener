@@ -21,9 +21,9 @@ public class NutrientDump : GardenerCard
 {
     public int Nutrient => NutrientModifier.GetFrom(this)?.Nutrient ?? 0;
 
-    public NutrientDump() : base(2, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
+    public NutrientDump() : base(3, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
-        NutrientModifier.AddTo(this, 6);
+        NutrientModifier.AddTo(this, 10);
     }
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
@@ -63,6 +63,7 @@ public class NutrientDump : GardenerCard
 
     protected override void OnUpgrade()
     {
-        DynamicVars.CalculationBase.UpgradeValueBy(4m);
+        CardCmd.ApplyKeyword(this, CardKeyword.Retain);
+        NutrientModifier.GetFrom(this)?.Increase(5);
     }
 }

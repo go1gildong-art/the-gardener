@@ -40,6 +40,5 @@ public class PremiumSerum : GardenerCard
     {
         DynamicVars.Energy.UpgradeValueBy(1);
         DynamicVars.Cards.UpgradeValueBy(1);
-        NutrientModifier.GetFrom(this)?.Increase(3);
     }
 }

@@ -23,7 +23,7 @@ public class HostileNematode : GardenerCard
 
     public HostileNematode() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
-        NutrientModifier.AddTo(this, 10);
+        NutrientModifier.AddTo(this, 8);
     }
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
@@ -32,8 +32,7 @@ public class HostileNematode : GardenerCard
         new PowerVar<ThornsPower>(3m),
     };
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords => new CardKeyword[] { CardKeyword.Exhaust };
-
+    
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await PowerCmd.Apply<ThornsPower>(
@@ -57,6 +56,6 @@ public class HostileNematode : GardenerCard
 
     protected override void OnUpgrade()
     {
-        RemoveKeyword(CardKeyword.Exhaust);
+        NutrientModifier.GetFrom(this)?.Increase(4);
     }
 }
