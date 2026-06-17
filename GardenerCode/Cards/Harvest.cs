@@ -90,6 +90,7 @@ public class Harvest : GardenerCard
             (base.DeckVersion as Harvest)?.BuffFromPlay(increaseDamage);
 
             await GardenerCmd.FeedNutrient(choiceContext, this, (int)DynamicVars["NutrientFeed"].BaseValue);
+            await CardCmd.Exhaust(choiceContext, this);
         }
     }
 
