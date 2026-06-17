@@ -12,13 +12,12 @@ using Gardener.GardenerCode.Character;
 using Gardener.GardenerCode.Systems;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models;
+using BaseLib.Abstracts;
 
 [Pool(typeof(GardenerCardPool))]
-public class Weeding : GardenerCard
+public class Weeding : GardenerCard, ITranscendenceCard
 {
     protected override bool HasEnergyCostX => true;
-
-
     public int Nutrient => NutrientModifier.GetFrom(this)?.Nutrient ?? 0;
 
     public Weeding() : base(
@@ -29,6 +28,8 @@ public class Weeding : GardenerCard
     {
         NutrientModifier.AddTo(this, 7);
     }
+
+    public CardModel GetTranscendenceTransformedCard() => ModelDb.Card<Harvest>();
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
         {
         new DamageVar(7m, DamageProps.card),

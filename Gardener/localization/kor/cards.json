@@ -1,4 +1,7 @@
 {
+  "GARDENER-HARVEST.description": "피해를 {Damage:diff()}만큼 X{IfUpgraded:show:+1}번 줍니다. \n[gold]치명타[/gold]라면, \n피해량이 {IncreaseDamage:diff()} 증가하고, \n[gold]양분[/gold]을 {NutrientFeed:diff()} 공급받습니다. ",
+  "GARDENER-HARVEST.title": "추수",
+
     "GARDENER-WINTER_BREEZE.description": "{IfUpgraded:show:모든 적에게 }피해를 {Damage:diff()} 주고 \n[gold]약화[/gold]를 {WeakPower:diff()} 부여합니다. \n[gold]고갈되었다면[/gold], 스스로에게 [gold]약화[/gold]를 {WeakPowerOnDepleted:diff()} 부여합니다.",
   "GARDENER-WINTER_BREEZE.title": "겨울바람",
 
