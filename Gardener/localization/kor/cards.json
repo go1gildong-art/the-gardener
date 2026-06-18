@@ -1,4 +1,7 @@
 {
+  "GARDENER-PHOTOSYNTHESIS.description": "턴 시작시 {Energy:energyIcons()}를 얻습니다. \n전투 종료 시, \n최대 체력을 {MaxHp:diff()} 얻습니다.",
+  "GARDENER-PHOTOSYNTHESIS.title": "광합성",
+
   "GARDENER-HARVEST.description": "피해를 {Damage:diff()}만큼 X{IfUpgraded:show:+1}번 줍니다. \n[gold]치명타[/gold]라면 [gold]소멸[/gold], \n피해량이 {IncreaseDamage:diff()} 증가하고, \n[gold]양분[/gold]을 {NutrientFeed:diff()} 공급받습니다. ",
   "GARDENER-HARVEST.title": "추수",
 

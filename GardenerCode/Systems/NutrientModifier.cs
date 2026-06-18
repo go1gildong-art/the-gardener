@@ -68,7 +68,6 @@ public class NutrientModifier() : CardModifier
         }
 
         var modif = ModelDb.CardModifier<NutrientModifier>().MutableClone();
-        GD.Print($"[DEBOOG] {System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode(modif)}");
         if (modif is NutrientModifier nutrientModif)
         {
             nutrientModif.Increase(amount);

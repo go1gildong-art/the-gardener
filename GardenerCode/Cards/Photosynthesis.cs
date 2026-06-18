@@ -4,47 +4,42 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
+using Godot;
 
 namespace Gardener.GardenerCode.Cards;
 
 using BaseLib.Utils;
 using Gardener.GardenerCode.Character;
-using Gardener.GardenerCode.Systems;
+using Gardener.GardenerCode.Powers;
 using MegaCrit.Sts2.Core.Models.CardPools;
+using Gardener.GardenerCode.Systems;
 
+  
 [Pool(typeof(GardenerCardPool))]
-public class BoughShield : GardenerCard
+public class Photosynthesis : GardenerCard
 {
-    public int Nutrient => NutrientModifier.GetFrom(this)?.Nutrient ?? 0;
-
-    public BoughShield() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+    public Photosynthesis() : base(2, CardType.Power, CardRarity.Ancient, TargetType.Self)
     {
-        NutrientModifier.AddTo(this, 4);
+        NutrientModifier.AddTo(this, 8);
     }
-
-    public override IEnumerable<CardKeyword> CanonicalKeywords => new CardKeyword[]
-    {
-        CardKeyword.Exhaust
-    };
-
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
-    {
-    new BlockVar(4m, BlockProps.card),
-        new IntVar("Nutrient", Nutrient),
-    };
+{ new PowerVar<PhotosynthesisPower>(1m),
+  new EnergyVar(1),
+  new MaxHpVar(3)
+  };
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
-        for (int i = 0; i < Nutrient; i++)
-        {
-            await CreatureCmd.GainBlock(base.Owner.Creature, DynamicVars.Block, cardPlay);
-        }
-
-        }
+        await PowerCmd.Apply<PhotosynthesisPower>(
+            choiceContext,
+            base.Owner.Creature,
+            base.DynamicVars["PhotosynthesisPower"].BaseValue,
+            base.Owner.Creature, this);
+    }
 
     protected override void OnUpgrade()
     {
-        NutrientModifier.GetFrom(this)?.Increase(2);
+        CardCmd.ApplyKeyword(this, CardKeyword.Innate);
     }
 }

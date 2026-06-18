@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6m6lrrqf4uob"
-path="res://.godot/imported/photosynthesispower.png-316a5d452c81e18d452bc9f53653f0bf.ctex"
+uid="uid://bss2sluqjtrw6"
+path="res://.godot/imported/photosynthesis_power.png-1d464799e8e21688691a68f520729c9b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Gardener/images/powers/big/photosynthesispower.png"
-dest_files=["res://.godot/imported/photosynthesispower.png-316a5d452c81e18d452bc9f53653f0bf.ctex"]
+source_file="res://Gardener/images/powers/big/photosynthesis_power.png"
+dest_files=["res://.godot/imported/photosynthesis_power.png-1d464799e8e21688691a68f520729c9b.ctex"]
 
 [params]
 

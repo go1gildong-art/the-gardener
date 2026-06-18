@@ -57,5 +57,9 @@
 
   "GARDENER-SURPRISE_MUTATION_POWER.description": "Gain {Amount} Temporary Strength, Dexterity, and Thorns until the start of your next turn.",
   "GARDENER-SURPRISE_MUTATION_POWER.smartDescription": "Gain {Amount} Temporary Strength, Dexterity, and Thorns until the start of your next turn.",
-  "GARDENER-SURPRISE_MUTATION_POWER.title": "Surprise Mutation"
+  "GARDENER-SURPRISE_MUTATION_POWER.title": "Surprise Mutation",
+
+  "GARDENER-PHOTOSYNTHESIS_POWER.description": "",
+  "GARDENER-PHOTOSYNTHESIS_POWER.smartDescription": "Gain {Amount} Energy per turn. After combat Gain {Amount} x 3 Max HP.",
+  "GARDENER-PHOTOSYNTHESIS_POWER.title": "Photosynthesis"
 }

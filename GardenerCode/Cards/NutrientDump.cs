@@ -37,11 +37,8 @@ public class NutrientDump : GardenerCard
             var playArea = PileType.Play.GetPile(card.Owner).Cards;
 
             Func<decimal, CardModel, decimal> getNutrientSum = (acc, c) => {
-                    if (c.DynamicVars.TryGetValue("Nutrient", out var value))
-                    {
-                        return acc + value.BaseValue;
-                    }
-                    return acc;
+                    var value = NutrientModifier.GetFrom(c)?.Nutrient ?? 0;
+                    return acc + value;
                 };
 
             decimal handNutrientSum = hand.Aggregate(0m, getNutrientSum);
@@ -55,11 +52,11 @@ public class NutrientDump : GardenerCard
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
 
-        await DamageCmd.Attack(DynamicVars.CalculatedDamage).FromCard(this).Targeting(cardPlay.Target)
+        await DamageCmd.Attack(DynamicVars.CalculatedDamage.Calculate(cardPlay.Target)).FromCard(this).Targeting(cardPlay.Target)
         .WithHitFx("vfx/vfx_attack_slash")
         .Execute(choiceContext);
 
-        }
+    }
 
     protected override void OnUpgrade()
     {
