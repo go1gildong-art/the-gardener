@@ -43,7 +43,7 @@ public static class GardenerCmd
             return;
         }
 
-        GD.Print($"[DEBOOG] Card {card.Id} nutrient is consumed from {card.DynamicVars["Nutrient"].BaseValue} by {amount} to {card.DynamicVars["Nutrient"].BaseValue - amount}.");
+        GD.Print($"[DEBOOG] Card {card.Id} nutrient is consumed from {nutrientModif.Nutrient} by {amount} to {nutrientModif.Nutrient - amount}.");
         
         nutrientModif.Decrease(amount);
 
@@ -78,7 +78,7 @@ public static class GardenerCmd
         NutrientModifier? deckNutrientModif = null;
         if (deckCard != null) deckNutrientModif = NutrientModifier.GetFrom(deckCard);
 
-        GD.Print($"[DEBOOG] Card {card.Id} nutrient is fed from {card.DynamicVars["Nutrient"].BaseValue} by {amount} to {card.DynamicVars["Nutrient"].BaseValue - amount}.");
+        GD.Print($"[DEBOOG] Card {card.Id} nutrient is fed from {nutrientModif.Nutrient} by {amount} to {nutrientModif.Nutrient - amount}.");
         nutrientModif.Increase(amount);
 
         if (deckNutrientModif == null) GD.Print($"[DEBOOG] Deck Card {card.Id} does not have NutrientModifier.");
@@ -95,7 +95,7 @@ public static class GardenerCmd
         if (card is IOnDepleted depletableCard) await depletableCard.OnDepleted(choiceContext);
 
         GD.Print($"[DEBOOG] Card {card.Id} is depleted. Removing from combat and deck.");
-        await CardPileCmd.RemoveFromCombat(card);
+        if (card.IsInCombat) await CardPileCmd.RemoveFromCombat(card);
 
         CardModel? deckCard = card.DeckVersion;
         if (deckCard != null) await CardPileCmd.RemoveFromDeck(deckCard);

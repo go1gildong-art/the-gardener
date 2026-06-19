@@ -36,10 +36,7 @@ public class Weeding : GardenerCard, ITranscendenceCard
         new IntVar("Nutrient", Nutrient)
         };
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords => new CardKeyword[]
-    {
-        CardKeyword.Exhaust
-    };
+    // public override IEnumerable<CardKeyword> CanonicalKeywords => new CardKeyword[] { CardKeyword.Exhaust };
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

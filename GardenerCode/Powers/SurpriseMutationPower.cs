@@ -27,8 +27,8 @@ public class SurpriseMutationPower : CustomPowerModel
     protected virtual bool IsPositive => true;
     private int Sign => IsPositive ? 1 : -1;
 
-    private int StrMult => 1;
-    private int DexMult => 1;
+    private int StrMult => 2;
+    private int DexMult => 2;
     private int ThornsMult => 2;
     
     private async Task ApplyEffects(PlayerChoiceContext choiceContext, Creature target, decimal amount, Creature? applier, CardModel? cardSource)

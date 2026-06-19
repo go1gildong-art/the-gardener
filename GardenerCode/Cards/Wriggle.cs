@@ -36,7 +36,7 @@ public class Wriggle : GardenerCard
         await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
         await CardPileCmd.Draw(choiceContext, base.DynamicVars.Cards.BaseValue, base.Owner);
         
-        if (base.DynamicVars["Nutrient"].BaseValue >= base.DynamicVars["NutrientThreshold"].BaseValue)
+        if (Nutrient >= base.DynamicVars["NutrientThreshold"].BaseValue)
         {
             await PowerCmd.Apply<WrigglePower>(
                 choiceContext,

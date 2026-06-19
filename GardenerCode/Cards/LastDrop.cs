@@ -36,32 +36,27 @@ public class LastDrop : GardenerCard
             prefs: new CardSelectorPrefs(base.SelectionScreenPrompt, 1),
             context: choiceContext,
             player: base.Owner,
-            filter: c => c.DynamicVars.TryGetValue("Nutrient", out var value),
+            filter: c => NutrientModifier.GetFrom(c) != null,
             source: this
             )
             ).FirstOrDefault();
 
-        for (int i = 0; i < base.DynamicVars.Repeat.BaseValue; i++)
-        {
-            if (
-                cardModel == null
-                || !cardModel.IsInCombat
-            ) break;
-
+            if (cardModel != null && cardModel.IsInCombat)
+            {
+                cardModel.BaseReplayCount += (int)base.DynamicVars.Repeat.BaseValue - 1;
             await CardCmd.AutoPlay(choiceContext, cardModel, null);
-        }
+            }
 
-        while 
+        while
         (
             cardModel != null
-            && cardModel.DynamicVars.TryGetValue("Nutrient", out var value)
-            && value.BaseValue > 0
+            && NutrientModifier.GetFrom(cardModel)?.Nutrient > 0
         )
         {
             await GardenerCmd.ConsumeNutrient(choiceContext, cardModel);
         }
 
-        }
+    }
 
     protected override void OnUpgrade()
     {
