@@ -15,17 +15,19 @@ using MegaCrit.Sts2.Core.Models.CardPools;
 using Gardener.GardenerCode.Powers;
 
 [Pool(typeof(GardenerCardPool))]
-public class SymbioticPlant() : GardenerCard(
-  1,
-  CardType.Attack,
-  CardRarity.Uncommon,
-  TargetType.AnyEnemy)
+public class SymbioticPlant : GardenerCard
 {
+    public SymbioticPlant() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
+    {
+        NutrientModifier.AddTo(this, 4);
+    }
+    public int Nutrient => NutrientModifier.GetFrom(this)?.Nutrient ?? 0;
+    
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
         new DamageVar(7, DamageProps.card),
         new PowerVar<SymbioticPlantPower>(2),
-        new IntVar("Nutrient", 4)
+        new IntVar("Nutrient", Nutrient)
     };
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
