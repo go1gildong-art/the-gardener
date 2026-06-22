@@ -1,4 +1,7 @@
 {
+  "GARDENER-SHARPEN_PETALS.description": "During the number of turns same as Nutrient({Turns:diff()}), \ngain X times {ThornsMultiplier:diff()} Thorns.",
+  "GARDENER-SHARPEN_PETALS.title": "Sharpen Petals",
+
   "GARDENER-WINTER_BREEZE.description": "Deal {Damage:diff()} damage and apply {Weak:diff()} [gold]Weak[/gold] to all enemies. When [gold]Depleted[/gold], apply 1 [gold]Vulnerable[/gold] to yourself.",
   "GARDENER-WINTER_BREEZE.title": "Winter Breeze",
 

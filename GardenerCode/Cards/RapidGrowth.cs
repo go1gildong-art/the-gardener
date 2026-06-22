@@ -40,7 +40,7 @@ public class RapidGrowth : GardenerCard
 
         if (Nutrient <= DynamicVars["NutrientThreshold"].BaseValue)
         {
-            PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, base.Owner);
+            await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, base.Owner);
         }
     }
 

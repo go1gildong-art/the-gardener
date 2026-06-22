@@ -1,4 +1,7 @@
 {
+  "GARDENER-SHARPEN_PETALS.description": "양분만큼의({Turns:diff()}) 턴 동안, \nX의 {ThornsMultiplier:diff()}배만큼 가시를 얻습니다.",
+  "GARDENER-SHARPEN_PETALS.title": "날 세우기",
+
   "GARDENER-PHOTOSYNTHESIS.description": "턴 시작시 {Energy:energyIcons()}를 얻습니다. \n전투 종료 시, \n최대 체력을 {MaxHp:diff()} 얻습니다.",
   "GARDENER-PHOTOSYNTHESIS.title": "광합성",
 
