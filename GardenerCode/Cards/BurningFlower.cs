@@ -5,7 +5,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace Gardener;
+namespace Gardener.GardenerCode.Cards;
 
 using BaseLib.Utils;
 using Gardener.GardenerCode.Character;
@@ -14,17 +14,20 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 
 [Pool(typeof(GardenerCardPool))]
-public class BurningFlower() : GardenerCode.Cards.GardenerCard(
-  0,
-  CardType.Attack,
-  CardRarity.Rare,
-  TargetType.AllEnemies)
+public class BurningFlower : GardenerCard
 {
     protected override bool HasEnergyCostX => true;
+    public int Nutrient => NutrientModifier.GetFrom(this)?.Nutrient ?? 0;
+
+    public  BurningFlower() : base(0, CardType.Attack, CardRarity.Rare, TargetType.AllEnemies)
+    {
+        NutrientModifier.AddTo(this, 12);
+    }
+
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
         new DamageVar(8m, DamageProps.card),
-        new IntVar("Nutrient", 12),
+        new IntVar("Nutrient", Nutrient),
     };
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => new CardKeyword[]

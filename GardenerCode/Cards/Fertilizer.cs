@@ -5,7 +5,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 using MegaCrit.Sts2.Core.CardSelection;
-namespace Gardener;
+namespace Gardener.GardenerCode.Cards;
 
 using BaseLib.Utils;
 using Gardener.GardenerCode.Character;
@@ -15,16 +15,19 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 
 [Pool(typeof(GardenerCardPool))]
-public class Fertilizer() : GardenerCode.Cards.GardenerCard(
-  1,
-  CardType.Skill,
-  CardRarity.Common,
-  TargetType.Self)
+public class Fertilizer : GardenerCard
 {
+    public int Nutrient => NutrientModifier.GetFrom(this)?.Nutrient ?? 0;
+
+    public Fertilizer() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self)
+    {
+        NutrientModifier.AddTo(this, 8);
+    }
+
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
-        new IntVar("Nutrient", 8),
-        new IntVar("NutrientFeed", 2),
+        new IntVar("Nutrient", Nutrient),
+        new IntVar("NutrientFeed", 3),
         new CardsVar(1),
         new EnergyVar(1)
     };
@@ -51,11 +54,10 @@ public class Fertilizer() : GardenerCode.Cards.GardenerCard(
         }
 
         
-        await GardenerCmd.ConsumeNutrient(choiceContext, this);
-    }
+        }
 
     protected override void OnUpgrade()
     {
-        DynamicVars["Nutrient"].UpgradeValueBy(3);
+        NutrientModifier.GetFrom(this)?.Increase(3);
     }
 }

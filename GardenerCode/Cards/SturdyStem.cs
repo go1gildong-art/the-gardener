@@ -5,14 +5,14 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 using Gardener.GardenerCode.Powers;
-namespace Gardener;
+namespace Gardener.GardenerCode.Cards;
 
 using BaseLib.Utils;
 using Gardener.GardenerCode.Character;
 using MegaCrit.Sts2.Core.Models.CardPools;
 
 [Pool(typeof(GardenerCardPool))]
-public class SturdyStem() : GardenerCode.Cards.GardenerCard(
+public class SturdyStem() : GardenerCard(
   2,
   CardType.Skill,
   CardRarity.Common,

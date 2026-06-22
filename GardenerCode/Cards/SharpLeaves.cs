@@ -5,7 +5,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace Gardener;
+namespace Gardener.GardenerCode.Cards;
 
 using BaseLib.Utils;
 using Gardener.GardenerCode.Character;
@@ -13,7 +13,7 @@ using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 
 [Pool(typeof(GardenerCardPool))]
-public class SharpLeaves() : GardenerCode.Cards.GardenerCard(
+public class SharpLeaves() : GardenerCard(
   1,
   CardType.Power,
   CardRarity.Uncommon,

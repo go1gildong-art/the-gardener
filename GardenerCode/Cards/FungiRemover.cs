@@ -5,7 +5,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace Gardener;
+namespace Gardener.GardenerCode.Cards;
 
 using BaseLib.Utils;
 using Gardener.GardenerCode.Character;
@@ -13,12 +13,15 @@ using Gardener.GardenerCode.Systems;
 using MegaCrit.Sts2.Core.Models.Powers;
 
 [Pool(typeof(GardenerCardPool))]
-public class FungiRemover() : GardenerCode.Cards.GardenerCard(
-  0,
-  CardType.Attack,
-  CardRarity.Common,
-  TargetType.AnyEnemy), IOnDepleted
+public class FungiRemover : GardenerCard, IOnDepleted
 {
+    public int Nutrient => NutrientModifier.GetFrom(this)?.Nutrient ?? 0;
+
+    public FungiRemover() : base(0, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
+    {
+        NutrientModifier.AddTo(this, 8);
+    }
+
     public override TargetType TargetType => IsUpgraded ? TargetType.AllEnemies : TargetType.AnyEnemy;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
@@ -26,7 +29,7 @@ public class FungiRemover() : GardenerCode.Cards.GardenerCard(
         new DamageVar(4m, DamageProps.card),
         new PowerVar<VulnerablePower>(1),
         new IntVar("VulnerablePowerOnDepleted", 3),
-        new IntVar("Nutrient", 8),
+        new IntVar("Nutrient", Nutrient),
     };
 
     public async Task OnDepleted(PlayerChoiceContext choiceContext)
@@ -67,8 +70,7 @@ public class FungiRemover() : GardenerCode.Cards.GardenerCard(
                 base.Owner.Creature, this);
         }
 
-        await GardenerCmd.ConsumeNutrient(choiceContext, this);
-    }
+        }
 
     protected override void OnUpgrade()
     {

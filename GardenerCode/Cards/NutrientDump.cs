@@ -5,7 +5,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace Gardener;
+namespace Gardener.GardenerCode.Cards;
 
 using System.Security.Cryptography.X509Certificates;
 using BaseLib.Utils;
@@ -17,16 +17,18 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 
 [Pool(typeof(GardenerCardPool))]
-public class NutrientDump() : GardenerCode.Cards.GardenerCard(
-  2,
-  CardType.Attack,
-  CardRarity.Common,
-  TargetType.AnyEnemy)
+public class NutrientDump : GardenerCard
 {
+    public int Nutrient => NutrientModifier.GetFrom(this)?.Nutrient ?? 0;
+
+    public NutrientDump() : base(3, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
+    {
+        NutrientModifier.AddTo(this, 10);
+    }
+
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
-        new IntVar("Nutrient", 6),
-
+        new IntVar("Nutrient", Nutrient),
         new CalculationBaseVar(0m),
         new ExtraDamageVar(1m),
         new CalculatedDamageVar(ValueProp.Move).WithMultiplier(delegate(CardModel card, Creature? _)
@@ -35,11 +37,8 @@ public class NutrientDump() : GardenerCode.Cards.GardenerCard(
             var playArea = PileType.Play.GetPile(card.Owner).Cards;
 
             Func<decimal, CardModel, decimal> getNutrientSum = (acc, c) => {
-                    if (c.DynamicVars.TryGetValue("Nutrient", out var value))
-                    {
-                        return acc + value.BaseValue;
-                    }
-                    return acc;
+                    var value = NutrientModifier.GetFrom(c)?.Nutrient ?? 0;
+                    return acc + value;
                 };
 
             decimal handNutrientSum = hand.Aggregate(0m, getNutrientSum);
@@ -53,15 +52,15 @@ public class NutrientDump() : GardenerCode.Cards.GardenerCard(
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
 
-        await DamageCmd.Attack(DynamicVars.CalculatedDamage).FromCard(this).Targeting(cardPlay.Target)
+        await DamageCmd.Attack(DynamicVars.CalculatedDamage.Calculate(cardPlay.Target)).FromCard(this).Targeting(cardPlay.Target)
         .WithHitFx("vfx/vfx_attack_slash")
         .Execute(choiceContext);
 
-        await GardenerCmd.ConsumeNutrient(choiceContext, this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.CalculationBase.UpgradeValueBy(4m);
+        CardCmd.ApplyKeyword(this, CardKeyword.Retain);
+        NutrientModifier.GetFrom(this)?.Increase(5);
     }
 }

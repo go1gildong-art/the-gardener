@@ -5,22 +5,24 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace Gardener;
+namespace Gardener.GardenerCode.Cards;
 
 using BaseLib.Extensions;
 using BaseLib.Utils;
 using Gardener.GardenerCode.Character;
 using Gardener.GardenerCode.Powers;
 using MegaCrit.Sts2.Core.Models.CardPools;
-
+using MegaCrit.Sts2.Core.Saves.Runs;
+using static MegaCrit.Sts2.Core.Runs.RunState;
 
 [Pool(typeof(GardenerCardPool))]
-public class YggdrasilForm() : GardenerCode.Cards.GardenerCard(
+public class YggdrasilForm() : GardenerCard(
   3,
   CardType.Power,
   CardRarity.Rare,
   TargetType.Self)
 {
+    public bool CannotBeGeneratedFromYggdrasilForm = true;
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
         new PowerVar<YggdrasilFormPower>(2)

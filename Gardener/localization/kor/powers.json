@@ -1,4 +1,8 @@
 {
+  "GARDENER-SHARPEN_PETALS_POWER.description": "For next {Amount} turns, gain {ThornsPower:diff()} Thorns.",
+  "GARDENER-SHARPEN_PETALS_POWER.smartDescription": "For next {Amount} turns, gain {ThornsPower:diff()} Thorns.",
+  "GARDENER-SHARPEN_PETALS_POWER.title": "Sharpen Petals",
+
   "GARDENER-PHOTOSYNTHESIS_PROTOTYPE_POWER.description": "Heal 3 hp and gain 1 {Amount:energyIcons()} per turn.",
   "GARDENER-PHOTOSYNTHESIS_PROTOTYPE_POWER.smartDescription": "Heal 3 hp and gain 1 {Amount:energyIcons()} per turn.",
   "GARDENER-PHOTOSYNTHESIS_PROTOTYPE_POWER.title": "Photosynthesis",
@@ -57,5 +61,9 @@
 
   "GARDENER-SURPRISE_MUTATION_POWER.description": "Gain {Amount} Temporary Strength, Dexterity, and Thorns until the start of your next turn.",
   "GARDENER-SURPRISE_MUTATION_POWER.smartDescription": "Gain {Amount} Temporary Strength, Dexterity, and Thorns until the start of your next turn.",
-  "GARDENER-SURPRISE_MUTATION_POWER.title": "Surprise Mutation"
+  "GARDENER-SURPRISE_MUTATION_POWER.title": "Surprise Mutation",
+
+  "GARDENER-PHOTOSYNTHESIS_POWER.description": "",
+  "GARDENER-PHOTOSYNTHESIS_POWER.smartDescription": "Gain {Amount} Energy per turn. After combat Gain {Amount} x 3 Max HP.",
+  "GARDENER-PHOTOSYNTHESIS_POWER.title": "Photosynthesis"
 }

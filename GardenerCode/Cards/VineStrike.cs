@@ -5,7 +5,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace Gardener;
+namespace Gardener.GardenerCode.Cards;
 
 using BaseLib.Utils;
 using Gardener.GardenerCode.Character;
@@ -13,16 +13,19 @@ using Gardener.GardenerCode.Systems;
 using MegaCrit.Sts2.Core.Models.CardPools;
 
 [Pool(typeof(GardenerCardPool))]
-public class VineStrike() : GardenerCode.Cards.GardenerCard(
-  1,
-  CardType.Attack,
-  CardRarity.Common,
-  TargetType.AllEnemies)
+public class VineStrike : GardenerCard
 {
+    public int Nutrient => NutrientModifier.GetFrom(this)?.Nutrient ?? 0;
+
+    public VineStrike() : base(1, CardType.Attack, CardRarity.Common, TargetType.AllEnemies)
+    {
+        NutrientModifier.AddTo(this, 4);
+    }
+
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
-        new DamageVar(6m, DamageProps.card),
-        new IntVar("Nutrient", 4),
+    new DamageVar(6m, DamageProps.card),
+        new IntVar("Nutrient", Nutrient),
         new RepeatVar(2)
     };
 
@@ -34,12 +37,11 @@ public class VineStrike() : GardenerCode.Cards.GardenerCard(
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
 
-        await GardenerCmd.ConsumeNutrient(choiceContext, this);
-    }
+        }
 
     protected override void OnUpgrade()
     {
-        DynamicVars["Nutrient"].UpgradeValueBy(7);
+        NutrientModifier.GetFrom(this)?.Increase(7);
     }
 }
 

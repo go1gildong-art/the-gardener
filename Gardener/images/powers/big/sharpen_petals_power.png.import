@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6m6lrrqf4uob"
-path="res://.godot/imported/photosynthesispower.png-316a5d452c81e18d452bc9f53653f0bf.ctex"
+uid="uid://b1oekuosoeqkh"
+path="res://.godot/imported/sharpen_petals_power.png-1f4902363183d4fc784e89057aaee3da.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Gardener/images/powers/big/photosynthesispower.png"
-dest_files=["res://.godot/imported/photosynthesispower.png-316a5d452c81e18d452bc9f53653f0bf.ctex"]
+source_file="res://Gardener/images/powers/big/sharpen_petals_power.png"
+dest_files=["res://.godot/imported/sharpen_petals_power.png-1f4902363183d4fc784e89057aaee3da.ctex"]
 
 [params]
 

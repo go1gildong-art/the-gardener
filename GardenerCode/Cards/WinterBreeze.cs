@@ -5,7 +5,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace Gardener;
+namespace Gardener.GardenerCode.Cards;
 
 using BaseLib.Utils;
 using Gardener.GardenerCode.Character;
@@ -15,12 +15,15 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
   
 [Pool(typeof(GardenerCardPool))]
-public class WinterBreeze() : GardenerCode.Cards.GardenerCard(
-  0,
-  CardType.Attack,
-  CardRarity.Common,
-  TargetType.AllEnemies), IOnDepleted
+public class WinterBreeze : GardenerCard, IOnDepleted
 {
+    public int Nutrient => NutrientModifier.GetFrom(this)?.Nutrient ?? 0;
+
+    public WinterBreeze() : base(0, CardType.Attack, CardRarity.Common, TargetType.AllEnemies)
+    {
+        NutrientModifier.AddTo(this, 10);
+    }
+
     public override TargetType TargetType => IsUpgraded ? TargetType.AllEnemies : TargetType.AnyEnemy;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
@@ -28,7 +31,7 @@ public class WinterBreeze() : GardenerCode.Cards.GardenerCard(
         new DamageVar(2m, DamageProps.card),
         new PowerVar<WeakPower>(2),
         new IntVar("WeakPowerOnDepleted", 1),
-        new IntVar("Nutrient", 10),
+        new IntVar("Nutrient", Nutrient),
     };
 
     public async Task OnDepleted(PlayerChoiceContext choiceContext)
@@ -69,8 +72,7 @@ public class WinterBreeze() : GardenerCode.Cards.GardenerCard(
                 base.Owner.Creature, this);
         }
 
-        await GardenerCmd.ConsumeNutrient(choiceContext, this);
-    }
+        }
 
     protected override void OnUpgrade()
     {

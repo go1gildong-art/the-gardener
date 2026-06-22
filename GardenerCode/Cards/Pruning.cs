@@ -6,7 +6,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 using MegaCrit.Sts2.Core.CardSelection;
 
-namespace Gardener;
+namespace Gardener.GardenerCode.Cards;
 
 using BaseLib.Utils;
 using Gardener.GardenerCode.Character;
@@ -15,7 +15,7 @@ using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models;
 
 [Pool(typeof(GardenerCardPool))]
-public class Pruning() : GardenerCode.Cards.GardenerCard(
+public class Pruning() : GardenerCard(
   1,
   CardType.Attack,
   CardRarity.Common,
@@ -35,9 +35,7 @@ public class Pruning() : GardenerCode.Cards.GardenerCard(
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
 
-        var list = this.IsUpgraded 
-        ? PileType.Hand.GetPile(base.Owner).Cards
-        : (
+        var list = (
             await CardSelectCmd.FromHand(
                 prefs: new CardSelectorPrefs(base.SelectionScreenPrompt, 0, (int) base.DynamicVars.Cards.BaseValue),
                 context: choiceContext,

@@ -1,5 +1,9 @@
 {
   "GARDENER-TWINKLING_SPROUT.description": "매 전투 시작 시, {Energy:energyIcons()}를 얻습니다.",
   "GARDENER-TWINKLING_SPROUT.flavor": "스스로를 변화의 흐름 속에 몰아넣은 건, 무엇을 위해서였을까요.",
-  "GARDENER-TWINKLING_SPROUT.title": "반짝이는 새싹"
+  "GARDENER-TWINKLING_SPROUT.title": "반짝이는 새싹",
+
+  "GARDENER-ROOTING_SAPLING.description": "매 전투마다 처음 {Turns:diff()}턴동안, 턴 시작시 {Energy:energyIcons()}를 얻습니다.",
+  "GARDENER-ROOTING_SAPLING.flavor": "아진짜실험체너프하라고",
+  "GARDENER-ROOTING_SAPLING.title": "뿌리내린 묘목"
 }

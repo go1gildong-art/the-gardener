@@ -14,7 +14,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Entities.Creatures;
-
+using MegaCrit.Sts2.Core.Models;
 
 [BaseLib.Utils.Pool(typeof(GardenerRelicPool))]
 public class TwinklingSprout() : GardenerRelic
@@ -37,4 +37,6 @@ public class TwinklingSprout() : GardenerRelic
             await PlayerCmd.GainEnergy(base.DynamicVars.Energy.BaseValue, base.Owner);
         }
     }
+
+     public override RelicModel GetUpgradeReplacement() => ModelDb.Relic<RootingSapling>();
 }

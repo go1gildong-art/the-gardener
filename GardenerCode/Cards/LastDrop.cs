@@ -5,7 +5,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace Gardener;
+namespace Gardener.GardenerCode.Cards;
 
 using BaseLib.Utils;
 using Gardener.GardenerCode.Character;
@@ -15,17 +15,19 @@ using MegaCrit.Sts2.Core.Models;
 
 using MegaCrit.Sts2.Core.CardSelection;
 
-
 [Pool(typeof(GardenerCardPool))]
-public class LastDrop() : GardenerCode.Cards.GardenerCard(
-  2,
-  CardType.Skill,
-  CardRarity.Uncommon,
-  TargetType.Self)
+public class LastDrop : GardenerCard
 {
+    public int Nutrient => NutrientModifier.GetFrom(this)?.Nutrient ?? 0;
+
+    public LastDrop() : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+    {
+        NutrientModifier.AddTo(this, 8);
+    }
+
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
-        new IntVar("Nutrient", 8),
+        new IntVar("Nutrient", Nutrient),
         new RepeatVar(3)
     };
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -34,32 +36,26 @@ public class LastDrop() : GardenerCode.Cards.GardenerCard(
             prefs: new CardSelectorPrefs(base.SelectionScreenPrompt, 1),
             context: choiceContext,
             player: base.Owner,
-            filter: c => c.DynamicVars.TryGetValue("Nutrient", out var value),
+            filter: c => NutrientModifier.GetFrom(c) != null,
             source: this
             )
             ).FirstOrDefault();
 
-        for (int i = 0; i < base.DynamicVars.Repeat.BaseValue; i++)
-        {
-            if (
-                cardModel == null
-                || !cardModel.IsInCombat
-            ) break;
-
+            if (cardModel != null && cardModel.IsInCombat)
+            {
+                cardModel.BaseReplayCount += (int)base.DynamicVars.Repeat.BaseValue - 1;
             await CardCmd.AutoPlay(choiceContext, cardModel, null);
-        }
+            }
 
-        while 
+        while
         (
             cardModel != null
-            && cardModel.DynamicVars.TryGetValue("Nutrient", out var value)
-            && value.BaseValue > 0
+            && NutrientModifier.GetFrom(cardModel)?.Nutrient > 0
         )
         {
             await GardenerCmd.ConsumeNutrient(choiceContext, cardModel);
         }
 
-        await GardenerCmd.ConsumeNutrient(choiceContext, this);
     }
 
     protected override void OnUpgrade()

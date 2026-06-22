@@ -5,7 +5,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 using Godot;
-namespace Gardener;
+namespace Gardener.GardenerCode.Cards;
 
 using BaseLib.Utils;
 using Gardener.GardenerCode.Character;
@@ -15,16 +15,24 @@ using MegaCrit.Sts2.Core.Rewards;
 using MegaCrit.Sts2.Core.Rooms;
 
 [Pool(typeof(GardenerCardPool))]
-public class LifeCocoon() : GardenerCode.Cards.GardenerCard(
+public class LifeCocoon : GardenerCard, IOnDepleted
+{
+    public override bool CanBeGeneratedInCombat => false;
+    public int Nutrient => NutrientModifier.GetFrom(this)?.Nutrient ?? 0;
+
+    public LifeCocoon() : base(
   1,
   CardType.Skill,
   CardRarity.Rare,
-  TargetType.Self), IOnDepleted
-{
+  TargetType.Self)
+    {
+        NutrientModifier.AddTo(this, 6);
+    }
+
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
         new IntVar("RelicVar", 2),
-        new IntVar("Nutrient", 6)
+        new IntVar("Nutrient", Nutrient)
     };
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => new CardKeyword[]
@@ -35,8 +43,7 @@ public class LifeCocoon() : GardenerCode.Cards.GardenerCard(
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
-        await GardenerCmd.ConsumeNutrient(choiceContext, this);
-    }
+        }
 
     public async Task OnDepleted(PlayerChoiceContext choiceContext)
     {
