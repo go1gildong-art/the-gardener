@@ -45,6 +45,6 @@ public class SymbioticPlant : GardenerCard
 
     protected override void OnUpgrade()
     {
-        base.DynamicVars["Nutrient"].UpgradeValueBy(3);
+        NutrientModifier.GetFrom(this)?.Increase(3);
     }
 }

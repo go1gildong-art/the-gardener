@@ -38,14 +38,14 @@ public class LastDrop : GardenerCard
             player: base.Owner,
             filter: c => NutrientModifier.GetFrom(c) != null,
             source: this
-            )
-            ).FirstOrDefault();
+            )).FirstOrDefault();
 
-            if (cardModel != null && cardModel.IsInCombat)
-            {
-                cardModel.BaseReplayCount += (int)base.DynamicVars.Repeat.BaseValue - 1;
+        
+        for (int i = 0; i < base.DynamicVars.Repeat.BaseValue; i++)
+        {
+            if (cardModel == null || !cardModel.IsInCombat) break;
             await CardCmd.AutoPlay(choiceContext, cardModel, null);
-            }
+        }
 
         while
         (
