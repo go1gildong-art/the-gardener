@@ -16,15 +16,8 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.CardSelection;
 
 [Pool(typeof(GardenerCardPool))]
-public class LastDrop : GardenerCard
+public class LastDrop() : NutrientCard(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self, 8)
 {
-    public int Nutrient => NutrientModifier.GetFrom(this)?.Nutrient ?? 0;
-
-    public LastDrop() : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
-    {
-        NutrientModifier.AddTo(this, 8);
-    }
-
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
         new IntVar("Nutrient", Nutrient),

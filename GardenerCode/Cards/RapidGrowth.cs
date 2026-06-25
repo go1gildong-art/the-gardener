@@ -16,15 +16,8 @@ using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Saves.Runs;
 
 [Pool(typeof(GardenerCardPool))]
-public class RapidGrowth : GardenerCard
+public class RapidGrowth() : NutrientCard(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self, 5)
 {
-    public int Nutrient => NutrientModifier.GetFrom(this)?.Nutrient ?? 0;
-
-    public RapidGrowth() : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
-    {
-        NutrientModifier.AddTo(this, 5);
-    }
-
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
         new IntVar("Nutrient", Nutrient),
@@ -46,7 +39,7 @@ public class RapidGrowth : GardenerCard
 
     protected override void OnUpgrade()
     {
-        NutrientModifier.GetFrom(this)?.Increase(4);
+        IncreaseNutrient(4);
     }
 
 }

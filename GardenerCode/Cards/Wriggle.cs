@@ -14,15 +14,8 @@ using Gardener.GardenerCode.Systems;
 using MegaCrit.Sts2.Core.Models.CardPools;
 
 [Pool(typeof(GardenerCardPool))]
-public class Wriggle : GardenerCard
+public class Wriggle() : NutrientCard(1, CardType.Skill, CardRarity.Common, TargetType.Self, 10)
 {
-    public int Nutrient => NutrientModifier.GetFrom(this)?.Nutrient ?? 0;
-
-    public Wriggle() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
-    {
-        NutrientModifier.AddTo(this, 10);
-    }
-
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
         new IntVar("Nutrient", Nutrient),
@@ -49,6 +42,6 @@ public class Wriggle : GardenerCard
 
     protected override void OnUpgrade()
     {
-        NutrientModifier.GetFrom(this)?.Increase(4);
+        IncreaseNutrient(4);
     }
 }

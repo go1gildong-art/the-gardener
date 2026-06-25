@@ -18,10 +18,9 @@ using MegaCrit.Sts2.Core.Saves.Runs;
 
   
 [Pool(typeof(GardenerCardPool))]
-public class Harvest : GardenerCard
+public class Harvest() : NutrientCard(0, CardType.Attack, CardRarity.Ancient, TargetType.AnyEnemy, 3)
 {
     protected override bool HasEnergyCostX => true;
-    public int Nutrient => NutrientModifier.GetFrom(this)?.Nutrient ?? 0;
     private const int _baseDamage = 8;
     private int _currentDamage = _baseDamage;
     private int _increasedDamage;
@@ -29,10 +28,7 @@ public class Harvest : GardenerCard
     [SavedProperty]
     public int CurrentDamage
     {
-        get
-        {
-            return _currentDamage;
-        }
+        get { return _currentDamage; }
         set
         {
             AssertMutable();
@@ -44,10 +40,7 @@ public class Harvest : GardenerCard
     [SavedProperty]
     public int IncreasedDamage
     {
-        get
-        {
-            return _increasedDamage;
-        }
+        get { return _increasedDamage; }
         set
         {
             AssertMutable();
@@ -55,8 +48,6 @@ public class Harvest : GardenerCard
         }
     }
 
-    public Harvest() : base(0, CardType.Attack, CardRarity.Ancient, TargetType.AnyEnemy)
-    { NutrientModifier.AddTo(this, 3); }
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
         {
         new DamageVar(CurrentDamage, DamageProps.card),

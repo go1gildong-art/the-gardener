@@ -17,15 +17,8 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 
 [Pool(typeof(GardenerCardPool))]
-public class NutrientDump : GardenerCard
+public class NutrientDump() : NutrientCard(3, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy, 10)
 {
-    public int Nutrient => NutrientModifier.GetFrom(this)?.Nutrient ?? 0;
-
-    public NutrientDump() : base(3, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
-    {
-        NutrientModifier.AddTo(this, 10);
-    }
-
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
         new IntVar("Nutrient", Nutrient),
@@ -61,6 +54,6 @@ public class NutrientDump : GardenerCard
     protected override void OnUpgrade()
     {
         CardCmd.ApplyKeyword(this, CardKeyword.Retain);
-        NutrientModifier.GetFrom(this)?.Increase(5);
+        IncreaseNutrient(5);
     }
 }

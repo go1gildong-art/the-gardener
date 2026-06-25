@@ -19,14 +19,9 @@ using BaseLib.Extensions;
 
   
 [Pool(typeof(GardenerCardPool))]
-public class SharpenPetals : GardenerCard
+public class SharpenPetals() : NutrientCard(0, CardType.Power, CardRarity.Rare, TargetType.Self, 3)
 {
     protected override bool HasEnergyCostX => true;
-    public int Nutrient => NutrientModifier.GetFrom(this)?.Nutrient ?? 0;
-    public SharpenPetals() : base(0, CardType.Power, CardRarity.Rare, TargetType.Self)
-    {
-        NutrientModifier.AddTo(this, 3);
-    }
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
         new CalculationBaseVar(0m),
@@ -52,6 +47,6 @@ public class SharpenPetals : GardenerCard
 
     protected override void OnUpgrade()
     {
-        NutrientModifier.GetFrom(this)?.Increase(2);
+        IncreaseNutrient(2);
     }
 }

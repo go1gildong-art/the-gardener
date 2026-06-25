@@ -13,15 +13,8 @@ using Gardener.GardenerCode.Systems;
 using MegaCrit.Sts2.Core.Models.CardPools;
 
 [Pool(typeof(GardenerCardPool))]
-public class PollenStorm : GardenerCard
+public class PollenStorm() : NutrientCard(0, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy, 15)
 {
-    public int Nutrient => NutrientModifier.GetFrom(this)?.Nutrient ?? 0;
-
-    public PollenStorm() : base(0, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
-    {
-        NutrientModifier.AddTo(this, 15);
-    }
-
     protected override bool HasEnergyCostX => true;
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {

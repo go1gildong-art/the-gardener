@@ -13,15 +13,8 @@ using Gardener.GardenerCode.Systems;
 using MegaCrit.Sts2.Core.Models.CardPools;
 
 [Pool(typeof(GardenerCardPool))]
-public class LeafShield : GardenerCard
+public class LeafShield() : NutrientCard(1, CardType.Skill, CardRarity.Common, TargetType.Self, 20)
 {
-    public int Nutrient => NutrientModifier.GetFrom(this)?.Nutrient ?? 0;
-
-    public LeafShield() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
-    {
-        NutrientModifier.AddTo(this, 20);
-    }
-
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
     new BlockVar(8m, BlockProps.card),

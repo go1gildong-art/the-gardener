@@ -15,15 +15,8 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
   
 [Pool(typeof(GardenerCardPool))]
-public class WinterBreeze : GardenerCard, IOnDepleted
+public class WinterBreeze() : NutrientCard(0, CardType.Attack, CardRarity.Common, TargetType.AllEnemies, 10), IOnDepleted
 {
-    public int Nutrient => NutrientModifier.GetFrom(this)?.Nutrient ?? 0;
-
-    public WinterBreeze() : base(0, CardType.Attack, CardRarity.Common, TargetType.AllEnemies)
-    {
-        NutrientModifier.AddTo(this, 10);
-    }
-
     public override TargetType TargetType => IsUpgraded ? TargetType.AllEnemies : TargetType.AnyEnemy;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
