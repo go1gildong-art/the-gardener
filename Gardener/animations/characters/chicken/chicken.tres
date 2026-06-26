@@ -1,0 +1,6 @@
+[gd_resource type="SpineSkeletonDataResource" load_steps=2 format=3 uid="uid://dw24skk7vxcd2"]
+
+[ext_resource type="SpineAtlasResource" uid="uid://bqnh7if1x7ex8" path="res://Gardener/animations/characters/chicken/chiken_tex.atlas" id="1_1mdya"]
+
+[resource]
+atlas_res = ExtResource("1_1mdya")

@@ -1,0 +1,104 @@
+
+chiken_tex.png
+size: 512,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+shin_01
+  rotate: false
+  xy: 293,120
+  size: 118,117
+  orig: 118,117
+  offset:0,0
+  index: -1
+shin_02
+  rotate: false
+  xy: 293,1
+  size: 118,117
+  orig: 118,117
+  offset:0,0
+  index: -1
+thigh_02_02
+  rotate: false
+  xy: 255,492
+  size: 62,89
+  orig: 62,89
+  offset:0,0
+  index: -1
+thigh_01_02
+  rotate: false
+  xy: 383,239
+  size: 56,86
+  orig: 56,86
+  offset:0,0
+  index: -1
+body
+  rotate: false
+  xy: 1,635
+  size: 325,201
+  orig: 325,201
+  offset:0,0
+  index: -1
+tail_02
+  rotate: false
+  xy: 1,343
+  size: 252,290
+  orig: 252,290
+  offset:0,0
+  index: -1
+tail_01
+  rotate: false
+  xy: 328,492
+  size: 110,209
+  orig: 110,209
+  offset:0,0
+  index: -1
+wing
+  rotate: false
+  xy: 255,343
+  size: 219,147
+  orig: 219,147
+  offset:0,0
+  index: -1
+neck_shadow
+  rotate: false
+  xy: 328,703
+  size: 115,132
+  orig: 115,132
+  offset:0,0
+  index: -1
+head
+  rotate: false
+  xy: 1,1
+  size: 290,340
+  orig: 290,340
+  offset:0,0
+  index: -1
+hood
+  rotate: false
+  xy: 293,239
+  size: 88,69
+  orig: 88,69
+  offset:0,0
+  index: -1
+beak
+  rotate: false
+  xy: 413,56
+  size: 73,53
+  orig: 73,53
+  offset:0,0
+  index: -1
+beak_lower
+  rotate: false
+  xy: 413,1
+  size: 73,53
+  orig: 73,53
+  offset:0,0
+  index: -1
+copyrights
+  rotate: false
+  xy: 1,838
+  size: 485,93
+  orig: 485,93
+  offset:0,0
+  index: -1

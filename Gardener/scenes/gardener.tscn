@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4xsoaivj5txn"]
+
+[ext_resource type="Script" uid="uid://ci3m5jikpe043" path="res://GardenerCode/NGardenerCreateVisual.cs" id="1_88viq"]
+[ext_resource type="Texture2D" uid="uid://tfjiv7v3dx6h" path="res://Gardener/animations/characters/stickman/stikman.png" id="2_5vqur"]
+
+[node name="Gardener" type="Node2D"]
+position = Vector2(2, 1)
+script = ExtResource("1_88viq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-5, -158)
+texture = ExtResource("2_5vqur")
+
+[node name="Bounds" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -116.0
+offset_top = -319.0
+offset_right = 111.0
+offset_bottom = -10.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CenterPos" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(4, -164)
+
+[node name="IntentPos" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-4, -396)

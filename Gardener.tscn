@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://c4xsoaivj5txn"]
-
-[ext_resource type="SpineSkeletonDataResource" uid="uid://c0hdeqc1rqeah" path="res://Gardener/animations/characters/defect/defect_skel_data.tres" id="1_0h2ye"]
-
-[node name="Gardener" type="Node2D"]
-
-[node name="SpineSprite" type="SpineSprite" parent="."]
-skeleton_data_res = ExtResource("1_0h2ye")

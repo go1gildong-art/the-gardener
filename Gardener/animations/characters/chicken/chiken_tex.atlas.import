@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://bqnh7if1x7ex8"
+path="res://.godot/imported/chiken_tex.atlas-14f91f1c1af6fe772ba3f0500f8c9e69.spatlas"
+
+[deps]
+
+source_file="res://Gardener/animations/characters/chicken/chiken_tex.atlas"
+dest_files=["res://.godot/imported/chiken_tex.atlas-14f91f1c1af6fe772ba3f0500f8c9e69.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"
