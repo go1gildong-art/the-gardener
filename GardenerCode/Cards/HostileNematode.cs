@@ -17,15 +17,8 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.CardSelection;
 
 [Pool(typeof(GardenerCardPool))]
-public class HostileNematode : GardenerCard
+public class HostileNematode() : NutrientCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self, 8)
 {
-    public int Nutrient => NutrientModifier.GetFrom(this)?.Nutrient ?? 0;
-
-    public HostileNematode() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
-    {
-        NutrientModifier.AddTo(this, 8);
-    }
-
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
         new IntVar("Nutrient", Nutrient),
@@ -46,7 +39,7 @@ public class HostileNematode : GardenerCard
             prefs: new CardSelectorPrefs(CardSelectorPrefs.ExhaustSelectionPrompt, 1),
             context: choiceContext,
             player: base.Owner,
-            filter: null,
+            filter: card => true,
             source: this
             )
         ).FirstOrDefault();
@@ -56,6 +49,6 @@ public class HostileNematode : GardenerCard
 
     protected override void OnUpgrade()
     {
-        NutrientModifier.GetFrom(this)?.Increase(4);
+        IncreaseNutrient(4);
     }
 }

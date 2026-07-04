@@ -14,15 +14,9 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 
 [Pool(typeof(GardenerCardPool))]
-public class BurningFlower : GardenerCard
+public class BurningFlower() : NutrientCard(0, CardType.Attack, CardRarity.Rare, TargetType.AllEnemies, 12)
 {
     protected override bool HasEnergyCostX => true;
-    public int Nutrient => NutrientModifier.GetFrom(this)?.Nutrient ?? 0;
-
-    public  BurningFlower() : base(0, CardType.Attack, CardRarity.Rare, TargetType.AllEnemies)
-    {
-        NutrientModifier.AddTo(this, 12);
-    }
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
@@ -39,7 +33,7 @@ public class BurningFlower : GardenerCard
     {
         int cost = ResolveEnergyXValue();
 
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(base.CombatState)
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).TargetingAllOpponents(base.CombatState)
             .WithHitCount(cost)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);

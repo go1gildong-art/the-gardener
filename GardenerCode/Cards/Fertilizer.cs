@@ -15,14 +15,8 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 
 [Pool(typeof(GardenerCardPool))]
-public class Fertilizer : GardenerCard
+public class Fertilizer() : NutrientCard(1, CardType.Skill, CardRarity.Rare, TargetType.Self, 8)
 {
-    public int Nutrient => NutrientModifier.GetFrom(this)?.Nutrient ?? 0;
-
-    public Fertilizer() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self)
-    {
-        NutrientModifier.AddTo(this, 8);
-    }
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
@@ -36,28 +30,27 @@ public class Fertilizer : GardenerCard
     {
         await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
         await PowerCmd.Apply<EnergyNextTurnPower>(choiceContext, base.Owner.Creature, base.DynamicVars.Energy.BaseValue, base.Owner.Creature, this);
-        
-		var list = this.IsUpgraded 
+
+        var list = this.IsUpgraded
         ? PileType.Hand.GetPile(base.Owner).Cards
         : (
             await CardSelectCmd.FromHand(
-                prefs: new CardSelectorPrefs(base.SelectionScreenPrompt, 0, (int) base.DynamicVars.Cards.BaseValue),
+                prefs: new CardSelectorPrefs(base.SelectionScreenPrompt, 0, (int)base.DynamicVars.Cards.BaseValue),
                 context: choiceContext,
                 player: base.Owner,
                 filter: card => card.DynamicVars.ContainsKey("Nutrient"),
                 source: this
         )).ToList();
 
+        int nut = (int)base.DynamicVars["NutrientFeed"].BaseValue;
         foreach (CardModel item in list)
         {
-            await GardenerCmd.FeedNutrient(choiceContext, item, (int) base.DynamicVars["NutrientFeed"].BaseValue);
+            await GardenerCmd.FeedNutrient(choiceContext, item, nut);
         }
-
-        
-        }
+    }
 
     protected override void OnUpgrade()
     {
-        NutrientModifier.GetFrom(this)?.Increase(3);
+        IncreaseNutrient(3);
     }
 }

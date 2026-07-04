@@ -13,15 +13,8 @@ using Gardener.GardenerCode.Systems;
 using MegaCrit.Sts2.Core.Models.CardPools;
 
 [Pool(typeof(GardenerCardPool))]
-public class VineStrike : GardenerCard
+public class VineStrike() : NutrientCard(1, CardType.Attack, CardRarity.Common, TargetType.AllEnemies, 4)
 {
-    public int Nutrient => NutrientModifier.GetFrom(this)?.Nutrient ?? 0;
-
-    public VineStrike() : base(1, CardType.Attack, CardRarity.Common, TargetType.AllEnemies)
-    {
-        NutrientModifier.AddTo(this, 4);
-    }
-
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
     new DamageVar(6m, DamageProps.card),
@@ -30,18 +23,16 @@ public class VineStrike : GardenerCard
     };
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
-    {   
-
-            await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(base.CombatState)
-            .WithHitCount((int)DynamicVars.Repeat.BaseValue)
-            .WithHitFx("vfx/vfx_attack_slash")
-            .Execute(choiceContext);
-
-        }
+    {
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).TargetingAllOpponents(base.CombatState)
+        .WithHitCount((int)DynamicVars.Repeat.BaseValue)
+        .WithHitFx("vfx/vfx_attack_slash")
+        .Execute(choiceContext);
+    }
 
     protected override void OnUpgrade()
     {
-        NutrientModifier.GetFrom(this)?.Increase(7);
+        IncreaseNutrient(7);
     }
 }
 

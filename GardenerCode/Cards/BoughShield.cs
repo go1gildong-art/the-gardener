@@ -13,15 +13,8 @@ using Gardener.GardenerCode.Systems;
 using MegaCrit.Sts2.Core.Models.CardPools;
 
 [Pool(typeof(GardenerCardPool))]
-public class BoughShield : GardenerCard
+public class BoughShield() : NutrientCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self, 4)
 {
-    public int Nutrient => NutrientModifier.GetFrom(this)?.Nutrient ?? 0;
-
-    public BoughShield() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
-    {
-        NutrientModifier.AddTo(this, 4);
-    }
-
     public override IEnumerable<CardKeyword> CanonicalKeywords => new CardKeyword[]
     {
         CardKeyword.Exhaust
@@ -45,6 +38,6 @@ public class BoughShield : GardenerCard
 
     protected override void OnUpgrade()
     {
-        NutrientModifier.GetFrom(this)?.Increase(2);
+        IncreaseNutrient(2);
     }
 }

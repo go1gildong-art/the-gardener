@@ -18,13 +18,8 @@ using BaseLib.Abstracts;
 using MegaCrit.Sts2.Core.Saves.Runs;
 
 [Pool(typeof(GardenerCardPool))]
-public class NatureRetreat : GardenerCard
+public class NatureRetreat() : NutrientCard(1, CardType.Skill, CardRarity.Basic, TargetType.Self, 12)
 {
-    public int Nutrient => NutrientModifier.GetFrom(this)?.Nutrient ?? 0;
-    public NatureRetreat() : base(1, CardType.Skill, CardRarity.Basic, TargetType.Self)
-    {
-        NutrientModifier.AddTo(this, 12);
-    }
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
         new IntVar("Nutrient", Nutrient),
@@ -42,7 +37,7 @@ public class NatureRetreat : GardenerCard
     protected override void OnUpgrade()
     {
         DynamicVars.Block.UpgradeValueBy(2m);
-        NutrientModifier.GetFrom(this)?.Increase(3);
+        IncreaseNutrient(2);
         // DynamicVars["Nutrient"].UpgradeValueBy(2m);
     }
 }

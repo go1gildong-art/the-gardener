@@ -15,20 +15,9 @@ using MegaCrit.Sts2.Core.Models;
 using BaseLib.Abstracts;
 
 [Pool(typeof(GardenerCardPool))]
-public class Weeding : GardenerCard, ITranscendenceCard
+public class Weeding() : NutrientCard(0, CardType.Attack, CardRarity.Basic, TargetType.AnyEnemy, 7), ITranscendenceCard
 {
     protected override bool HasEnergyCostX => true;
-    public int Nutrient => NutrientModifier.GetFrom(this)?.Nutrient ?? 0;
-
-    public Weeding() : base(
-  0,
-  CardType.Attack,
-  CardRarity.Basic,
-  TargetType.AnyEnemy)
-    {
-        NutrientModifier.AddTo(this, 7);
-    }
-
     public CardModel GetTranscendenceTransformedCard() => ModelDb.Card<Harvest>();
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
         {
@@ -43,7 +32,7 @@ public class Weeding : GardenerCard, ITranscendenceCard
         ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
         int cost = ResolveEnergyXValue();
 
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).Targeting(cardPlay.Target)
             .WithHitCount(cost)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);

@@ -12,15 +12,11 @@ using Gardener.GardenerCode.Character;
 using Gardener.GardenerCode.Systems;
 using MegaCrit.Sts2.Core.Models.CardPools;
 
+  
 [Pool(typeof(GardenerCardPool))]
-public class BombBlossom : GardenerCard, IOnDepleted
+public class BombBlossom() 
+    : NutrientCard(0, CardType.Attack, CardRarity.Uncommon, TargetType.AllEnemies, 1), IOnDepleted
 {
-    public int Nutrient => NutrientModifier.GetFrom(this)?.Nutrient ?? 0;
-
-    public BombBlossom() : base(0, CardType.Attack, CardRarity.Uncommon, TargetType.AllEnemies)
-    {
-        NutrientModifier.AddTo(this, 1);
-    }
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
@@ -32,7 +28,7 @@ public class BombBlossom : GardenerCard, IOnDepleted
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this)
+            
             .TargetingAllOpponents(base.CombatState)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
@@ -41,7 +37,7 @@ public class BombBlossom : GardenerCard, IOnDepleted
 
     protected override void OnUpgrade()
     {
-        NutrientModifier.GetFrom(this)?.Increase(7);
+        IncreaseNutrient(7);
         DynamicVars["DamageOnDepleted"].UpgradeValueBy(5);
     }
 
@@ -49,7 +45,7 @@ public class BombBlossom : GardenerCard, IOnDepleted
     {
         var dmg = new DamageVar(DynamicVars["DamageOnDepleted"].BaseValue, DamageProps.card);
         await DamageCmd.Attack(dmg.BaseValue)
-            .FromCard(this)
+            
             .TargetingAllOpponents(base.CombatState)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);

@@ -13,15 +13,8 @@ using Gardener.GardenerCode.Systems;
 using MegaCrit.Sts2.Core.Models.CardPools;
 
 [Pool(typeof(GardenerCardPool))]
-public class PremiumSerum : GardenerCard
+public class PremiumSerum() : NutrientCard(0, CardType.Skill, CardRarity.Rare, TargetType.Self, 8)
 {
-    public int Nutrient => NutrientModifier.GetFrom(this)?.Nutrient ?? 0;
-
-    public PremiumSerum() : base(0, CardType.Skill, CardRarity.Rare, TargetType.Self)
-    {
-        NutrientModifier.AddTo(this, 8);
-    }
-
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
         new IntVar("Nutrient", Nutrient),

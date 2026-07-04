@@ -14,15 +14,8 @@ using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 
 [Pool(typeof(GardenerCardPool))]
-public class PyrrhicBlossom : GardenerCard
+public class PyrrhicBlossom() : NutrientCard(1, CardType.Skill, CardRarity.Rare, TargetType.Self, 10)
 {
-    public int Nutrient => NutrientModifier.GetFrom(this)?.Nutrient ?? 0;
-
-    public PyrrhicBlossom() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self)
-    {
-        NutrientModifier.AddTo(this, 10);
-    }
-
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
     new IntVar("Multiplier", 2),
@@ -47,6 +40,6 @@ public class PyrrhicBlossom : GardenerCard
 
     protected override void OnUpgrade()
     {
-        NutrientModifier.GetFrom(this)?.Increase(10);
+        IncreaseNutrient(10);
     }
 }

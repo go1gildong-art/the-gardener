@@ -14,14 +14,10 @@ using Gardener.GardenerCode.Powers;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using Gardener.GardenerCode.Systems;
 
-  
+
 [Pool(typeof(GardenerCardPool))]
-public class Photosynthesis : GardenerCard
+public class Photosynthesis() : NutrientCard(2, CardType.Power, CardRarity.Ancient, TargetType.Self, 8)
 {
-    public Photosynthesis() : base(2, CardType.Power, CardRarity.Ancient, TargetType.Self)
-    {
-        NutrientModifier.AddTo(this, 8);
-    }
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
 { new PowerVar<PhotosynthesisPower>(1m),
   new EnergyVar(1),

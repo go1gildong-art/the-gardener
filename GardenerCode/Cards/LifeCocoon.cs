@@ -15,20 +15,9 @@ using MegaCrit.Sts2.Core.Rewards;
 using MegaCrit.Sts2.Core.Rooms;
 
 [Pool(typeof(GardenerCardPool))]
-public class LifeCocoon : GardenerCard, IOnDepleted
+public class LifeCocoon() : NutrientCard(1, CardType.Skill, CardRarity.Rare, TargetType.Self, 6), IOnDepleted
 {
     public override bool CanBeGeneratedInCombat => false;
-    public int Nutrient => NutrientModifier.GetFrom(this)?.Nutrient ?? 0;
-
-    public LifeCocoon() : base(
-  1,
-  CardType.Skill,
-  CardRarity.Rare,
-  TargetType.Self)
-    {
-        NutrientModifier.AddTo(this, 6);
-    }
-
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
         new IntVar("RelicVar", 2),

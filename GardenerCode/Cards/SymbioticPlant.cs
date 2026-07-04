@@ -15,14 +15,8 @@ using MegaCrit.Sts2.Core.Models.CardPools;
 using Gardener.GardenerCode.Powers;
 
 [Pool(typeof(GardenerCardPool))]
-public class SymbioticPlant : GardenerCard
+public class SymbioticPlant() : NutrientCard(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy, 4)
 {
-    public SymbioticPlant() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
-    {
-        NutrientModifier.AddTo(this, 4);
-    }
-    public int Nutrient => NutrientModifier.GetFrom(this)?.Nutrient ?? 0;
-    
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
         new DamageVar(7, DamageProps.card),
@@ -36,7 +30,7 @@ public class SymbioticPlant : GardenerCard
 
         await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
 
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).Targeting(cardPlay.Target)
                 .WithHitFx("vfx/vfx_attack_slash")
                 .Execute(choiceContext);
 
@@ -45,6 +39,6 @@ public class SymbioticPlant : GardenerCard
 
     protected override void OnUpgrade()
     {
-        base.DynamicVars["Nutrient"].UpgradeValueBy(3);
+        IncreaseNutrient(3);
     }
 }

@@ -1,0 +1,13 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://c400qhcxa6hot"
+valid=false
+
+[deps]
+
+source_file="res://Gardener/animations/characters/chicken/chicken_ske.skel"
+
+[params]
+
