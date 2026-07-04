@@ -63,7 +63,7 @@ public class Harvest() : NutrientCard(0, CardType.Attack, CardRarity.Ancient, Ta
         bool shouldTriggerFatal = cardPlay.Target.Powers.All(p => p.ShouldOwnerDeathTriggerFatal());
         int totalRepat = cost + (int)DynamicVars["RepeatBonus"].BaseValue;
 
-        AttackCommand attackCommand = await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
+        AttackCommand attackCommand = await DamageCmd.Attack(DynamicVars.Damage.BaseValue).Targeting(cardPlay.Target)
             .WithHitCount(totalRepat)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);

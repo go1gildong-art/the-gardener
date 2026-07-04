@@ -24,7 +24,8 @@ public class WaterAndFood() : GardenerCard(
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
         new CardsVar(1),
-        new IntVar("NutrientFeed", 2)
+        new IntVar("NutrientFeed", 2),
+        new EnergyVar(1)
     };
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => new CardKeyword[] { CardKeyword.Exhaust };
@@ -52,7 +53,7 @@ public class WaterAndFood() : GardenerCard(
         foreach (CardModel item in list)
         {
             CardCmd.ApplyKeyword(item, CardKeyword.Retain);
-            item.EnergyCost.AddThisCombat(-1);
+            item.EnergyCost.AddThisCombat(-(int)DynamicVars.Energy.BaseValue);
             await GardenerCmd.FeedNutrient(choiceContext, item, (int) base.DynamicVars["NutrientFeed"].BaseValue);
         }
 

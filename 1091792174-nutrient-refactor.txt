@@ -29,7 +29,7 @@ public class BombBlossom() : GardenerCode.Cards.GardenerCard(
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this)
+            
             .TargetingAllOpponents(base.CombatState)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
@@ -197,7 +197,7 @@ public class FungiRemover() : GardenerCode.Cards.GardenerCard(
     {
         if (IsUpgraded)
         {
-            await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this)
+            await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
                 .TargetingAllOpponents(base.CombatState)
                 .WithHitFx("vfx/vfx_attack_slash")
                 .Execute(choiceContext);
@@ -211,7 +211,7 @@ public class FungiRemover() : GardenerCode.Cards.GardenerCard(
         else
         {
             ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
-            await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
+            await DamageCmd.Attack(DynamicVars.Damage.BaseValue).Targeting(cardPlay.Target)
                 .WithHitFx("vfx/vfx_attack_slash")
                 .Execute(choiceContext);
 
@@ -526,7 +526,7 @@ public class NutrientDump() : GardenerCode.Cards.GardenerCard(
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
 
-        await DamageCmd.Attack(DynamicVars.CalculatedDamage).FromCard(this).Targeting(cardPlay.Target)
+        await DamageCmd.Attack(DynamicVars.CalculatedDamage).Targeting(cardPlay.Target)
         .WithHitFx("vfx/vfx_attack_slash")
         .Execute(choiceContext);
 
@@ -574,7 +574,7 @@ public class PollenStorm() : GardenerCode.Cards.GardenerCard(
         int cost = ResolveEnergyXValue();
 
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this)
+            
             .WithHitCount(cost)
             .Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_slash")
@@ -801,7 +801,7 @@ public class VineStrike() : GardenerCode.Cards.GardenerCard(
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {   
 
-            await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(base.CombatState)
+            await DamageCmd.Attack(DynamicVars.Damage.BaseValue).TargetingAllOpponents(base.CombatState)
             .WithHitCount((int)DynamicVars.Repeat.BaseValue)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
@@ -904,7 +904,7 @@ public class Weeding() : GardenerCode.Cards.GardenerCard(
         ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
         int cost = ResolveEnergyXValue();
 
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).Targeting(cardPlay.Target)
             .WithHitCount(cost)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
@@ -965,7 +965,7 @@ public class WinterBreeze() : GardenerCode.Cards.GardenerCard(
     {
         if (IsUpgraded)
         {
-            await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this)
+            await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
                 .TargetingAllOpponents(base.CombatState)
                 .WithHitFx("vfx/vfx_attack_slash")
                 .Execute(choiceContext);
@@ -979,7 +979,7 @@ public class WinterBreeze() : GardenerCode.Cards.GardenerCard(
         else
         {
             ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
-            await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
+            await DamageCmd.Attack(DynamicVars.Damage.BaseValue).Targeting(cardPlay.Target)
                 .WithHitFx("vfx/vfx_attack_slash")
                 .Execute(choiceContext);
 
