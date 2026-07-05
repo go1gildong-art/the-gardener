@@ -33,6 +33,7 @@ public class Weeding() : NutrientCard(0, CardType.Attack, CardRarity.Basic, Targ
         int cost = ResolveEnergyXValue();
 
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).Targeting(cardPlay.Target)
+        .FromCard(this, cardPlay)
             .WithHitCount(cost)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);

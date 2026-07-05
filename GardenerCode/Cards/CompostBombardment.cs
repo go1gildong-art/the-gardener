@@ -35,6 +35,7 @@ public class CompostBombardment() : GardenerCard(
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).TargetingAllOpponents(base.CombatState)
+        .FromCard(this, cardPlay)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
     }

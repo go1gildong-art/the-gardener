@@ -34,6 +34,7 @@ public class BurningFlower() : NutrientCard(0, CardType.Attack, CardRarity.Rare,
         int cost = ResolveEnergyXValue();
 
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).TargetingAllOpponents(base.CombatState)
+        .FromCard(this, cardPlay)
             .WithHitCount(cost)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);

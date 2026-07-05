@@ -64,6 +64,7 @@ public class Harvest() : NutrientCard(0, CardType.Attack, CardRarity.Ancient, Ta
         int totalRepat = cost + (int)DynamicVars["RepeatBonus"].BaseValue;
 
         AttackCommand attackCommand = await DamageCmd.Attack(DynamicVars.Damage.BaseValue).Targeting(cardPlay.Target)
+        .FromCard(this, cardPlay)
             .WithHitCount(totalRepat)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);

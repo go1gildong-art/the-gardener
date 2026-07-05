@@ -31,6 +31,7 @@ public class SymbioticPlant() : NutrientCard(1, CardType.Attack, CardRarity.Unco
         await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
 
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).Targeting(cardPlay.Target)
+        .FromCard(this, cardPlay)
                 .WithHitFx("vfx/vfx_attack_slash")
                 .Execute(choiceContext);
 
