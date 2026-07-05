@@ -28,8 +28,8 @@ public class BombBlossom()
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .TargetingAllOpponents(base.CombatState)
             .FromCard(this, cardPlay)
+            .TargetingAllOpponents(base.CombatState)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
         }

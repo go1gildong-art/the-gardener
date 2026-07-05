@@ -41,6 +41,7 @@ public class WinterBreeze() : NutrientCard(0, CardType.Attack, CardRarity.Common
         if (IsUpgraded)
         {
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
+            .FromCard(this, cardPlay)
                 .TargetingAllOpponents(base.CombatState)
                 .WithHitFx("vfx/vfx_attack_slash")
                 .Execute(choiceContext);
