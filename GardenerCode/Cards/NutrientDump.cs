@@ -46,7 +46,7 @@ public class NutrientDump() : NutrientCard(3, CardType.Attack, CardRarity.Uncomm
         ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
 
         await DamageCmd.Attack(DynamicVars.CalculatedDamage.Calculate(cardPlay.Target)).Targeting(cardPlay.Target)
-        .FromCard(this, cardPlay)
+        .FromCard(this)
         .WithHitFx("vfx/vfx_attack_slash")
         .Execute(choiceContext);
 

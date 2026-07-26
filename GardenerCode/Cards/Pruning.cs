@@ -32,7 +32,7 @@ public class Pruning() : GardenerCard(
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).Targeting(cardPlay.Target)
-        .FromCard(this, cardPlay)
+        .FromCard(this)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
 

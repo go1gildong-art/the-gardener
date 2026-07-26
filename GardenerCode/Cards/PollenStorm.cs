@@ -28,7 +28,7 @@ public class PollenStorm() : NutrientCard(0, CardType.Attack, CardRarity.Uncommo
         int cost = ResolveEnergyXValue();
 
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this, cardPlay)
+            .FromCard(this)
             .WithHitCount(cost)
             .Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_slash")

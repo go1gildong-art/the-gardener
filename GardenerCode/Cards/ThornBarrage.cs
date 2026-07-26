@@ -40,7 +40,7 @@ public class ThornBarrage() : GardenerCard(
         ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
         var dmg = DynamicVars.CalculatedDamage.Calculate(cardPlay.Target);
         await DamageCmd.Attack(dmg).Targeting(cardPlay.Target)
-        .FromCard(this, cardPlay)
+        .FromCard(this)
             .WithHitCount((int) DynamicVars.Repeat.BaseValue)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);

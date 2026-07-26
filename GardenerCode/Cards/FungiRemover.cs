@@ -39,7 +39,7 @@ public class FungiRemover() : NutrientCard(0, CardType.Attack, CardRarity.Common
         if (IsUpgraded)
         {
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-                .FromCard(this, cardPlay)
+                .FromCard(this)
                 .TargetingAllOpponents(base.CombatState)
                 .WithHitFx("vfx/vfx_attack_slash")
                 .Execute(choiceContext);
@@ -54,7 +54,7 @@ public class FungiRemover() : NutrientCard(0, CardType.Attack, CardRarity.Common
         {
             ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue).Targeting(cardPlay.Target)
-            .FromCard(this, cardPlay)
+            .FromCard(this)
                 .WithHitFx("vfx/vfx_attack_slash")
                 .Execute(choiceContext);
 
