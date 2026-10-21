@@ -41,7 +41,7 @@ public class WinterBreeze() : NutrientCard(0, CardType.Attack, CardRarity.Common
         if (IsUpgraded)
         {
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
                 .TargetingAllOpponents(base.CombatState)
                 .WithHitFx("vfx/vfx_attack_slash")
                 .Execute(choiceContext);
@@ -56,7 +56,7 @@ public class WinterBreeze() : NutrientCard(0, CardType.Attack, CardRarity.Common
         {
             ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue).Targeting(cardPlay.Target)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
                 .WithHitFx("vfx/vfx_attack_slash")
                 .Execute(choiceContext);
 
