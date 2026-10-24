@@ -142,5 +142,8 @@
   "GARDENER-WRIGGLE.description": "카드를 {Cards:diff()}장 뽑습니다. \n[gold]양분[/gold]이 {NutrientThreshold:diff()} 이상이면, \n이번 턴 [gold]가시[/gold]를 {WrigglePower:diff()} 얻습니다.",
 
   "GARDENER-YGGDRASIL_FORM.title": "세계수의 형상",
-  "GARDENER-YGGDRASIL_FORM.description": "매 턴 시작 시, \n무작위 카드 {YggdrasilFormPower:diff()}장을 \n뽑을 더미에 섞어 넣습니다. \n사용 전까지 \n비용이 0이 됩니다."
+  "GARDENER-YGGDRASIL_FORM.description": "매 턴 시작 시, \n무작위 카드 {YggdrasilFormPower:diff()}장을 \n뽑을 더미에 섞어 넣습니다. \n사용 전까지 \n비용이 0이 됩니다.",
+
+  "GARDENER-RED_BUD.description": "피해를 {Damage:diff}만큼 {Repeat:diff}번 줍니다.",
+  "GARDENER-RED_BUD.title": "붉은 봉오리"
 }

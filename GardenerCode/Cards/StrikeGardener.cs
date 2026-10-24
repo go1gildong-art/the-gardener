@@ -36,6 +36,6 @@ public class StrikeGardener() : GardenerCard(
 
     protected override void OnUpgrade()
     {
-        base.DynamicVars.Damage.UpgradeValueBy(3m);
+        base.DynamicVars.Damage.UpgradeValueBy(2m);
     }
 }
