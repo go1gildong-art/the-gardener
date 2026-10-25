@@ -26,7 +26,7 @@ public class BloomReward
         [RarityOptions.Fruit] = CardRarity.Rare
     };
 
-    public static CardReward Generate(RarityOptions rarityOption, int amount, Player player)
+    public static CardReward Generate(RarityOptions rarityOption, Player player, int amount = 3)
     {
         TokenCardPool tokenCardPool = ModelDb.CardPool<TokenCardPool>();
 
@@ -49,7 +49,7 @@ public class BloomReward
             }
         );
 
-        return new CardReward(option, 3, player);
+        return new CardReward(option, amount, player);
     }
 }
 

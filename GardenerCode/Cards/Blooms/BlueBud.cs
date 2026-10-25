@@ -12,6 +12,7 @@ using Gardener.GardenerCode.Character;
 using Gardener.GardenerCode.Systems;
 using MegaCrit.Sts2.Core.Models.CardPools;
 
+[Pool(typeof(TokenCardPool))]
 public class BlueBud() : NutrientCard(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy, 8), IBloomCard
 {
 	public override bool GainsBlock => true;

@@ -65,5 +65,9 @@
 
   "GARDENER-PHOTOSYNTHESIS_POWER.description": "",
   "GARDENER-PHOTOSYNTHESIS_POWER.smartDescription": "Gain {Amount} Energy per turn. After combat Gain {Amount} x 3 Max HP.",
-  "GARDENER-PHOTOSYNTHESIS_POWER.title": "Photosynthesis"
+  "GARDENER-PHOTOSYNTHESIS_POWER.title": "Photosynthesis",
+
+  "GARDENER-FLOWER_POT_POWER.description": "Gain {Amount} [gold]Bud[/gold] card rewards after the combat.",
+  "GARDENER-FLOWER_POT_POWER.smartDescription": "Gain {Amount} [gold]Bud[/gold] card rewards after the combat.",
+  "GARDENER-FLOWER_POT_POWER.title": "Flower Pot"
 }
