@@ -7,12 +7,17 @@ using MegaCrit.Sts2.Core.ValueProps;
 using Godot;
 namespace Gardener.GardenerCode.Cards;
 
+using BaseLib.Abstracts;
 using BaseLib.Utils;
+using Gardener.GardenerCode.Cards.Blooms;
 using Gardener.GardenerCode.Character;
 using Gardener.GardenerCode.Systems;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Rewards;
 using MegaCrit.Sts2.Core.Rooms;
+using MegaCrit.Sts2.Core.Runs;
+
 
 [Pool(typeof(GardenerCardPool))]
 public class LifeCocoon() : NutrientCard(1, CardType.Skill, CardRarity.Rare, TargetType.Self, 6), IOnDepleted
@@ -32,7 +37,7 @@ public class LifeCocoon() : NutrientCard(1, CardType.Skill, CardRarity.Rare, Tar
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
-        }
+    }
 
     public async Task OnDepleted(PlayerChoiceContext choiceContext)
     {
@@ -40,11 +45,11 @@ public class LifeCocoon() : NutrientCard(1, CardType.Skill, CardRarity.Rare, Tar
         if (currentRoom is CombatRoom combatRoom)
         {
             for (int i = 0; i < DynamicVars["RelicVar"].BaseValue; i++)
-            combatRoom.AddExtraReward(
-                base.Owner,
-                new RelicReward(base.Owner)
-                );
-        } 
+                combatRoom.AddExtraReward(
+                    base.Owner,
+                    new RelicReward(base.Owner)
+                    );
+        }
         else
         {
             GD.Print($"[DEBOOG] OnDepleted was triggered but current room is not a CombatRoom. Room: {currentRoom?.GetType().Name}");
@@ -56,3 +61,4 @@ public class LifeCocoon() : NutrientCard(1, CardType.Skill, CardRarity.Rare, Tar
         base.DynamicVars["RelicVar"].UpgradeValueBy(1);
     }
 }
+

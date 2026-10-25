@@ -145,5 +145,11 @@
   "GARDENER-YGGDRASIL_FORM.description": "매 턴 시작 시, \n무작위 카드 {YggdrasilFormPower:diff()}장을 \n뽑을 더미에 섞어 넣습니다. \n사용 전까지 \n비용이 0이 됩니다.",
 
   "GARDENER-RED_BUD.description": "피해를 {Damage:diff}만큼 {Repeat:diff}번 줍니다.",
-  "GARDENER-RED_BUD.title": "붉은 봉오리"
+  "GARDENER-RED_BUD.title": "붉은 봉오리",
+
+  "GARDENER-BLUE_BUD.description": "[gold]방어도[/gold]를 {CalculatedBlock:diff()} 얻습니다.",
+  "GARDENER-BLUE_BUD.title": "푸른 봉오리",
+
+  "GARDENER-GLASS_BUD.description": "[gold]방어도[/gold]를 {CalculatedBlock:diff()} 얻습니다.\n피해를 {Damage:diff} 줍니다.",
+  "GARDENER-GLASS_BUD.title": "유리 봉오리",
 }

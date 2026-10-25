@@ -14,7 +14,7 @@ using MegaCrit.Sts2.Core.Models.CardPools;
 
   
 [Pool(typeof(TokenCardPool))]
-public class RedBud() : NutrientCard(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy, 6)
+public class RedBud() : NutrientCard(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy, 8), IBloomCard
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
@@ -26,6 +26,7 @@ public class RedBud() : NutrientCard(1, CardType.Attack, CardRarity.Common, Targ
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
+        .Targeting(cardPlay.Target)
         .FromCard(this, cardPlay)
         .WithHitCount((int)DynamicVars.Repeat.BaseValue)
         .WithHitFx("vfx/vfx_attack_slash")
@@ -34,7 +35,8 @@ public class RedBud() : NutrientCard(1, CardType.Attack, CardRarity.Common, Targ
 
     protected override void OnUpgrade()
     {
-        IncreaseNutrient(7);
+        base.DynamicVars.Damage.UpgradeValueBy(2m);
+        IncreaseNutrient(4);
     }
 }
 
