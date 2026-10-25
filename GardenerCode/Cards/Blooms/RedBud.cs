@@ -13,10 +13,9 @@ using Gardener.GardenerCode.Systems;
 using MegaCrit.Sts2.Core.Models.CardPools;
 
   
-[Pool(typeof(GardenerCardPool))]
+[Pool(typeof(TokenCardPool))]
 public class RedBud() : NutrientCard(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy, 6)
 {
-    protected override can
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
         new DamageVar(4m, DamageProps.card),
