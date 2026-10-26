@@ -69,5 +69,13 @@
 
   "GARDENER-FLOWER_POT_POWER.description": "Gain {Amount} [gold]Bud[/gold] card rewards after the combat.",
   "GARDENER-FLOWER_POT_POWER.smartDescription": "Gain {Amount} [gold]Bud[/gold] card rewards after the combat.",
-  "GARDENER-FLOWER_POT_POWER.title": "Flower Pot"
+  "GARDENER-FLOWER_POT_POWER.title": "Flower Pot",
+
+  "GARDENER-BREEZE_FRUIT_POWER.description": "Draw {Amount} extra cards per turn.",
+  "GARDENER-BREEZE_FRUIT_POWER.smartDescription": "Draw {Amount} extra cards per turn.",
+  "GARDENER-BREEZE_FRUIT_POWER.title": "BreezeFruitPower",
+
+  "GLASS_FRUIT_POWER.description": "Gain {Amount} blocks per turn. If you block damage, deal the same amount of damage.",
+  "GLASS_FRUIT_POWER.smartDescription": "",
+  "GLASS_FRUIT_POWER.title": "GlassFruitPower"
 }

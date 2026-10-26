@@ -136,5 +136,26 @@
   "GARDENER-WRIGGLE.description": "Draw 2 cards. If [gold]Nutrient[/gold] is 6 or less, gain 4 [gold]Thorns[/gold] this turn.",
 
   "GARDENER-YGGDRASIL_FORM.title": "Yggdrasil Form",
-  "GARDENER-YGGDRASIL_FORM.description": "At the start of each turn, add 2 random cards into your draw pile. The added cards cost 0 on their first use."
+  "GARDENER-YGGDRASIL_FORM.description": "At the start of each turn, add 2 random cards into your draw pile. The added cards cost 0 on their first use.",
+
+  "GARDENER-RED_BLOSSOM.title": "Red Blossom",
+  "GARDENER-RED_BLOSSOM.description": "Deal {Damage:diff()} damage {Repeat:diff()} times.",
+  "GARDENER-RED_FRUIT.title": "Red Fruit",
+  "GARDENER-RED_FRUIT.description": "Deal {Damage:diff()} damage {Repeat:diff()} times.",
+  "GARDENER-BLUE_BLOSSOM.title": "Blue Blossom",
+  "GARDENER-BLUE_BLOSSOM.description": "Gain {Block:diff()} [gold]Block[/gold].",
+  "GARDENER-BLUE_FRUIT.title": "Blue Fruit",
+  "GARDENER-BLUE_FRUIT.description": "Gain {Block:diff()} [gold]Block[/gold].",
+  "GARDENER-BREEZE_BLOSSOM.title": "Breeze Blossom",
+  "GARDENER-BREEZE_BLOSSOM.description": "Gain {Block:diff()} [gold]Block[/gold]. Draw {Cards:diff()} cards.",
+  "GARDENER-BREEZE_FRUIT.title": "Breeze Fruit",
+  "GARDENER-BREEZE_FRUIT.description": "Gain {Block:diff()} [gold]Block[/gold]. Draw {Cards:diff()} cards.",
+  "GARDENER-GLASS_BLOSSOM.title": "Glass Blossom",
+  "GARDENER-GLASS_BLOSSOM.description": "Gain {Block:diff()} [gold]Block[/gold]. Deal {Damage:diff()} damage.",
+  "GARDENER-GLASS_FRUIT.title": "Glass Fruit",
+  "GARDENER-GLASS_FRUIT.description": "Gain {Block:diff()} [gold]Block[/gold]. Deal {Damage:diff()} damage.",
+  "GARDENER-WITHERED_BLOSSOM.title": "Withered Blossom",
+  "GARDENER-WITHERED_BLOSSOM.description": "Apply 2 [gold]Weak[/gold].",
+  "GARDENER-WITHERED_FRUIT.title": "Withered Fruit",
+  "GARDENER-WITHERED_FRUIT.description": "Apply 2 [gold]Weak[/gold]."
 }

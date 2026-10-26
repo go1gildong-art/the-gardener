@@ -13,7 +13,7 @@ using Gardener.GardenerCode.Systems;
 using MegaCrit.Sts2.Core.Models.CardPools;
 
 [Pool(typeof(TokenCardPool))]
-public class BlueBud() : NutrientCard(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy, 8), IBloomCard
+public class BlueBud() : NutrientCard(1, CardType.Skill, CardRarity.Common, TargetType.Self, 8), IBloomCard
 {
 	public override bool GainsBlock => true;
 

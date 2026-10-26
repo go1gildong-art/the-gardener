@@ -1,0 +1,41 @@
+using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.ValueProps;
+
+namespace Gardener.GardenerCode.Cards.Blooms;
+
+using BaseLib.Utils;
+using Gardener.GardenerCode.Character;
+using Gardener.GardenerCode.Systems;
+using MegaCrit.Sts2.Core.Models.CardPools;
+using MegaCrit.Sts2.Core.Models.Powers;
+
+[Pool(typeof(TokenCardPool))]
+public class WitheredBud() : NutrientCard(0, CardType.Skill, CardRarity.Common, TargetType.AnyEnemy, 8), IBloomCard
+{
+    protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
+    {
+        new PowerVar<WeakPower>(2),
+        new IntVar("Nutrient", Nutrient),
+        new RepeatVar(2)
+    };
+
+    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    {
+        await PowerCmd.Apply<WeakPower>(
+                choiceContext,
+                cardPlay.Target,
+                DynamicVars["WeakPower"].BaseValue,
+                base.Owner.Creature, this);
+    }
+
+    protected override void OnUpgrade()
+    {
+        base.DynamicVars["WeakPower"].UpgradeValueBy(1m);
+        IncreaseNutrient(4);
+    }
+}
+
