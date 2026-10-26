@@ -178,7 +178,7 @@
   "GARDENER-BREEZE_BLOSSOM.description": "카드를 {Cards:diff()}장 뽑습니다. \n다음 턴 시작 시, \n카드를 추가로 {DrawCardsNextTurnPower:diff()}장 뽑습니다.",
 
   "GARDENER-BREEZE_FRUIT.title": "산들바람 열매",
-  "GARDENER-BREEZE_FRUIT.description": "매 턴 시작 시, \n카드를 {Cards:diff()}장 추가로 뽑습니다.",
+  "GARDENER-BREEZE_FRUIT.description": "매 턴 시작 시, \n카드를 {Cards:diff()}장 \n추가로 뽑습니다.",
 
   "GARDENER-GLASS_BLOSSOM.title": "유리 꽃",
   "GARDENER-GLASS_BLOSSOM.description": "[gold]방어도[/gold]를 {Block:diff()} 얻습니다.\n모든 적에게 피해를 \n{Damage:diff} 줍니다.",

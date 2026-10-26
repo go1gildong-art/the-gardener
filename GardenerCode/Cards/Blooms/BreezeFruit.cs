@@ -15,7 +15,7 @@ using MegaCrit.Sts2.Core.Models.CardPools;
 
   
 [Pool(typeof(TokenCardPool))]
-public class BreezeFruit() : NutrientCard(1, CardType.Skill, CardRarity.Rare, TargetType.Self, 4), IBloomCard
+public class BreezeFruit() : NutrientCard(1, CardType.Power, CardRarity.Rare, TargetType.Self, 4), IBloomCard
 {
 	public override bool GainsBlock => true;
 
