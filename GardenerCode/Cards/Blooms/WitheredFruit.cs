@@ -18,7 +18,6 @@ public class WitheredFruit() : NutrientCard(1, CardType.Skill, CardRarity.Rare, 
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => new DynamicVar[]
     {
-        new PowerVar<SlowPower>(20),
         new IntVar("Nutrient", Nutrient),
     };
 
@@ -31,13 +30,13 @@ public class WitheredFruit() : NutrientCard(1, CardType.Skill, CardRarity.Rare, 
         await PowerCmd.Apply<SlowPower>(
                 choiceContext,
                 cardPlay.Target,
-                DynamicVars["SlowPower"].BaseValue,
+                1,
                 base.Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
-        base.DynamicVars["SlowPower"].UpgradeValueBy(30);
+        base.EnergyCost.UpgradeBy(-1);
         IncreaseNutrient(2);
     }
 }

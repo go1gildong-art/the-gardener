@@ -29,7 +29,6 @@ public class RedBlossom() : NutrientCard(1, CardType.Attack, CardRarity.Uncommon
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
         .Targeting(cardPlay.Target)
         .FromCard(this, cardPlay)
-        .WithHitCount((int)DynamicVars.Repeat.BaseValue)
         .WithHitFx("vfx/vfx_attack_slash")
         .Execute(choiceContext);
 

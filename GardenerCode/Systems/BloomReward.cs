@@ -49,6 +49,7 @@ public class BloomReward
             }
         );
 
+        GD.Print($"[DEBOOG] BloomReward.Generate: Generated {amount} card reward(s) with rarity option {rarityOption}.");
         return new CardReward(option, amount, player);
     }
 }

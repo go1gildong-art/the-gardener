@@ -23,6 +23,10 @@ public class WitheredBud() : NutrientCard(0, CardType.Skill, CardRarity.Common, 
         new RepeatVar(2)
     };
 
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new CardKeyword[]
+            {
+        CardKeyword.Exhaust
+            };
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await PowerCmd.Apply<WeakPower>(

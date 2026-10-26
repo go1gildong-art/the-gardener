@@ -163,22 +163,22 @@
   "GARDENER-BREEZE_BUD.title": "산들바람 봉오리",
 
   "GARDENER-RED_BLOSSOM.title": "붉은 꽃",
-  "GARDENER-RED_BLOSSOM.description": "피해를 {Damage:diff}만큼 {Repeat:diff}번 줍니다.",
+  "GARDENER-RED_BLOSSOM.description": "피해를 {Damage:diff()} 줍니다. \n[gold]취약[/gold]를 {VulnerablePower:diff()} 부여합니다.",
 
   "GARDENER-RED_FRUIT.title": "붉은 열매",
-  "GARDENER-RED_FRUIT.description": "피해를 {Damage:diff}만큼 {Repeat:diff}번 줍니다.",
+  "GARDENER-RED_FRUIT.description": "힘을 {StrengthPower:diff()}만큼 얻습니다.",
 
   "GARDENER-BLUE_BLOSSOM.title": "푸른 꽃",
-  "GARDENER-BLUE_BLOSSOM.description": "[gold]방어도[/gold]를 {Block:diff()} 얻습니다. \n다음 턴에 방어도를 \n{BlockNextTurnPower:diff()}만큼 얻습니다.",
+  "GARDENER-BLUE_BLOSSOM.description": "[gold]방어도[/gold]를 {Block:diff()} 얻습니다. \n다음 턴 시작 시, \n방어도를 추가로 {BlockNextTurnPower:diff()}만큼 얻습니다.",
 
   "GARDENER-BLUE_FRUIT.title": "푸른 열매",
-  "GARDENER-BLUE_FRUIT.description": "[gold]방어도[/gold]를 {Block:diff()} 얻습니다.",
+  "GARDENER-BLUE_FRUIT.description": "[gold]방어도[/gold]를 {Block:diff()}만큼 얻습니다. [gold]민첩[/gold]을 {DexterityPower:diff()}만큼 얻습니다.",
 
   "GARDENER-BREEZE_BLOSSOM.title": "산들바람 꽃",
-  "GARDENER-BREEZE_BLOSSOM.description": "카드를 {Cards:diff()}장 뽑습니다. \n다음 턴, 카드를 {CardsNextTurnPower:diff()}장 뽑습니다.",
+  "GARDENER-BREEZE_BLOSSOM.description": "카드를 {Cards:diff()}장 뽑습니다. \n다음 턴 시작 시, \n카드를 추가로 {DrawCardsNextTurnPower:diff()}장 뽑습니다.",
 
   "GARDENER-BREEZE_FRUIT.title": "산들바람 열매",
-  "GARDENER-BREEZE_FRUIT.description": "매 턴 시작 시, 카드를 {Cards:diff()}장 추가로 뽑습니다.",
+  "GARDENER-BREEZE_FRUIT.description": "매 턴 시작 시, \n카드를 {Cards:diff()}장 추가로 뽑습니다.",
 
   "GARDENER-GLASS_BLOSSOM.title": "유리 꽃",
   "GARDENER-GLASS_BLOSSOM.description": "[gold]방어도[/gold]를 {Block:diff()} 얻습니다.\n모든 적에게 피해를 \n{Damage:diff} 줍니다.",
@@ -190,5 +190,5 @@
   "GARDENER-WITHERED_BLOSSOM.description": "[gold]약화[/gold]를 {WeakPower:diff()} 부여합니다. \n힘을 {StrengthPower:diff()} 감소시킵니다.",
 
   "GARDENER-WITHERED_FRUIT.title": "시든 열매",
-  "GARDENER-WITHERED_FRUIT.description": "[gold]둔화[/gold]를 {SlowPower:diff()} 부여합니다."
+  "GARDENER-WITHERED_FRUIT.description": "[gold]둔화[/gold]를 부여합니다."
 }
